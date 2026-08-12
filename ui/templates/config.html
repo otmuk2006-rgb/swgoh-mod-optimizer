@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Config — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel wide">
+  <h1>Priority &amp; weight overrides</h1>
+  <p class="muted">
+    Optional. Leave everything blank to use the data-driven priorities
+    (<code>character_priority.json</code>) and weightings (<code>mod_weightings.json</code>)
+    for all {{ characters | length }} selected characters.
+  </p>
+
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+  <form method="post" action="{{ url_for('config') }}" enctype="multipart/form-data" class="stack">
+
+    <section class="config-section">
+      <h2>Priority overrides</h2>
+      <p class="muted small">Override p_j for specific characters (0.0&ndash;1.0). Leave blank to use the data-driven rankings below.</p>
+      <div id="priority-rows"></div>
+      <button type="button" id="add-priority-row" class="btn btn-secondary small">+ Add override</button>
+
+      <datalist id="selected-char-list">
+        {% for c in characters %}
+        <option value="{{ c.id }}">{{ c.name }}</option>
+        {% endfor %}
+      </datalist>
+
+      {% if admin_refresh_enabled %}
+      <div class="refresh-row">
+        <button type="button" class="btn btn-secondary small" id="refresh-priority-btn"
+                data-start-url="{{ url_for('refresh_priority') }}" data-status-url="{{ url_for('refresh_priority_status') }}">
+          Refresh data-driven priority rankings
+        </button>
+        <span class="muted small" id="refresh-priority-status"></span>
+      </div>
+      <p class="muted small">
+        Slow (~20&ndash;30 min) &mdash; scrapes a tier-list page per character via a headless
+        browser. Can occasionally fail (Cloudflare) &mdash; safe to retry.
+      </p>
+      {% endif %}
+    </section>
+
+    <section class="config-section">
+      <h2>Weight overrides</h2>
+      <p class="muted small">
+        Upload a JSON file: <code>{"CHAR_ID": {"speed": 1.0, "health": 0.4, ...}}</code>.
+        Leave blank to use the data-driven weightings below.
+      </p>
+      <input type="file" name="weight_file" accept="application/json">
+
+      {% if admin_refresh_enabled %}
+      <div class="refresh-row">
+        <button type="button" class="btn btn-secondary small" id="refresh-weightings-btn"
+                data-start-url="{{ url_for('refresh_weightings') }}" data-status-url="{{ url_for('refresh_weightings_status') }}">
+          Refresh data-driven mod weightings
+        </button>
+        <span class="muted small" id="refresh-weightings-status"></span>
+      </div>
+      <p class="muted small">
+        Slow (~5&ndash;10 min) &mdash; re-pulls the top Kyber leaderboard and every one of
+        those players' equipped mods via Comlink.
+      </p>
+      {% endif %}
+    </section>
+
+    <section class="config-section">
+      <h2>Solver time limit</h2>
+      <p class="muted small">
+        Max seconds CBC may search before returning its best answer so far.
+        Larger selections need more time to reach proven optimality.
+      </p>
+      <input type="number" name="time_limit" value="60" min="5" step="5" style="width: 100px;">
+    </section>
+
+    <button type="submit" class="btn btn-primary">Run optimiser</button>
+  </form>
+</div>
+{% endblock %}
+{% block head %}
+<script>
+  const SELECTED_CHAR_NAMES = {{ characters | map(attribute='name') | list | tojson }};
+  const SELECTED_CHAR_IDS = {{ characters | map(attribute='id') | list | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/priority_rows.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/refresh_status.js') }}" defer></script>
+{% endblock %}

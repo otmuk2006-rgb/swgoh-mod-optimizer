@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% from "_character_portrait.html" import character_portrait %}
+{% block title %}Select Characters — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel wide">
+  <h1>Select characters</h1>
+  <p class="muted">
+    Click a portrait to select it, click again to <strong>lock</strong> it (keeps its
+    current mods untouched), click a third time to clear it.
+  </p>
+
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+  <div class="toolbar">
+    <button type="button" id="select-all" class="btn btn-secondary">Select all</button>
+    <button type="button" id="clear-all" class="btn btn-secondary">Clear all</button>
+    <span class="toolbar-summary" id="selection-summary">0 selected, 0 locked</span>
+  </div>
+
+  <div class="toolbar">
+    <label class="sort-label" for="sort-select">Sort by</label>
+    <select id="sort-select" class="sort-select">
+      {% for key, label in sort_options %}
+      <option value="{{ key }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+    <button type="button" id="sort-direction" class="btn btn-secondary small" data-dir="asc" title="Toggle ascending/descending">↑ Low to high</button>
+
+    {% if all_tags %}
+    <button type="button" id="tag-filter-toggle" class="btn btn-secondary">
+      Filter by tag <span id="tag-filter-count" class="tag-filter-count" hidden></span>
+    </button>
+    {% endif %}
+  </div>
+
+  {% if all_tags %}
+  <dialog id="tag-filter-modal" class="tag-filter-modal">
+    <div class="tag-filter-modal-header">
+      <h2>Filter by tag</h2>
+      <button type="button" id="tag-filter-close" class="btn btn-secondary small" aria-label="Close">✕</button>
+    </div>
+    <div class="tag-filter-modal-body">
+      {% for tag in all_tags %}
+      <label class="tag-filter-option">
+        <input type="checkbox" class="tag-filter-checkbox" value="{{ tag }}">
+        {{ tag }}
+      </label>
+      {% endfor %}
+    </div>
+    <div class="tag-filter-modal-footer">
+      <button type="button" id="tag-filter-clear" class="btn btn-secondary small">Clear filters</button>
+    </div>
+  </dialog>
+  {% endif %}
+
+  <form method="post" action="{{ url_for('select_characters') }}" id="char-form">
+    <div class="char-grid" id="char-grid">
+      {% for c in characters %}
+      {% set initial = 'locked' if c.id in locked else ('selected' if c.id in selected else 'none') %}
+      <div class="char-tile" data-char-id="{{ c.id }}" data-state="{{ initial }}" tabindex="0" role="button"
+           aria-label="{{ c.name }}" data-sort-values='{{ c.sort_values | tojson }}' data-tags='{{ c.tags | tojson }}'>
+        {{ character_portrait(c) }}
+        <span class="char-tooltip">{{ c.name }}</span>
+        <input type="hidden" name="state_{{ c.id }}" value="{{ initial }}">
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="toolbar" style="margin-top: 20px;">
+      <button type="submit" class="btn btn-primary">Continue</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/character_grid.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/sort_grid.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/tag_filter.js') }}" defer></script>
+{% endblock %}

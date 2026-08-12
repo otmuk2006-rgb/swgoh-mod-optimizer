@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}{{ name }} — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel wide">
+  <a href="{{ url_for('results') }}" class="back-link">&larr; Back to results</a>
+  <h1>{{ name }}</h1>
+
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% else %}
+
+  <section class="detail-section">
+    <div class="stats-tabs">
+      <button type="button" class="tab-btn active" data-tab="after">After</button>
+      <button type="button" class="tab-btn" data-tab="before">Before</button>
+    </div>
+
+    <table class="stats-table">
+      <tbody>
+        {% for row in stat_rows %}
+        <tr>
+          <td class="stat-name">{{ row.name }}</td>
+          <td class="stat-value" data-tab-panel="after">
+            {{ row.after_total }}{% if row.after_mod %} <span class="mod-contribution">(+{{ row.after_mod }})</span>{% endif %}
+          </td>
+          <td class="stat-value" data-tab-panel="before" hidden>
+            {{ row.before_total }}{% if row.before_mod %} <span class="mod-contribution">(+{{ row.before_mod }})</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="detail-section">
+    <h2>Mod sheet</h2>
+
+    <div class="mod-sheet">
+      {% for card in mods %}
+      <div class="mod-card {{ 'is-empty' if not card.mod }}"
+           {% if card.mod %}style="--mod-tier: var(--modtier-{{ card.mod.tier_colour }});"{% endif %}>
+        <div class="mod-card-shape">
+          <div class="mod-shape-fill" data-slot="{{ card.slot }}" data-variant="{{ 'max' if card.mod and card.mod.dots == 6 else 'standard' }}"></div>
+          <div class="mod-shape-outline" data-slot="{{ card.slot }}"></div>
+          {% if card.mod %}
+          <div class="mod-set-icon" data-slot="{{ card.slot }}" data-set="{{ card.mod.set }}" title="{{ card.mod.set | replace('_', ' ') | capitalize }}"></div>
+          {% endif %}
+        </div>
+
+        {% if card.mod %}
+        <div class="mod-card-body">
+          <div class="mod-card-name">{{ card.mod.display_name }}</div>
+          <div class="mod-card-meta">
+            <span class="mod-set-badge">{{ card.mod.set | replace('_', ' ') | capitalize }}</span>
+            <span class="mod-dots">{{ '●' * card.mod.dots }}</span>
+            <span class="mod-level">Lv {{ card.mod.level }}</span>
+          </div>
+          <div class="mod-card-primary">
+            {{ card.mod.primary.stat | replace('_', ' ') | capitalize }}: {{ card.mod.primary.value }}
+          </div>
+          <ul class="mod-card-secondaries">
+            {% for sec in card.mod.secondaries %}
+            <li>{{ sec.stat | replace('_', ' ') | capitalize }}: {{ sec.value }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% else %}
+        <div class="mod-card-body">
+          <div class="mod-card-name muted">{{ card.shape_name }} slot empty</div>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% endif %}
+</div>
+{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/stats_toggle.js') }}" defer></script>
+{% endblock %}

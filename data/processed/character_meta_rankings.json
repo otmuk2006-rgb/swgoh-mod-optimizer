@@ -1,0 +1,1692 @@
+{
+  "4LOM": {
+    "name": "4-LOM",
+    "slug": "4-lom",
+    "title": "4-LOM GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "50RT": {
+    "name": "50R-T",
+    "slug": "50r-t",
+    "title": "50R-T GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "AAYLASECURA": {
+    "name": "Aayla Secura",
+    "slug": "aayla-secura",
+    "title": "Aayla Secura GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ADMINISTRATORLANDO": {
+    "name": "Lando Calrissian",
+    "slug": "lando-calrissian",
+    "title": "Lando Calrissian GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ADMIRALACKBAR": {
+    "name": "Admiral Ackbar",
+    "slug": "admiral-ackbar",
+    "title": "Admiral Ackbar GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ADMIRALPIETT": {
+    "name": "Admiral Piett",
+    "slug": "admiral-piett",
+    "title": "Admiral Piett GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ADMIRALRADDUS": {
+    "name": "Admiral Raddus",
+    "slug": "admiral-raddus",
+    "title": "Admiral Raddus GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "AHSOKATANO": {
+    "name": "Ahsoka Tano",
+    "slug": "ahsoka-tano",
+    "title": "Ahsoka Tano GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "AMILYNHOLDO": {
+    "name": "Amilyn Holdo",
+    "slug": "amilyn-holdo",
+    "title": "Amilyn Holdo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ANAKINKNIGHT": {
+    "name": "Jedi Knight Anakin",
+    "slug": "jedi-knight-anakin",
+    "title": "Jedi Knight Anakin GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "APPO": {
+    "name": "CC-1119 \"Appo\"",
+    "slug": "cc-1119-appo",
+    "title": "CC-1119 \"Appo\" GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ARCTROOPER501ST": {
+    "name": "ARC Trooper",
+    "slug": "arc-trooper",
+    "title": "ARC Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ARMORER": {
+    "name": "The Armorer",
+    "slug": "the-armorer",
+    "title": "The Armorer GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ASAJJDARKDISCIPLE": {
+    "name": "Asajj Ventress (Dark Disciple)",
+    "slug": "asajj-ventress-dark-disciple",
+    "title": "Asajj Ventress (Dark Disciple) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ASAJVENTRESS": {
+    "name": "Asajj Ventress",
+    "slug": "asajj-ventress",
+    "title": "Asajj Ventress GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "AURRA_SING": {
+    "name": "Aurra Sing",
+    "slug": "aurra-sing",
+    "title": "Aurra Sing GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "B1BATTLEDROIDV2": {
+    "name": "B1 Battle Droid",
+    "slug": "b1-battle-droid",
+    "title": "B1 Battle Droid GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "B2SUPERBATTLEDROID": {
+    "name": "B2 Super Battle Droid",
+    "slug": "b2-super-battle-droid",
+    "title": "B2 Super Battle Droid GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BADBATCHECHO": {
+    "name": "Echo",
+    "slug": "echo",
+    "title": "Echo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BADBATCHHUNTER": {
+    "name": "Hunter",
+    "slug": "hunter",
+    "title": "Hunter GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BADBATCHOMEGA": {
+    "name": "Omega",
+    "slug": "omega",
+    "title": "Omega GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BADBATCHTECH": {
+    "name": "Tech",
+    "slug": "tech",
+    "title": "Tech GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BADBATCHWRECKER": {
+    "name": "Wrecker",
+    "slug": "wrecker",
+    "title": "Wrecker GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BARRISSOFFEE": {
+    "name": "Barriss Offee",
+    "slug": "barriss-offee",
+    "title": "Barriss Offee GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BASTILASHAN": {
+    "name": "Bastila Shan",
+    "slug": "bastila-shan",
+    "title": "Bastila Shan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BASTILASHANDARK": {
+    "name": "Bastila Shan (Fallen)",
+    "slug": "bastila-shan-fallen",
+    "title": "Bastila Shan (Fallen) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BATCHERS3": {
+    "name": "Batcher",
+    "slug": "batcher",
+    "title": "Batcher GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BAYLANSKOLL": {
+    "name": "Baylan Skoll",
+    "slug": "baylan-skoll",
+    "title": "Baylan Skoll GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BAZEMALBUS": {
+    "name": "Baze Malbus",
+    "slug": "baze-malbus",
+    "title": "Baze Malbus GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BB8": {
+    "name": "BB-8",
+    "slug": "bb-8",
+    "title": "BB-8 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BENSOLO": {
+    "name": "Ben Solo",
+    "slug": "ben-solo",
+    "title": "Ben Solo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BIGGSDARKLIGHTER": {
+    "name": "Biggs Darklighter",
+    "slug": "biggs-darklighter",
+    "title": "Biggs Darklighter GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BISTAN": {
+    "name": "Bistan",
+    "slug": "bistan",
+    "title": "Bistan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOBAFETT": {
+    "name": "Boba Fett",
+    "slug": "boba-fett",
+    "title": "Boba Fett GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOBAFETTSCION": {
+    "name": "Boba Fett, Scion of Jango",
+    "slug": "boba-fett-scion-of-jango",
+    "title": "Boba Fett, Scion of Jango GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BODHIROOK": {
+    "name": "Bodhi Rook",
+    "slug": "bodhi-rook",
+    "title": "Bodhi Rook GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOKATAN": {
+    "name": "Bo-Katan Kryze",
+    "slug": "bo-katan-kryze",
+    "title": "Bo-Katan Kryze GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOOMADIER": {
+    "name": "Gungan Boomadier",
+    "slug": "gungan-boomadier",
+    "title": "Gungan Boomadier GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOSSK": {
+    "name": "Bossk",
+    "slug": "bossk",
+    "title": "Bossk GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOSSNASS": {
+    "name": "Boss Nass",
+    "slug": "boss-nass",
+    "title": "Boss Nass GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BOUSHH": {
+    "name": "Boushh (Leia Organa)",
+    "slug": "boushh-leia-organa",
+    "title": "Boushh (Leia Organa) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BRUTUS": {
+    "name": "Brutus",
+    "slug": "brutus",
+    "title": "Brutus GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BT1": {
+    "name": "BT-1",
+    "slug": "bt-1",
+    "title": "BT-1 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "C3POCHEWBACCA": {
+    "name": "Threepio & Chewie",
+    "slug": "threepio-chewie",
+    "title": "Threepio & Chewie GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "C3POLEGENDARY": {
+    "name": "C-3PO",
+    "slug": "c-3po",
+    "title": "C-3PO GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CADBANE": {
+    "name": "Cad Bane",
+    "slug": "cad-bane",
+    "title": "Cad Bane GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CALKESTIS": {
+    "name": "Cal Kestis",
+    "slug": "cal-kestis",
+    "title": "Cal Kestis GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CANDEROUSORDO": {
+    "name": "Canderous Ordo",
+    "slug": "canderous-ordo",
+    "title": "Canderous Ordo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CAPTAINDROGAN": {
+    "name": "Captain Drogan",
+    "slug": "captain-drogan",
+    "title": "Captain Drogan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CAPTAINENOCH": {
+    "name": "Captain Enoch",
+    "slug": "captain-enoch",
+    "title": "Captain Enoch GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CAPTAINREX": {
+    "name": "Captain Rex",
+    "slug": "captain-rex",
+    "title": "Captain Rex GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CAPTAINSILVO": {
+    "name": "Captain Silvo",
+    "slug": "captain-silvo",
+    "title": "Captain Silvo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CAPTAINTARPALS": {
+    "name": "Captain Tarpals",
+    "slug": "captain-tarpals",
+    "title": "Captain Tarpals GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CARADUNE": {
+    "name": "Cara Dune",
+    "slug": "cara-dune",
+    "title": "Cara Dune GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CARTHONASI": {
+    "name": "Carth Onasi",
+    "slug": "carth-onasi",
+    "title": "Carth Onasi GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CASSIANANDOR": {
+    "name": "Cassian Andor",
+    "slug": "cassian-andor",
+    "title": "Cassian Andor GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CASSIANUNDERCOVER": {
+    "name": "Cassian Andor (Undercover)",
+    "slug": "cassian-andor-undercover",
+    "title": "Cassian Andor (Undercover) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CC2224": {
+    "name": "CC2224 \"Commander Cody\"",
+    "slug": "cc-2224-cody",
+    "title": "CC-2224 \"Cody\" GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CEREJUNDA": {
+    "name": "Cere Junda",
+    "slug": "cere-junda",
+    "title": "Cere Junda GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CHEWBACCALEGENDARY": {
+    "name": "Chewbacca",
+    "slug": "chewbacca",
+    "title": "Chewbacca GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CHIEFCHIRPA": {
+    "name": "Chief Chirpa",
+    "slug": "chief-chirpa",
+    "title": "Chief Chirpa GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CHIEFNEBIT": {
+    "name": "Chief Nebit",
+    "slug": "chief-nebit",
+    "title": "Chief Nebit GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CHIRRUTIMWE": {
+    "name": "Chirrut \u00cemwe",
+    "slug": "chirrut-imwe",
+    "title": "Chirrut \u00cemwe GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CHOPPERS3": {
+    "name": "Chopper",
+    "slug": "chopper",
+    "title": "Chopper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CINTA": {
+    "name": "Cinta Kaz",
+    "slug": "cinta-kaz",
+    "title": "Cinta Kaz GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CLONESERGEANTPHASEI": {
+    "name": "Clone Sergeant - Phase I",
+    "slug": "clone-sergeant-phase-i",
+    "title": "Clone Sergeant - Phase I GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CLONEWARSCHEWBACCA": {
+    "name": "Clone Wars Chewbacca",
+    "slug": "clone-wars-chewbacca",
+    "title": "Clone Wars Chewbacca GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "COLONELSTARCK": {
+    "name": "Colonel Starck",
+    "slug": "colonel-starck",
+    "title": "Colonel Starck GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "COMMANDERAHSOKA": {
+    "name": "Commander Ahsoka Tano",
+    "slug": "commander-ahsoka-tano",
+    "title": "Commander Ahsoka Tano GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "COMMANDERLUKESKYWALKER": {
+    "name": "Commander Luke Skywalker",
+    "slug": "commander-luke-skywalker",
+    "title": "Commander Luke Skywalker GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CORUSCANTUNDERWORLDPOLICE": {
+    "name": "Coruscant Underworld Police",
+    "slug": "coruscant-underworld-police",
+    "title": "Coruscant Underworld Police GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "COUNTDOOKU": {
+    "name": "Count Dooku",
+    "slug": "count-dooku",
+    "title": "Count Dooku GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CROSSHAIRS3": {
+    "name": "Crosshair (Scarred)",
+    "slug": "crosshair-scarred",
+    "title": "Crosshair (Scarred) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CT210408": {
+    "name": "CT-21-0408 \"Echo\"",
+    "slug": "ct-21-0408-echo",
+    "title": "CT-21-0408 \"Echo\" GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CT5555": {
+    "name": "CT-5555 \"Fives\"",
+    "slug": "ct-5555-fives",
+    "title": "CT-5555 \"Fives\" GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CT7567": {
+    "name": "CT-7567 \"Rex\"",
+    "slug": "ct-7567-rex",
+    "title": "CT-7567 \"Rex\" GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DAKA": {
+    "name": "Old Daka",
+    "slug": "old-daka",
+    "title": "Old Daka GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARKREY": {
+    "name": "Rey (Dark Side Vision)",
+    "slug": "rey-dark-side-vision",
+    "title": "Rey (Dark Side Vision) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARKTROOPER": {
+    "name": "Dark Trooper",
+    "slug": "dark-trooper",
+    "title": "Dark Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHBANE": {
+    "name": "Darth Bane",
+    "slug": "darth-bane",
+    "title": "Darth Bane GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHMALAK": {
+    "name": "Darth Malak",
+    "slug": "darth-malak",
+    "title": "Darth Malak GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHMALGUS": {
+    "name": "Darth Malgus",
+    "slug": "darth-malgus",
+    "title": "Darth Malgus GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHNIHILUS": {
+    "name": "Darth Nihilus",
+    "slug": "darth-nihilus",
+    "title": "Darth Nihilus GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHREVAN": {
+    "name": "Darth Revan",
+    "slug": "darth-revan",
+    "title": "Darth Revan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHSIDIOUS": {
+    "name": "Darth Sidious",
+    "slug": "darth-sidious",
+    "title": "Darth Sidious GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHSION": {
+    "name": "Darth Sion",
+    "slug": "darth-sion",
+    "title": "Darth Sion GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHTALON": {
+    "name": "Darth Talon",
+    "slug": "darth-talon",
+    "title": "Darth Talon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHTRAYA": {
+    "name": "Darth Traya",
+    "slug": "darth-traya",
+    "title": "Darth Traya GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DASHRENDAR": {
+    "name": "Dash Rendar",
+    "slug": "dash-rendar",
+    "title": "Dash Rendar GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DATHCHA": {
+    "name": "Dathcha",
+    "slug": "dathcha",
+    "title": "Dathcha GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DEATHTROOPER": {
+    "name": "Death Trooper",
+    "slug": "death-trooper",
+    "title": "Death Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DEATHTROOPERPERIDEA": {
+    "name": "Death Trooper (Peridea)",
+    "slug": "death-trooper-peridea",
+    "title": "Death Trooper (Peridea) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DEDRAMEERO": {
+    "name": "Dedra Meero",
+    "slug": "dedra-meero",
+    "title": "Dedra Meero GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DENGAR": {
+    "name": "Dengar",
+    "slug": "dengar",
+    "title": "Dengar GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DEPABILLABA": {
+    "name": "Depa Billaba",
+    "slug": "depa-billaba",
+    "title": "Depa Billaba GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DIRECTORKRENNIC": {
+    "name": "Director Krennic",
+    "slug": "director-krennic",
+    "title": "Director Krennic GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DISGUISEDCLONETROOPER": {
+    "name": "Disguised Clone Trooper",
+    "slug": "disguised-clone-trooper",
+    "title": "Disguised Clone Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DOCTORAPHRA": {
+    "name": "Doctor Aphra",
+    "slug": "doctor-aphra",
+    "title": "Doctor Aphra GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DROIDEKA": {
+    "name": "Droideka",
+    "slug": "droideka",
+    "title": "Droideka GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EETHKOTH": {
+    "name": "Eeth Koth",
+    "slug": "eeth-koth",
+    "title": "Eeth Koth GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EIGHTHBROTHER": {
+    "name": "Eighth Brother",
+    "slug": "eighth-brother",
+    "title": "Eighth Brother GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EMBO": {
+    "name": "Embo",
+    "slug": "embo",
+    "title": "Embo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EMPERORPALPATINE": {
+    "name": "Emperor Palpatine",
+    "slug": "emperor-palpatine",
+    "title": "Emperor Palpatine GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ENFYSNEST": {
+    "name": "Enfys Nest",
+    "slug": "enfys-nest",
+    "title": "Enfys Nest GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EPIXFINN": {
+    "name": "Resistance Hero Finn",
+    "slug": "resistance-hero-finn",
+    "title": "Resistance Hero Finn GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EPIXPOE": {
+    "name": "Resistance Hero Poe",
+    "slug": "resistance-hero-poe",
+    "title": "Resistance Hero Poe GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EWOKELDER": {
+    "name": "Ewok Elder",
+    "slug": "ewok-elder",
+    "title": "Ewok Elder GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EWOKSCOUT": {
+    "name": "Ewok Scout",
+    "slug": "ewok-scout",
+    "title": "Ewok Scout GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EZRABRIDGERS3": {
+    "name": "Ezra Bridger",
+    "slug": "ezra-bridger",
+    "title": "Ezra Bridger GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "EZRAEXILE": {
+    "name": "Ezra Bridger (Exile)",
+    "slug": "ezra-bridger-exile",
+    "title": "Ezra Bridger (Exile) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FENNECSHAND": {
+    "name": "Fennec Shand",
+    "slug": "fennec-shand",
+    "title": "Fennec Shand GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FIFTHBROTHER": {
+    "name": "Fifth Brother",
+    "slug": "fifth-brother",
+    "title": "Fifth Brother GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FINN": {
+    "name": "Finn",
+    "slug": "finn",
+    "title": "Finn GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FIRSTORDEREXECUTIONER": {
+    "name": "First Order Executioner",
+    "slug": "first-order-executioner",
+    "title": "First Order Executioner GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FIRSTORDEROFFICERMALE": {
+    "name": "First Order Officer",
+    "slug": "first-order-officer",
+    "title": "First Order Officer GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FIRSTORDERSPECIALFORCESPILOT": {
+    "name": "First Order SF TIE Pilot",
+    "slug": "first-order-sf-tie-pilot",
+    "title": "First Order SF TIE Pilot GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FIRSTORDERTIEPILOT": {
+    "name": "First Order TIE Pilot",
+    "slug": "first-order-tie-pilot",
+    "title": "First Order TIE Pilot GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FIRSTORDERTROOPER": {
+    "name": "First Order Stormtrooper",
+    "slug": "first-order-stormtrooper",
+    "title": "First Order Stormtrooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FOSITHTROOPER": {
+    "name": "Sith Trooper",
+    "slug": "sith-trooper",
+    "title": "Sith Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "FULCRUMAHSOKA": {
+    "name": "Ahsoka Tano (Fulcrum)",
+    "slug": "ahsoka-tano-fulcrum",
+    "title": "Ahsoka Tano (Fulcrum) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GAMORREANGUARD": {
+    "name": "Gamorrean Guard",
+    "slug": "gamorrean-guard",
+    "title": "Gamorrean Guard GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GARSAXON": {
+    "name": "Gar Saxon",
+    "slug": "gar-saxon",
+    "title": "Gar Saxon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GENERALHUX": {
+    "name": "General Hux",
+    "slug": "general-hux",
+    "title": "General Hux GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GENERALKENOBI": {
+    "name": "General Kenobi",
+    "slug": "general-kenobi",
+    "title": "General Kenobi GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GENERALSKYWALKER": {
+    "name": "General Skywalker",
+    "slug": "general-skywalker",
+    "title": "General Skywalker GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GENERALSYNDULLA": {
+    "name": "General Syndulla",
+    "slug": "general-syndulla",
+    "title": "General Syndulla GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GEONOSIANBROODALPHA": {
+    "name": "Geonosian Brood Alpha",
+    "slug": "geonosian-brood-alpha",
+    "title": "Geonosian Brood Alpha GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GEONOSIANSOLDIER": {
+    "name": "Geonosian Soldier",
+    "slug": "geonosian-soldier",
+    "title": "Geonosian Soldier GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GEONOSIANSPY": {
+    "name": "Geonosian Spy",
+    "slug": "geonosian-spy",
+    "title": "Geonosian Spy GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GLAHSOKATANO": {
+    "name": "Ahsoka Tano",
+    "slug": "ahsoka-tano",
+    "title": "Ahsoka Tano GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GLHONDO": {
+    "name": "Pirate King Hondo Ohnaka",
+    "slug": "pirate-king-hondo-ohnaka",
+    "title": "Pirate King Hondo Ohnaka GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GLLEIA": {
+    "name": "Leia Organa",
+    "slug": "leia-organa",
+    "title": "Leia Organa GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GLREY": {
+    "name": "Rey",
+    "slug": "rey",
+    "title": "Rey GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GRANDADMIRALTHRAWN": {
+    "name": "Grand Admiral Thrawn",
+    "slug": "grand-admiral-thrawn",
+    "title": "Grand Admiral Thrawn GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GRANDINQUISITOR": {
+    "name": "Grand Inquisitor",
+    "slug": "grand-inquisitor",
+    "title": "Grand Inquisitor GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GRANDMASTERLUKE": {
+    "name": "Jedi Master Luke Skywalker",
+    "slug": "jedi-master-luke-skywalker",
+    "title": "Jedi Master Luke Skywalker GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GRANDMASTERYODA": {
+    "name": "Grand Master Yoda",
+    "slug": "grand-master-yoda",
+    "title": "Grand Master Yoda GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GRANDMOFFTARKIN": {
+    "name": "Grand Moff Tarkin",
+    "slug": "grand-moff-tarkin",
+    "title": "Grand Moff Tarkin GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GREATMOTHERS": {
+    "name": "Great Mothers",
+    "slug": "great-mothers",
+    "title": "Great Mothers GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GREEDO": {
+    "name": "Greedo",
+    "slug": "greedo",
+    "title": "Greedo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GREEFKARGA": {
+    "name": "Greef Karga",
+    "slug": "greef-karga",
+    "title": "Greef Karga GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GRIEVOUS": {
+    "name": "General Grievous",
+    "slug": "general-grievous",
+    "title": "General Grievous GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GUNGANPHALANX": {
+    "name": "Gungan Phalanx",
+    "slug": "gungan-phalanx",
+    "title": "Gungan Phalanx GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HANSOLO": {
+    "name": "Han Solo",
+    "slug": "han-solo",
+    "title": "Han Solo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HERASYNDULLAS3": {
+    "name": "Hera Syndulla",
+    "slug": "hera-syndulla",
+    "title": "Hera Syndulla GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HERMITYODA": {
+    "name": "Hermit Yoda",
+    "slug": "hermit-yoda",
+    "title": "Hermit Yoda GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HK47": {
+    "name": "HK-47",
+    "slug": "hk-47",
+    "title": "HK-47 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HONDO": {
+    "name": "Hondo Ohnaka",
+    "slug": "hondo-ohnaka",
+    "title": "Hondo Ohnaka GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HOTHHAN": {
+    "name": "Captain Han Solo",
+    "slug": "captain-han-solo",
+    "title": "Captain Han Solo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HOTHLEIA": {
+    "name": "Hoth Leia",
+    "slug": "rebel-officer-leia-organa",
+    "title": "Rebel Officer Leia Organa GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HOTHREBELSCOUT": {
+    "name": "Hoth Rebel Scout",
+    "slug": "hoth-rebel-scout",
+    "title": "Hoth Rebel Scout GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HOTHREBELSOLDIER": {
+    "name": "Hoth Rebel Soldier",
+    "slug": "hoth-rebel-soldier",
+    "title": "Hoth Rebel Soldier GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HUMANTHUG": {
+    "name": "Mob Enforcer",
+    "slug": "mob-enforcer",
+    "title": "Mob Enforcer GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HUNTERS3": {
+    "name": "Hunter (Mercenary)",
+    "slug": "hunter-mercenary",
+    "title": "Hunter (Mercenary) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "HUYANG": {
+    "name": "Huyang",
+    "slug": "huyang",
+    "title": "Huyang GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IDENVERSIOEMPIRE": {
+    "name": "Iden Versio",
+    "slug": "iden-versio",
+    "title": "Iden Versio GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IG11": {
+    "name": "IG-11",
+    "slug": "ig-11",
+    "title": "IG-11 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IG12": {
+    "name": "IG-12 & Grogu",
+    "slug": "ig-12-grogu",
+    "title": "IG-12 & Grogu GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IG86SENTINELDROID": {
+    "name": "IG-86 Sentinel Droid",
+    "slug": "ig-86-sentinel-droid",
+    "title": "IG-86 Sentinel Droid GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IG88": {
+    "name": "IG-88",
+    "slug": "ig-88",
+    "title": "IG-88 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IG90": {
+    "name": "IG-90",
+    "slug": "ig-90",
+    "title": "IG-90 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IMAGUNDI": {
+    "name": "Ima-Gun Di",
+    "slug": "ima-gun-di",
+    "title": "Ima-Gun Di GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IMPERIALPROBEDROID": {
+    "name": "Imperial Probe Droid",
+    "slug": "imperial-probe-droid",
+    "title": "Imperial Probe Droid GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "IMPERIALSUPERCOMMANDO": {
+    "name": "Imperial Super Commando",
+    "slug": "imperial-super-commando",
+    "title": "Imperial Super Commando GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "INQUISITORBARRISS": {
+    "name": "Inquisitor Barriss",
+    "slug": "inquisitor-barriss",
+    "title": "Inquisitor Barriss GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ITHANO": {
+    "name": "Captain Ithano",
+    "slug": "captain-ithano",
+    "title": "Captain Ithano GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JABBATHEHUTT": {
+    "name": "Jabba the Hutt",
+    "slug": "jabba-the-hutt",
+    "title": "Jabba the Hutt GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JANGOFETT": {
+    "name": "Jango Fett",
+    "slug": "jango-fett",
+    "title": "Jango Fett GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JARJARBINKS": {
+    "name": "Jar Jar Binks",
+    "slug": "jar-jar-binks",
+    "title": "Jar Jar Binks GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JAWA": {
+    "name": "Jawa",
+    "slug": "jawa",
+    "title": "Jawa GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JAWAENGINEER": {
+    "name": "Jawa Engineer",
+    "slug": "jawa-engineer",
+    "title": "Jawa Engineer GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JAWASCAVENGER": {
+    "name": "Jawa Scavenger",
+    "slug": "jawa-scavenger",
+    "title": "Jawa Scavenger GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIKNIGHTCAL": {
+    "name": "Jedi Knight Cal Kestis",
+    "slug": "jedi-knight-cal-kestis",
+    "title": "Jedi Knight Cal Kestis GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIKNIGHTCONSULAR": {
+    "name": "Jedi Consular",
+    "slug": "jedi-consular",
+    "title": "Jedi Consular GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIKNIGHTGUARDIAN": {
+    "name": "Jedi Knight Guardian",
+    "slug": "jedi-knight-guardian",
+    "title": "Jedi Knight Guardian GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIKNIGHTLUKE": {
+    "name": "Jedi Knight Luke Skywalker",
+    "slug": "jedi-knight-luke-skywalker",
+    "title": "Jedi Knight Luke Skywalker GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIKNIGHTREVAN": {
+    "name": "Jedi Knight Revan",
+    "slug": "jedi-knight-revan",
+    "title": "Jedi Knight Revan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIMASTERKENOBI": {
+    "name": "Jedi Master Kenobi",
+    "slug": "jedi-master-kenobi",
+    "title": "Jedi Master Kenobi GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JEDIMASTERMACEWINDU": {
+    "name": "Jedi Master Mace Windu",
+    "slug": "jedi-master-mace-windu",
+    "title": "Jedi Master Mace Windu GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JOCASTANU": {
+    "name": "Jocasta Nu",
+    "slug": "jocasta-nu",
+    "title": "Jocasta Nu GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JOLEEBINDO": {
+    "name": "Jolee Bindo",
+    "slug": "jolee-bindo",
+    "title": "Jolee Bindo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JUHANI": {
+    "name": "Juhani",
+    "slug": "juhani",
+    "title": "Juhani GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JYNERSO": {
+    "name": "Jyn Erso",
+    "slug": "jyn-erso",
+    "title": "Jyn Erso GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "K2SO": {
+    "name": "K-2SO",
+    "slug": "k-2so",
+    "title": "K-2SO GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KANANJARRUSS3": {
+    "name": "Kanan Jarrus",
+    "slug": "kanan-jarrus",
+    "title": "Kanan Jarrus GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KELLERANBEQ": {
+    "name": "Kelleran Beq",
+    "slug": "kelleran-beq",
+    "title": "Kelleran Beq GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KIADIMUNDI": {
+    "name": "Ki-Adi-Mundi",
+    "slug": "ki-adi-mundi",
+    "title": "Ki-Adi-Mundi GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KITFISTO": {
+    "name": "Kit Fisto",
+    "slug": "kit-fisto",
+    "title": "Kit Fisto GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KIX": {
+    "name": "Kix",
+    "slug": "kix",
+    "title": "Kix GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KLEYA": {
+    "name": "Kleya Marki",
+    "slug": "kleya-marki",
+    "title": "Kleya Marki GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KRRSANTAN": {
+    "name": "Krrsantan",
+    "slug": "krrsantan",
+    "title": "Krrsantan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KUIIL": {
+    "name": "Kuiil",
+    "slug": "kuiil",
+    "title": "Kuiil GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KXSECURITYDROID": {
+    "name": "KX Security Droid",
+    "slug": "kx-security-droid",
+    "title": "KX Security Droid GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KYLEKATARN": {
+    "name": "Kyle Katarn",
+    "slug": "kyle-katarn",
+    "title": "Kyle Katarn GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KYLOREN": {
+    "name": "Kylo Ren",
+    "slug": "kylo-ren",
+    "title": "Kylo Ren GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "KYLORENUNMASKED": {
+    "name": "Kylo Ren (Unmasked)",
+    "slug": "kylo-ren-unmasked",
+    "title": "Kylo Ren (Unmasked) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "L3_37": {
+    "name": "L3-37",
+    "slug": "l3-37",
+    "title": "L3-37 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LOBOT": {
+    "name": "Lobot",
+    "slug": "lobot",
+    "title": "Lobot GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LOGRAY": {
+    "name": "Logray",
+    "slug": "logray",
+    "title": "Logray GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LORDVADER": {
+    "name": "Lord Vader",
+    "slug": "lord-vader",
+    "title": "Lord Vader GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LUKESKYWALKER": {
+    "name": "Luke Skywalker",
+    "slug": "luke-skywalker-farmboy",
+    "title": "Luke Skywalker (Farmboy) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LUMINARAUNDULI": {
+    "name": "Luminara Unduli",
+    "slug": "luminara-unduli",
+    "title": "Luminara Unduli GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LUTHENRAEL": {
+    "name": "Luthen Rael",
+    "slug": "luthen-rael",
+    "title": "Luthen Rael GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MACEWINDU": {
+    "name": "Mace Windu",
+    "slug": "mace-windu",
+    "title": "Mace Windu GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAGMATROOPER": {
+    "name": "Magmatrooper",
+    "slug": "magmatrooper",
+    "title": "Magmatrooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAGNAGUARD": {
+    "name": "IG-100 MagnaGuard",
+    "slug": "ig-100-magnaguard",
+    "title": "IG-100 MagnaGuard GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAJORPARTAGAZ": {
+    "name": "Major Partagaz",
+    "slug": "major-partagaz",
+    "title": "Major Partagaz GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MANDALORBOKATAN": {
+    "name": "Bo-Katan (Mand'alor)",
+    "slug": "bo-katan-mandalor",
+    "title": "Bo-Katan (Mand'alor) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MARAJADE": {
+    "name": "Mara Jade, The Emperor's Hand",
+    "slug": "mara-jade-the-emperors-hand",
+    "title": "Mara Jade, The Emperor's Hand GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MARROK": {
+    "name": "Marrok",
+    "slug": "marrok",
+    "title": "Marrok GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MASTERQUIGON": {
+    "name": "Master Qui-Gon",
+    "slug": "master-qui-gon",
+    "title": "Master Qui-Gon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAUL": {
+    "name": "Darth Maul",
+    "slug": "darth-maul",
+    "title": "Darth Maul GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAULHATEFUELED": {
+    "name": "Maul (Hate-Fueled)",
+    "slug": "maul-hate-fueled",
+    "title": "Maul (Hate-Fueled) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAULS7": {
+    "name": "Maul",
+    "slug": "maul",
+    "title": "Maul GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MAZKANATA": {
+    "name": "Maz Kanata",
+    "slug": "maz-kanata",
+    "title": "Maz Kanata GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MERRIN": {
+    "name": "Merrin",
+    "slug": "merrin",
+    "title": "Merrin GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MISSIONVAO": {
+    "name": "Mission Vao",
+    "slug": "mission-vao",
+    "title": "Mission Vao GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MOFFGIDEONS1": {
+    "name": "Moff Gideon",
+    "slug": "moff-gideon",
+    "title": "Moff Gideon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MOFFGIDEONS3": {
+    "name": "Dark Trooper Moff Gideon",
+    "slug": "dark-trooper-moff-gideon",
+    "title": "Dark Trooper Moff Gideon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MONMOTHMA": {
+    "name": "Mon Mothma",
+    "slug": "mon-mothma",
+    "title": "Mon Mothma GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MORGANELSBETH": {
+    "name": "Morgan Elsbeth",
+    "slug": "morgan-elsbeth",
+    "title": "Morgan Elsbeth GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MOTHERTALZIN": {
+    "name": "Mother Talzin",
+    "slug": "mother-talzin",
+    "title": "Mother Talzin GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NIGHTSISTERACOLYTE": {
+    "name": "Nightsister Acolyte",
+    "slug": "nightsister-acolyte",
+    "title": "Nightsister Acolyte GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NIGHTSISTERINITIATE": {
+    "name": "Nightsister Initiate",
+    "slug": "nightsister-initiate",
+    "title": "Nightsister Initiate GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NIGHTSISTERSPIRIT": {
+    "name": "Nightsister Spirit",
+    "slug": "nightsister-spirit",
+    "title": "Nightsister Spirit GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NIGHTSISTERZOMBIE": {
+    "name": "Nightsister Zombie",
+    "slug": "nightsister-zombie",
+    "title": "Nightsister Zombie GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NIGHTTROOPER": {
+    "name": "Night Trooper",
+    "slug": "night-trooper",
+    "title": "Night Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NINTHSISTER": {
+    "name": "Ninth Sister",
+    "slug": "ninth-sister",
+    "title": "Ninth Sister GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "NUTEGUNRAY": {
+    "name": "Nute Gunray",
+    "slug": "nute-gunray",
+    "title": "Nute Gunray GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "OLDBENKENOBI": {
+    "name": "Obi-Wan Kenobi (Old Ben)",
+    "slug": "obi-wan-kenobi-old-ben",
+    "title": "Obi-Wan Kenobi (Old Ben) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "OMEGAS3": {
+    "name": "Omega (Fugitive)",
+    "slug": "omega-fugitive",
+    "title": "Omega (Fugitive) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "OPERATIVE": {
+    "name": "CX-2",
+    "slug": "cx-2",
+    "title": "CX-2 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PADAWANOBIWAN": {
+    "name": "Padawan Obi-Wan",
+    "slug": "padawan-obi-wan",
+    "title": "Padawan Obi-Wan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PADAWANSABINE": {
+    "name": "Padawan Sabine Wren",
+    "slug": "padawan-sabine-wren",
+    "title": "Padawan Sabine Wren GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PADMEAMIDALA": {
+    "name": "Padm\u00e9 Amidala",
+    "slug": "padme-amidala",
+    "title": "Padm\u00e9 Amidala GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PAO": {
+    "name": "Pao",
+    "slug": "pao",
+    "title": "Pao GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PAPLOO": {
+    "name": "Paploo",
+    "slug": "paploo",
+    "title": "Paploo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PAZVIZSLA": {
+    "name": "Paz Vizsla",
+    "slug": "paz-vizsla",
+    "title": "Paz Vizsla GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PHASMA": {
+    "name": "Captain Phasma",
+    "slug": "captain-phasma",
+    "title": "Captain Phasma GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PLOKOON": {
+    "name": "Plo Koon",
+    "slug": "plo-koon",
+    "title": "Plo Koon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "POE": {
+    "name": "Poe Dameron",
+    "slug": "poe-dameron",
+    "title": "Poe Dameron GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "POGGLETHELESSER": {
+    "name": "Poggle the Lesser",
+    "slug": "poggle-the-lesser",
+    "title": "Poggle the Lesser GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PRINCESSKNEESAA": {
+    "name": "Princess Kneesaa",
+    "slug": "princess-kneesaa",
+    "title": "Princess Kneesaa GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "PRINCESSLEIA": {
+    "name": "Princess Leia",
+    "slug": "princess-leia",
+    "title": "Princess Leia GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "QIRA": {
+    "name": "Qi'ra",
+    "slug": "qira",
+    "title": "Qi'ra GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "QUEENAMIDALA": {
+    "name": "Queen Amidala",
+    "slug": "queen-amidala",
+    "title": "Queen Amidala GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "QUIGGOLD": {
+    "name": "Quiggold",
+    "slug": "quiggold",
+    "title": "Quiggold GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "QUIGONJINN": {
+    "name": "Qui-Gon Jinn",
+    "slug": "qui-gon-jinn",
+    "title": "Qui-Gon Jinn GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "RANGETROOPER": {
+    "name": "Range Trooper",
+    "slug": "range-trooper",
+    "title": "Range Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "RESISTANCEPILOT": {
+    "name": "Resistance Pilot",
+    "slug": "resistance-pilot",
+    "title": "Resistance Pilot GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "RESISTANCETROOPER": {
+    "name": "Resistance Trooper",
+    "slug": "resistance-trooper",
+    "title": "Resistance Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "REY": {
+    "name": "Rey",
+    "slug": "rey",
+    "title": "Rey GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "REYJEDITRAINING": {
+    "name": "Rey (Jedi Training)",
+    "slug": "rey-jedi-training",
+    "title": "Rey (Jedi Training) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ROSETICO": {
+    "name": "Rose Tico",
+    "slug": "rose-tico",
+    "title": "Rose Tico GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ROYALGUARD": {
+    "name": "Royal Guard",
+    "slug": "royal-guard",
+    "title": "Royal Guard GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SABINEWRENS3": {
+    "name": "Sabine Wren",
+    "slug": "sabine-wren",
+    "title": "Sabine Wren GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SANASTARROS": {
+    "name": "Sana Starros",
+    "slug": "sana-starros",
+    "title": "Sana Starros GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SATELESHAN": {
+    "name": "Satele Shan",
+    "slug": "satele-shan",
+    "title": "Satele Shan GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SAVAGEOPRESS": {
+    "name": "Savage Opress",
+    "slug": "savage-opress",
+    "title": "Savage Opress GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SAWGERRERA": {
+    "name": "Saw Gerrera",
+    "slug": "saw-gerrera",
+    "title": "Saw Gerrera GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SCARIFREBEL": {
+    "name": "Scarif Rebel Pathfinder",
+    "slug": "scarif-rebel-pathfinder",
+    "title": "Scarif Rebel Pathfinder GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SCORCH": {
+    "name": "RC-1262 \"Scorch\"",
+    "slug": "rc-1262-scorch",
+    "title": "RC-1262 \"Scorch\" GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SCOUTTROOPER_V3": {
+    "name": "Scout Trooper",
+    "slug": "scout-trooper",
+    "title": "Scout Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SECONDSISTER": {
+    "name": "Second Sister",
+    "slug": "second-sister",
+    "title": "Second Sister GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SEVENTHSISTER": {
+    "name": "Seventh Sister",
+    "slug": "seventh-sister",
+    "title": "Seventh Sister GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SHAAKTI": {
+    "name": "Shaak Ti",
+    "slug": "shaak-ti",
+    "title": "Shaak Ti GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SHINHATI": {
+    "name": "Shin Hati",
+    "slug": "shin-hati",
+    "title": "Shin Hati GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SHORETROOPER": {
+    "name": "Shoretrooper",
+    "slug": "shoretrooper",
+    "title": "Shoretrooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SITHASSASSIN": {
+    "name": "Sith Assassin",
+    "slug": "sith-assassin",
+    "title": "Sith Assassin GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SITHMARAUDER": {
+    "name": "Sith Marauder",
+    "slug": "sith-marauder",
+    "title": "Sith Marauder GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SITHPALPATINE": {
+    "name": "Sith Eternal Emperor",
+    "slug": "sith-eternal-emperor",
+    "title": "Sith Eternal Emperor GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SITHTROOPER": {
+    "name": "Sith Empire Trooper",
+    "slug": "sith-empire-trooper",
+    "title": "Sith Empire Trooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SM33": {
+    "name": "SM-33",
+    "slug": "sm-33",
+    "title": "SM-33 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SMUGGLERCHEWBACCA": {
+    "name": "Veteran Smuggler Chewbacca",
+    "slug": "veteran-smuggler-chewbacca",
+    "title": "Veteran Smuggler Chewbacca GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SMUGGLERHAN": {
+    "name": "Veteran Smuggler Han Solo",
+    "slug": "veteran-smuggler-han-solo",
+    "title": "Veteran Smuggler Han Solo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SNOWTROOPER": {
+    "name": "Snowtrooper",
+    "slug": "snowtrooper",
+    "title": "Snowtrooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STAP": {
+    "name": "STAP",
+    "slug": "stap",
+    "title": "STAP GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STARKILLER": {
+    "name": "Starkiller",
+    "slug": "starkiller",
+    "title": "Starkiller GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STORMTROOPER": {
+    "name": "Stormtrooper",
+    "slug": "stormtrooper",
+    "title": "Stormtrooper GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STORMTROOPERHAN": {
+    "name": "Stormtrooper Han",
+    "slug": "stormtrooper-han",
+    "title": "Stormtrooper Han GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STORMTROOPERLUKE": {
+    "name": "Stormtrooper Luke",
+    "slug": "stormtrooper-luke",
+    "title": "Stormtrooper Luke GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STRANGER": {
+    "name": "The Stranger",
+    "slug": "the-stranger",
+    "title": "The Stranger GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SUNFAC": {
+    "name": "Sun Fac",
+    "slug": "sun-fac",
+    "title": "Sun Fac GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "SUPREMELEADERKYLOREN": {
+    "name": "Supreme Leader Kylo Ren",
+    "slug": "supreme-leader-kylo-ren",
+    "title": "Supreme Leader Kylo Ren GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "T3_M4": {
+    "name": "T3-M4",
+    "slug": "t3-m4",
+    "title": "T3-M4 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TALIA": {
+    "name": "Talia",
+    "slug": "talia",
+    "title": "Talia GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TARFFUL": {
+    "name": "Tarfful",
+    "slug": "tarfful",
+    "title": "Tarfful GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TARONMALICOS": {
+    "name": "Taron Malicos",
+    "slug": "taron-malicos",
+    "title": "Taron Malicos GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TEEBO": {
+    "name": "Teebo",
+    "slug": "teebo",
+    "title": "Teebo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "THEMANDALORIAN": {
+    "name": "The Mandalorian",
+    "slug": "the-mandalorian",
+    "title": "The Mandalorian GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "THEMANDALORIANBESKARARMOR": {
+    "name": "The Mandalorian (Beskar Armor)",
+    "slug": "the-mandalorian-beskar-armor",
+    "title": "The Mandalorian (Beskar Armor) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "THIRDSISTER": {
+    "name": "Third Sister",
+    "slug": "third-sister",
+    "title": "Third Sister GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TIEFIGHTERPILOT": {
+    "name": "TIE Fighter Pilot",
+    "slug": "tie-fighter-pilot",
+    "title": "TIE Fighter Pilot GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TRENCH": {
+    "name": "Admiral Trench",
+    "slug": "admiral-trench",
+    "title": "Admiral Trench GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TRIPLEZERO": {
+    "name": "0-0-0",
+    "slug": "0-0-0",
+    "title": "0-0-0 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TUSKENCHIEFTAIN": {
+    "name": "Tusken Chieftain",
+    "slug": "tusken-chieftain",
+    "title": "Tusken Chieftain GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TUSKENHUNTRESS": {
+    "name": "Tusken Warrior",
+    "slug": "tusken-warrior",
+    "title": "Tusken Warrior GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TUSKENRAIDER": {
+    "name": "Tusken Raider",
+    "slug": "tusken-raider",
+    "title": "Tusken Raider GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "TUSKENSHAMAN": {
+    "name": "Tusken Shaman",
+    "slug": "tusken-shaman",
+    "title": "Tusken Shaman GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "UGNAUGHT": {
+    "name": "Ugnaught",
+    "slug": "ugnaught",
+    "title": "Ugnaught GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "UNDERCOVERLANDO": {
+    "name": "Skiff Guard (Lando Calrissian)",
+    "slug": "skiff-guard-lando-calrissian",
+    "title": "Skiff Guard (Lando Calrissian) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "URORRURRR": {
+    "name": "URoRRuR'R'R",
+    "slug": "urorrurrr",
+    "title": "URoRRuR'R'R GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "VADER": {
+    "name": "Darth Vader",
+    "slug": "darth-vader",
+    "title": "Darth Vader GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "VADERDUELSEND": {
+    "name": "Darth Vader (Duel's End)",
+    "slug": "darth-vader-duels-end",
+    "title": "Darth Vader (Duel's End) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "VANE": {
+    "name": "Vane",
+    "slug": "vane",
+    "title": "Vane GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "VANGUARDTEMPLEGUARD": {
+    "name": "Temple Guard",
+    "slug": "temple-guard",
+    "title": "Temple Guard GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "VEL": {
+    "name": "Vel Sartha",
+    "slug": "vel-sartha",
+    "title": "Vel Sartha GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "VISASMARR": {
+    "name": "Visas Marr",
+    "slug": "visas-marr",
+    "title": "Visas Marr GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "WAMPA": {
+    "name": "Wampa",
+    "slug": "wampa",
+    "title": "Wampa GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "WATTAMBOR": {
+    "name": "Wat Tambor",
+    "slug": "wat-tambor",
+    "title": "Wat Tambor GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "WEDGEANTILLES": {
+    "name": "Wedge Antilles",
+    "slug": "wedge-antilles",
+    "title": "Wedge Antilles GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "WICKET": {
+    "name": "Wicket",
+    "slug": "wicket",
+    "title": "Wicket GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "WRECKERS3": {
+    "name": "Wrecker (Mercenary)",
+    "slug": "wrecker-mercenary",
+    "title": "Wrecker (Mercenary) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "YODACHEWBACCA": {
+    "name": "Yoda & Chewie",
+    "slug": "yoda-chewie",
+    "title": "Yoda & Chewie GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "YOUNGCHEWBACCA": {
+    "name": "Vandor Chewbacca",
+    "slug": "vandor-chewbacca",
+    "title": "Vandor Chewbacca GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "YOUNGHAN": {
+    "name": "Young Han Solo",
+    "slug": "young-han-solo",
+    "title": "Young Han Solo GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "YOUNGLANDO": {
+    "name": "Young Lando Calrissian",
+    "slug": "young-lando-calrissian",
+    "title": "Young Lando Calrissian GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ZAALBAR": {
+    "name": "Zaalbar",
+    "slug": "zaalbar",
+    "title": "Zaalbar GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ZAMWESELL": {
+    "name": "Zam Wesell",
+    "slug": "zam-wesell",
+    "title": "Zam Wesell GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ZEBS3": {
+    "name": "Garazeb \"Zeb\" Orrelios",
+    "slug": "garazeb-zeb-orrelios",
+    "title": "Garazeb \"Zeb\" Orrelios GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ZORIIBLISS_V2": {
+    "name": "Zorii Bliss",
+    "slug": "zorii-bliss",
+    "title": "Zorii Bliss GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "ZUCKUSS": {
+    "name": "Zuckuss",
+    "slug": "zuckuss",
+    "title": "Zuckuss GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "COBBVANTH": {
+    "name": "Cobb Vanth",
+    "slug": "cobb-vanth",
+    "title": "Cobb Vanth GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "CARSONTEVA": {
+    "name": "Captain Carson Teva",
+    "slug": "captain-carson-teva",
+    "title": "Captain Carson Teva GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "R5D4": {
+    "name": "R5-D4",
+    "slug": "r5-d4",
+    "title": "R5-D4 GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "RANGERZEB": {
+    "name": "Zeb Orrelios (New Republic Pilot)",
+    "slug": "zeb-orrelios-new-republic-pilot",
+    "title": "Zeb Orrelios (New Republic Pilot) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "REMNANTSNOWCOMMANDER": {
+    "name": "Snowtrooper Commander",
+    "slug": "snowtrooper-commander",
+    "title": "Snowtrooper Commander GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "BISHOP": {
+    "name": "Colonel Ward",
+    "slug": "colonel-ward",
+    "title": "Colonel Ward GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "GOPHERANTS": {
+    "name": "Grogu & Anzellans",
+    "slug": "grogu-anzellans",
+    "title": "Grogu & Anzellans GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "RACCOON": {
+    "name": "Rotta the Hutt",
+    "slug": "rotta-the-hutt",
+    "title": "Rotta the Hutt GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LEIAJEDITRAINING": {
+    "name": "Leia (Jedi Training)",
+    "slug": "leia-jedi-training",
+    "title": "Leia (Jedi Training) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "DARTHJARJAR": {
+    "name": "Darth Jar Jar",
+    "slug": "darth-jar-jar",
+    "title": "Darth Jar Jar GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "JAXXON": {
+    "name": "Jaxxon",
+    "slug": "jaxxon",
+    "title": "Jaxxon GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "LUKESTARKILLER": {
+    "name": "Starkiller (Luke Concept)",
+    "slug": "starkiller-luke-concept",
+    "title": "Starkiller (Luke Concept) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "MARAJADESKYWALKER": {
+    "name": "Mara Jade Skywalker",
+    "slug": "mara-jade-skywalker",
+    "title": "Mara Jade Skywalker GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "STORMTROOPERCONCEPT": {
+    "name": "Stormtrooper (Concept)",
+    "slug": "stormtrooper-concept",
+    "title": "Stormtrooper (Concept) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "THERONIN": {
+    "name": "The Ronin",
+    "slug": "the-ronin",
+    "title": "The Ronin GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  },
+  "YODADSV": {
+    "name": "Yoda (Dark Side Vision)",
+    "slug": "yoda-dark-side-vision",
+    "title": "Yoda (Dark Side Vision) GAC Meta - Star Wars Galaxy of Heroes - SWGOH.GG"
+  }
+}

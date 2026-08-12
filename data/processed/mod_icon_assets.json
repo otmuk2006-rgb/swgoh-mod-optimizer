@@ -1,0 +1,47 @@
+{
+  "_comment": "Reference/provenance only — the app itself just references these files by the project's own slot/set names directly (ui/static/img/mods/shapes/<slot>.webp, ui/static/img/mods/sets/<set>.webp), no runtime lookup needed. See ui/extract_mod_icons.py for how these were captured and why the swgoh.gg-side numbering below does NOT match this project's own SLOT_MAP/SET_MAP digit conventions (scraping/user_mod_data.py).",
+  "tier_colors": {
+    "grey": "rgb(255, 255, 255)",
+    "green": "rgb(152, 253, 51)",
+    "blue": "rgb(0, 189, 254)",
+    "purple": "rgb(146, 65, 255)",
+    "gold": "rgb(255, 204, 51)"
+  },
+  "shapes": {
+    "square": {
+      "outline": "shapes/square.webp", "swgohgg_slot": 2,
+      "fill_standard": "shapes/square_standard.webp", "fill_max": "shapes/square_max.webp"
+    },
+    "arrow": {
+      "outline": "shapes/arrow.webp", "swgohgg_slot": 3,
+      "fill_standard": "shapes/arrow_standard.webp", "fill_max": "shapes/arrow_max.webp"
+    },
+    "diamond": {
+      "outline": "shapes/diamond.webp", "swgohgg_slot": 4,
+      "fill_standard": "shapes/diamond_standard.webp", "fill_max": "shapes/diamond_max.webp"
+    },
+    "triangle": {
+      "outline": "shapes/triangle.webp", "swgohgg_slot": 5,
+      "fill_standard": "shapes/triangle_standard.webp", "fill_max": "shapes/triangle_max.webp"
+    },
+    "circle": {
+      "outline": "shapes/circle.webp", "swgohgg_slot": 6,
+      "fill_standard": "shapes/circle_standard.webp", "fill_max": "shapes/circle_max.webp"
+    },
+    "cross": {
+      "outline": "shapes/cross.webp", "swgohgg_slot": 7,
+      "fill_standard": "shapes/cross_standard.webp", "fill_max": "shapes/cross_max.webp"
+    }
+  },
+  "shape_fill_note": "fill_standard = dots 1-5, fill_max = dots 6 (gold-plated) — verified this is driven by dots, not tier, by comparing computed background-image across many real mod cards; byte-identical per dots count regardless of tier.",
+  "sets": {
+    "health": {"file": "sets/health.webp", "swgohgg_set": 1},
+    "offense": {"file": "sets/offense.webp", "swgohgg_set": 2},
+    "defense": {"file": "sets/defense.webp", "swgohgg_set": 3},
+    "speed": {"file": "sets/speed.webp", "swgohgg_set": 4},
+    "critical_damage": {"file": "sets/critical_damage.webp", "swgohgg_set": 5},
+    "critical_chance": {"file": "sets/critical_chance.webp", "swgohgg_set": 6},
+    "potency": {"file": "sets/potency.webp", "swgohgg_set": 7},
+    "tenacity": {"file": "sets/tenacity.webp", "swgohgg_set": 8}
+  }
+}

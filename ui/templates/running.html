@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Running — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel narrow center">
+  <div class="spinner" id="spinner" aria-hidden="true"></div>
+  <h1 id="run-status-text">Starting…</h1>
+  <p class="muted" id="run-status-detail">Building the mod score matrix.</p>
+  <p class="error" id="run-error" hidden></p>
+</div>
+{% endblock %}
+{% block head %}
+<script>
+  const STATUS_TEXT = {
+    scoring: ['Scoring mods…', 'Computing score(i, j) for every mod against every selected character.'],
+    queued: ['Waiting…', 'The optimizer is busy with another request — this will start shortly.'],
+    solving: ['Solving…', 'Running the ILP solver. Larger selections can take a while.'],
+    done: ['Done', 'Redirecting to results…'],
+    error: ['Something went wrong', ''],
+  };
+
+  function poll() {
+    fetch("{{ url_for('run_status') }}")
+      .then(r => r.json())
+      .then(data => {
+        const [title, detail] = STATUS_TEXT[data.status] || ['Working…', ''];
+        document.getElementById('run-status-text').textContent = title;
+        document.getElementById('run-status-detail').textContent = detail;
+
+        if (data.status === 'done') {
+          window.location.href = "{{ url_for('results') }}";
+          return;
+        }
+        if (data.status === 'error') {
+          document.getElementById('spinner').style.display = 'none';
+          const err = document.getElementById('run-error');
+          err.hidden = false;
+          err.textContent = data.error || 'Unknown error.';
+          return;
+        }
+        setTimeout(poll, 1500);
+      });
+  }
+  poll();
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_character_portrait.html" import character_portrait %}
+{% block title %}Results — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel wide">
+  <h1>Results</h1>
+  <p class="muted">{{ characters | length }} characters received an assignment. Click one for the full breakdown.</p>
+
+  <div class="toolbar">
+    <a href="{{ url_for('select_characters') }}" class="btn btn-secondary">Remod / change selection</a>
+  </div>
+
+  <div class="char-grid">
+    {% for c in characters %}
+    <a class="char-tile result-tile" href="{{ url_for('character_detail', char_id=c.id) }}">
+      {{ character_portrait(c) }}
+      <span class="char-tooltip">{{ c.name }} — {{ c.mod_count }} mods</span>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

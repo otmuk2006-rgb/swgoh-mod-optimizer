@@ -1,0 +1,90 @@
+import os
+import subprocess
+import time
+
+import httpx
+from swgoh_comlink import SwgohComlink
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Global reference/community data (character names & tags, mod weightings,
+# character priority, ...) — the same for every visitor, read-only at
+# request time. Distinct from session_paths() below, which is per-user.
+GLOBAL_DATA_DIR = os.path.join(BASE_DIR, 'data', 'processed')
+GLOBAL_RAW_DIR = os.path.join(BASE_DIR, 'data', 'raw')
+
+# In production this points at a sibling Comlink service, set via env var —
+# on Render specifically, that's wired up in render.yaml via `fromService` /
+# `hostport`, which per Render's own private-network docs may or may not
+# include a URL scheme depending on how it resolves (their own docs example
+# shows a bare "host:port" and note you may need to add the protocol
+# yourself) — normalize it here so either shape works, rather than betting
+# on one. Locally it defaults to the Windows .exe this file can also
+# auto-start.
+_raw_comlink_url = os.environ.get('COMLINK_URL', 'http://localhost:3000')
+COMLINK_URL = _raw_comlink_url if '://' in _raw_comlink_url else f'http://{_raw_comlink_url}'
+COMLINK_START_SCRIPT = os.path.join(BASE_DIR, "comlink", "start_comlink.bat")
+
+
+def session_paths(session_dir=None):
+    """(raw_dir, processed_dir) for one visitor's own roster/mod/run data —
+    creates them if missing. `session_dir` is an absolute per-visitor
+    directory the web app allocates per session (see ui/app.py); when None
+    (the CLI entry point in main.py, and each module's own `if __name__ ==
+    "__main__":` block), this resolves to the same data/raw + data/processed
+    layout this project has always used, so local single-user usage is
+    unchanged."""
+    base = session_dir or os.path.join(BASE_DIR, 'data')
+    raw_dir = os.path.join(base, 'raw')
+    processed_dir = os.path.join(base, 'processed')
+    os.makedirs(raw_dir, exist_ok=True)
+    os.makedirs(processed_dir, exist_ok=True)
+    return raw_dir, processed_dir
+
+
+def get_comlink_client():
+    """The one place a SwgohComlink client gets constructed — every call
+    site in the app should go through this instead of bare SwgohComlink(),
+    so COMLINK_URL only has to be correct in one place. ACCESS_KEY/
+    SECRET_KEY are picked up automatically from the environment by the
+    client itself if set (see swgoh_comlink._base.SwgohComlinkBase)."""
+    return SwgohComlink(url=COMLINK_URL)
+
+
+def _comlink_is_up():
+    try:
+        resp = httpx.post(f"{COMLINK_URL}/metadata", json={}, timeout=2)
+        return resp.status_code == 200
+    except httpx.HTTPError:
+        return False
+
+
+def ensure_comlink_running(timeout=20):
+    """Make sure Comlink is reachable at COMLINK_URL.
+
+    Locally on Windows, if it's not up yet, auto-start the bundled .exe via
+    start_comlink.bat — this only ever makes sense on the developer's own
+    machine. Anywhere else (production, Linux, containers), Comlink is a
+    separately-managed always-on sibling service; there's nothing local to
+    start, so just wait and fail with a clear message if it never comes up
+    rather than trying to spawn a Windows batch file that can't exist there."""
+    if _comlink_is_up():
+        return
+
+    if os.name == 'nt' and os.path.exists(COMLINK_START_SCRIPT):
+        print("swgoh-comlink not running, starting it...")
+        subprocess.run([COMLINK_START_SCRIPT], shell=True, check=True)
+    else:
+        print(f"Waiting for Comlink at {COMLINK_URL}...")
+
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        if _comlink_is_up():
+            print("swgoh-comlink is up.")
+            return
+        time.sleep(0.5)
+
+    raise RuntimeError(
+        f"Comlink not reachable at {COMLINK_URL} after {timeout}s. "
+        "If this is a production deploy, check the Comlink service is running and COMLINK_URL is set correctly."
+    )

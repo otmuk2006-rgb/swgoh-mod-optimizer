@@ -1,0 +1,46 @@
+services:
+  # Game-data microservice (github.com/swgoh-utils/swgoh-comlink). Private —
+  # not exposed to the public internet, only reachable by the web service
+  # below over Render's private network. See utils.py / ui/extract_mod_icons.py
+  # provenance notes for why this exists separately from the app.
+  - name: swgoh-comlink
+    type: pserv
+    runtime: image
+    plan: starter
+    image:
+      url: ghcr.io/swgoh-utils/swgoh-comlink:latest
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: ACCESS_KEY
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+
+  # The Flask app itself. Single worker, threaded — see the SESSIONS
+  # comment block at the top of ui/app.py for why (background solve/refresh
+  # threads need to share process memory with the request that started them).
+  - name: swgoh-mod-optimizer
+    type: web
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --workers 1 --worker-class gthread --threads 8 --timeout 120 --bind 0.0.0.0:$PORT ui.app:app
+    healthCheckPath: /healthz
+    envVars:
+      - key: COMLINK_URL
+        fromService:
+          name: swgoh-comlink
+          type: pserv
+          property: hostport
+      - key: ACCESS_KEY
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      # Off by default — the two community-data-refresh routes are heavy
+      # and /refresh/priority runs a real Selenium/Chrome scrape against
+      # swgoh.gg. Refresh locally and redeploy the resulting JSON instead;
+      # only flip this to "true" temporarily if you specifically need to
+      # trigger a refresh from the deployed environment.
+      - key: ADMIN_REFRESH_ENABLED
+        value: "false"

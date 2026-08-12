@@ -1,0 +1,39 @@
+{% macro character_portrait(c) %}
+<div class="char-portrait-wrap">
+  <div class="char-portrait">
+    <img src="{{ url_for('static', filename='img/characters/' ~ c.id ~ '.png') }}"
+         alt="" loading="lazy"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="char-portrait-fallback">{{ c.name[:2] | upper }}</div>
+  </div>
+
+  {% if c.relic_active %}
+  <div class="char-ring char-ring--relic char-ring--{{ c.alignment }}"></div>
+  <div class="char-ring char-ring--relic char-ring--{{ c.alignment }} char-ring--relic-right"></div>
+  <div class="char-badge char-badge--relic char-badge--relic-{{ c.alignment }}" title="Relic {{ c.relic_tier }}">{{ c.relic_tier }}</div>
+  {% else %}
+  <div class="char-ring char-ring--gear-{{ c.gear_ring }}" title="Gear {{ c.gear }}"></div>
+  {% endif %}
+
+  {% if c.zeta_count %}
+  <div class="char-badge char-badge--zeta" title="{{ c.zeta_count }} zeta(s)">{{ c.zeta_count }}</div>
+  {% endif %}
+  {% if c.omicron_count %}
+  <div class="char-badge char-badge--omicron" title="{{ c.omicron_count }} omicron(s)">{{ c.omicron_count }}</div>
+  {% endif %}
+
+  <div class="char-badge char-badge--level" title="Level {{ c.level }}">{{ c.level }}</div>
+
+  <div class="char-select-frame">
+    <span class="char-select-frame__corner char-select-frame__corner--tl"></span>
+    <span class="char-select-frame__corner char-select-frame__corner--tr"></span>
+    <span class="char-select-frame__corner char-select-frame__corner--bl"></span>
+    <span class="char-select-frame__corner char-select-frame__corner--br"></span>
+  </div>
+</div>
+<div class="char-stars">
+  {% for i in range(7) %}
+  <span class="char-star{{ ' char-star--inactive' if i >= c.rarity else '' }}"></span>
+  {% endfor %}
+</div>
+{% endmacro %}

@@ -1,0 +1,2007 @@
+{
+  "all_tags": [
+    "501st",
+    "Attacker",
+    "Bad Batch",
+    "Bounty Hunter",
+    "Clone Trooper",
+    "Constable",
+    "Droid",
+    "Empire",
+    "Ewok",
+    "First Order",
+    "Fleet Commander",
+    "Galactic Legend",
+    "Galactic Republic",
+    "Geonosian",
+    "Gungan",
+    "Healer",
+    "Hutt Cartel",
+    "ISB",
+    "Imperial Remnant",
+    "Imperial Trooper",
+    "Inquisitorius",
+    "Jawa",
+    "Jedi",
+    "Jedi Vanguard",
+    "Leader",
+    "Mandalorian",
+    "Mercenary",
+    "New Republic",
+    "Nightsister",
+    "Old Republic",
+    "Order 66 Raid",
+    "Phoenix",
+    "Pirate",
+    "Rebel",
+    "Rebel Fighter",
+    "Resistance",
+    "Rogue One",
+    "Scoundrel",
+    "Separatist",
+    "Sith",
+    "Sith Empire",
+    "Smuggler",
+    "Spectre",
+    "Support",
+    "Tank",
+    "Tusken",
+    "Unaligned Force User",
+    "Wookiee"
+  ],
+  "tags_by_character": {
+    "4LOM": [
+      "Bounty Hunter",
+      "Droid",
+      "Leader",
+      "Scoundrel",
+      "Support"
+    ],
+    "50RT": [
+      "Droid",
+      "Leader",
+      "Old Republic",
+      "Support"
+    ],
+    "AAYLASECURA": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "ADMINISTRATORLANDO": [
+      "Attacker",
+      "Leader",
+      "Rebel",
+      "Rebel Fighter",
+      "Scoundrel"
+    ],
+    "ADMIRALACKBAR": [
+      "Fleet Commander",
+      "Leader",
+      "Rebel",
+      "Support"
+    ],
+    "ADMIRALPIETT": [
+      "Empire",
+      "Fleet Commander",
+      "Imperial Trooper",
+      "Leader",
+      "Support"
+    ],
+    "ADMIRALRADDUS": [
+      "Fleet Commander",
+      "Leader",
+      "Rebel",
+      "Rogue One",
+      "Support"
+    ],
+    "AMILYNHOLDO": [
+      "Fleet Commander",
+      "Resistance",
+      "Tank"
+    ],
+    "ANAKINKNIGHT": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Leader"
+    ],
+    "APPO": [
+      "Attacker",
+      "Clone Trooper",
+      "Empire",
+      "Order 66 Raid"
+    ],
+    "ARCTROOPER501ST": [
+      "501st",
+      "Attacker",
+      "Clone Trooper",
+      "Galactic Republic"
+    ],
+    "ARMORER": [
+      "Leader",
+      "Mandalorian",
+      "Support"
+    ],
+    "ASAJJDARKDISCIPLE": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Nightsister",
+      "Unaligned Force User"
+    ],
+    "ASAJVENTRESS": [
+      "Leader",
+      "Nightsister",
+      "Separatist",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "AURRA_SING": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "B1BATTLEDROIDV2": [
+      "Attacker",
+      "Droid",
+      "Separatist"
+    ],
+    "B2SUPERBATTLEDROID": [
+      "Droid",
+      "Separatist",
+      "Tank"
+    ],
+    "BADBATCHECHO": [
+      "Bad Batch",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Support"
+    ],
+    "BADBATCHHUNTER": [
+      "Attacker",
+      "Bad Batch",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Leader"
+    ],
+    "BADBATCHOMEGA": [
+      "Attacker",
+      "Bad Batch",
+      "Clone Trooper"
+    ],
+    "BADBATCHTECH": [
+      "Bad Batch",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Support"
+    ],
+    "BADBATCHWRECKER": [
+      "Bad Batch",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Tank"
+    ],
+    "BARRISSOFFEE": [
+      "Galactic Republic",
+      "Healer",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid"
+    ],
+    "BASTILASHAN": [
+      "Jedi",
+      "Leader",
+      "Old Republic",
+      "Support"
+    ],
+    "BASTILASHANDARK": [
+      "Sith",
+      "Sith Empire",
+      "Support"
+    ],
+    "BATCHERS3": [
+      "Attacker",
+      "Bad Batch",
+      "Order 66 Raid"
+    ],
+    "BAYLANSKOLL": [
+      "Leader",
+      "Mercenary",
+      "Tank",
+      "Unaligned Force User"
+    ],
+    "BAZEMALBUS": [
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One",
+      "Tank"
+    ],
+    "BB8": [
+      "Droid",
+      "Resistance",
+      "Support"
+    ],
+    "BENSOLO": [
+      "Attacker",
+      "Unaligned Force User"
+    ],
+    "BIGGSDARKLIGHTER": [
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "BISHOP": [
+      "New Republic",
+      "Support"
+    ],
+    "BISTAN": [
+      "Attacker",
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One"
+    ],
+    "BOBAFETT": [
+      "Attacker",
+      "Bounty Hunter",
+      "Hutt Cartel",
+      "Leader",
+      "Scoundrel"
+    ],
+    "BOBAFETTSCION": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "BODHIROOK": [
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One",
+      "Support"
+    ],
+    "BOKATAN": [
+      "Attacker",
+      "Leader",
+      "Mandalorian",
+      "Scoundrel"
+    ],
+    "BOOMADIER": [
+      "Attacker",
+      "Gungan"
+    ],
+    "BOSSK": [
+      "Bounty Hunter",
+      "Leader",
+      "Scoundrel",
+      "Tank"
+    ],
+    "BOSSNASS": [
+      "Gungan",
+      "Leader",
+      "Support"
+    ],
+    "BOUSHH": [
+      "Attacker",
+      "Bounty Hunter",
+      "Hutt Cartel",
+      "Leader",
+      "Scoundrel"
+    ],
+    "BRUTUS": [
+      "Attacker",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel"
+    ],
+    "BT1": [
+      "Attacker",
+      "Droid",
+      "Scoundrel"
+    ],
+    "C3POCHEWBACCA": [
+      "Attacker",
+      "Droid",
+      "Rebel",
+      "Wookiee"
+    ],
+    "C3POLEGENDARY": [
+      "Droid",
+      "Galactic Republic",
+      "New Republic",
+      "Rebel",
+      "Resistance",
+      "Support"
+    ],
+    "CADBANE": [
+      "Bounty Hunter",
+      "Hutt Cartel",
+      "Leader",
+      "Mercenary",
+      "Scoundrel",
+      "Support"
+    ],
+    "CALKESTIS": [
+      "Support",
+      "Unaligned Force User"
+    ],
+    "CANDEROUSORDO": [
+      "Attacker",
+      "Mandalorian",
+      "Mercenary",
+      "Old Republic",
+      "Scoundrel"
+    ],
+    "CAPTAINDROGAN": [
+      "Attacker",
+      "New Republic",
+      "Rebel",
+      "Rebel Fighter"
+    ],
+    "CAPTAINENOCH": [
+      "Imperial Remnant",
+      "Leader",
+      "Support"
+    ],
+    "CAPTAINREX": [
+      "Clone Trooper",
+      "Phoenix",
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "CAPTAINSILVO": [
+      "Leader",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "CAPTAINTARPALS": [
+      "Attacker",
+      "Gungan"
+    ],
+    "CARADUNE": [
+      "Constable",
+      "Mercenary",
+      "New Republic",
+      "Rebel",
+      "Rebel Fighter",
+      "Scoundrel",
+      "Tank"
+    ],
+    "CARSONTEVA": [
+      "Attacker",
+      "Constable",
+      "Leader",
+      "New Republic",
+      "Rebel"
+    ],
+    "CARTHONASI": [
+      "Attacker",
+      "Leader",
+      "Old Republic"
+    ],
+    "CASSIANANDOR": [
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One",
+      "Support"
+    ],
+    "CASSIANUNDERCOVER": [
+      "Leader",
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "CC2224": [
+      "Attacker",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Leader"
+    ],
+    "CEREJUNDA": [
+      "Leader",
+      "Scoundrel",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "CHEWBACCALEGENDARY": [
+      "Attacker",
+      "Rebel",
+      "Scoundrel",
+      "Smuggler",
+      "Wookiee"
+    ],
+    "CHIEFCHIRPA": [
+      "Ewok",
+      "Leader",
+      "Support"
+    ],
+    "CHIEFNEBIT": [
+      "Jawa",
+      "Leader",
+      "Tank"
+    ],
+    "CHIRRUTIMWE": [
+      "Attacker",
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One"
+    ],
+    "CHOPPERS3": [
+      "Droid",
+      "New Republic",
+      "Phoenix",
+      "Rebel",
+      "Spectre",
+      "Support"
+    ],
+    "CINTA": [
+      "Attacker",
+      "Rebel",
+      "Rebel Fighter"
+    ],
+    "CLONESERGEANTPHASEI": [
+      "Attacker",
+      "Clone Trooper",
+      "Galactic Republic"
+    ],
+    "CLONEWARSCHEWBACCA": [
+      "Galactic Republic",
+      "Leader",
+      "Scoundrel",
+      "Tank",
+      "Wookiee"
+    ],
+    "COBBVANTH": [
+      "Attacker",
+      "Constable",
+      "Leader"
+    ],
+    "COLONELSTARCK": [
+      "Empire",
+      "Imperial Trooper",
+      "Support"
+    ],
+    "COMMANDERAHSOKA": [
+      "Attacker",
+      "Galactic Republic",
+      "Scoundrel",
+      "Unaligned Force User"
+    ],
+    "COMMANDERLUKESKYWALKER": [
+      "Attacker",
+      "Leader",
+      "Rebel",
+      "Unaligned Force User"
+    ],
+    "CORUSCANTUNDERWORLDPOLICE": [
+      "Constable",
+      "Galactic Republic",
+      "Support"
+    ],
+    "COUNTDOOKU": [
+      "Attacker",
+      "Leader",
+      "Separatist",
+      "Sith"
+    ],
+    "CROSSHAIRS3": [
+      "Attacker",
+      "Bad Batch",
+      "Order 66 Raid"
+    ],
+    "CT210408": [
+      "501st",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Support"
+    ],
+    "CT5555": [
+      "501st",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Leader",
+      "Tank"
+    ],
+    "CT7567": [
+      "501st",
+      "Clone Trooper",
+      "Galactic Republic",
+      "Leader",
+      "Support"
+    ],
+    "DAKA": [
+      "Healer",
+      "Leader",
+      "Nightsister"
+    ],
+    "DARKREY": [
+      "Attacker",
+      "First Order",
+      "Sith"
+    ],
+    "DARKTROOPER": [
+      "Attacker",
+      "Droid",
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper"
+    ],
+    "DARTHBANE": [
+      "Attacker",
+      "Leader",
+      "Sith"
+    ],
+    "DARTHJARJAR": [
+      "Gungan",
+      "Leader",
+      "Sith",
+      "Support"
+    ],
+    "DARTHMALAK": [
+      "Sith",
+      "Sith Empire",
+      "Tank"
+    ],
+    "DARTHMALGUS": [
+      "Leader",
+      "Sith",
+      "Sith Empire",
+      "Tank"
+    ],
+    "DARTHNIHILUS": [
+      "Leader",
+      "Sith",
+      "Support"
+    ],
+    "DARTHREVAN": [
+      "Attacker",
+      "Fleet Commander",
+      "Leader",
+      "Sith",
+      "Sith Empire"
+    ],
+    "DARTHSIDIOUS": [
+      "Attacker",
+      "Leader",
+      "Sith"
+    ],
+    "DARTHSION": [
+      "Sith",
+      "Tank"
+    ],
+    "DARTHTALON": [
+      "Attacker",
+      "Sith"
+    ],
+    "DARTHTRAYA": [
+      "Leader",
+      "Sith",
+      "Support"
+    ],
+    "DASHRENDAR": [
+      "Leader",
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler",
+      "Support"
+    ],
+    "DATHCHA": [
+      "Jawa",
+      "Leader",
+      "Support"
+    ],
+    "DEATHTROOPER": [
+      "Attacker",
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper"
+    ],
+    "DEATHTROOPERPERIDEA": [
+      "Attacker",
+      "Imperial Remnant",
+      "Nightsister"
+    ],
+    "DEDRAMEERO": [
+      "Empire",
+      "ISB",
+      "Support"
+    ],
+    "DENGAR": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "DEPABILLABA": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Order 66 Raid"
+    ],
+    "DIRECTORKRENNIC": [
+      "Empire",
+      "ISB",
+      "Leader",
+      "Support"
+    ],
+    "DISGUISEDCLONETROOPER": [
+      "Clone Trooper",
+      "Empire",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "DOCTORAPHRA": [
+      "Leader",
+      "Mercenary",
+      "Scoundrel",
+      "Support"
+    ],
+    "DROIDEKA": [
+      "Attacker",
+      "Droid",
+      "Separatist"
+    ],
+    "EETHKOTH": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "EIGHTHBROTHER": [
+      "Attacker",
+      "Empire",
+      "Inquisitorius",
+      "Leader",
+      "Unaligned Force User"
+    ],
+    "EMBO": [
+      "Attacker",
+      "Bounty Hunter",
+      "Hutt Cartel",
+      "Leader",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "EMPERORPALPATINE": [
+      "Empire",
+      "Leader",
+      "Sith",
+      "Support"
+    ],
+    "ENFYSNEST": [
+      "Attacker",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "EPIXFINN": [
+      "Attacker",
+      "Resistance"
+    ],
+    "EPIXPOE": [
+      "Attacker",
+      "Resistance"
+    ],
+    "EWOKELDER": [
+      "Ewok",
+      "Healer"
+    ],
+    "EWOKSCOUT": [
+      "Attacker",
+      "Ewok"
+    ],
+    "EZRABRIDGERS3": [
+      "Attacker",
+      "Jedi",
+      "Phoenix",
+      "Rebel"
+    ],
+    "EZRAEXILE": [
+      "Jedi",
+      "Spectre",
+      "Support"
+    ],
+    "FENNECSHAND": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "FIFTHBROTHER": [
+      "Empire",
+      "Inquisitorius",
+      "Leader",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "FINN": [
+      "Leader",
+      "Resistance",
+      "Tank"
+    ],
+    "FIRSTORDEREXECUTIONER": [
+      "Attacker",
+      "First Order"
+    ],
+    "FIRSTORDEROFFICERMALE": [
+      "First Order",
+      "Support"
+    ],
+    "FIRSTORDERSPECIALFORCESPILOT": [
+      "Attacker",
+      "First Order"
+    ],
+    "FIRSTORDERTIEPILOT": [
+      "Attacker",
+      "First Order"
+    ],
+    "FIRSTORDERTROOPER": [
+      "First Order",
+      "Tank"
+    ],
+    "FOSITHTROOPER": [
+      "Attacker",
+      "First Order",
+      "Sith"
+    ],
+    "FULCRUMAHSOKA": [
+      "Attacker",
+      "Rebel",
+      "Spectre",
+      "Unaligned Force User"
+    ],
+    "GAMORREANGUARD": [
+      "Hutt Cartel",
+      "Scoundrel",
+      "Tank"
+    ],
+    "GARSAXON": [
+      "Empire",
+      "Leader",
+      "Mandalorian",
+      "Tank"
+    ],
+    "GENERALHUX": [
+      "First Order",
+      "Fleet Commander",
+      "Leader",
+      "Support"
+    ],
+    "GENERALKENOBI": [
+      "Fleet Commander",
+      "Galactic Republic",
+      "Jedi",
+      "Leader",
+      "Tank"
+    ],
+    "GENERALSKYWALKER": [
+      "501st",
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Leader"
+    ],
+    "GENERALSYNDULLA": [
+      "Leader",
+      "New Republic",
+      "Spectre",
+      "Support"
+    ],
+    "GEONOSIANBROODALPHA": [
+      "Geonosian",
+      "Leader",
+      "Separatist",
+      "Support"
+    ],
+    "GEONOSIANSOLDIER": [
+      "Attacker",
+      "Geonosian",
+      "Separatist"
+    ],
+    "GEONOSIANSPY": [
+      "Attacker",
+      "Geonosian",
+      "Separatist"
+    ],
+    "GLAHSOKATANO": [
+      "Galactic Legend",
+      "Leader",
+      "Spectre",
+      "Tank",
+      "Unaligned Force User"
+    ],
+    "GLHONDO": [
+      "Galactic Legend",
+      "Leader",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Smuggler",
+      "Support"
+    ],
+    "GLLEIA": [
+      "Galactic Legend",
+      "Leader",
+      "Rebel",
+      "Tank"
+    ],
+    "GOPHERANTS": [
+      "Healer",
+      "Mandalorian",
+      "New Republic",
+      "Unaligned Force User"
+    ],
+    "GRANDADMIRALTHRAWN": [
+      "Empire",
+      "Fleet Commander",
+      "Leader",
+      "Support"
+    ],
+    "GRANDINQUISITOR": [
+      "Attacker",
+      "Empire",
+      "Inquisitorius",
+      "Leader",
+      "Unaligned Force User"
+    ],
+    "GRANDMASTERLUKE": [
+      "Galactic Legend",
+      "Jedi",
+      "Leader",
+      "Tank"
+    ],
+    "GRANDMASTERYODA": [
+      "Galactic Republic",
+      "Jedi",
+      "Leader",
+      "Support"
+    ],
+    "GRANDMOFFTARKIN": [
+      "Empire",
+      "Fleet Commander",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "GREATMOTHERS": [
+      "Leader",
+      "Nightsister",
+      "Support"
+    ],
+    "GREEDO": [
+      "Attacker",
+      "Bounty Hunter",
+      "Hutt Cartel",
+      "Leader",
+      "Scoundrel"
+    ],
+    "GREEFKARGA": [
+      "Bounty Hunter",
+      "Leader",
+      "Scoundrel",
+      "Support"
+    ],
+    "GRIEVOUS": [
+      "Attacker",
+      "Droid",
+      "Fleet Commander",
+      "Leader",
+      "Separatist"
+    ],
+    "GUNGANPHALANX": [
+      "Gungan",
+      "Tank"
+    ],
+    "HANSOLO": [
+      "Attacker",
+      "Mercenary",
+      "Rebel",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "HERASYNDULLAS3": [
+      "Leader",
+      "Phoenix",
+      "Rebel",
+      "Support"
+    ],
+    "HERMITYODA": [
+      "Jedi",
+      "Support"
+    ],
+    "HK47": [
+      "Attacker",
+      "Droid",
+      "Leader",
+      "Sith Empire"
+    ],
+    "HONDO": [
+      "Mercenary",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Smuggler",
+      "Support"
+    ],
+    "HOTHHAN": [
+      "Rebel",
+      "Scoundrel",
+      "Support"
+    ],
+    "HOTHLEIA": [
+      "Attacker",
+      "Leader",
+      "Rebel"
+    ],
+    "HOTHREBELSCOUT": [
+      "Attacker",
+      "Rebel",
+      "Rebel Fighter"
+    ],
+    "HOTHREBELSOLDIER": [
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "HUMANTHUG": [
+      "Hutt Cartel",
+      "Scoundrel",
+      "Support"
+    ],
+    "HUNTERS3": [
+      "Bad Batch",
+      "Mercenary",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "HUYANG": [
+      "Attacker",
+      "Droid",
+      "Spectre"
+    ],
+    "IDENVERSIOEMPIRE": [
+      "Attacker",
+      "Empire",
+      "Imperial Trooper",
+      "Leader"
+    ],
+    "IG11": [
+      "Droid",
+      "Healer",
+      "Scoundrel"
+    ],
+    "IG12": [
+      "Healer",
+      "Mandalorian"
+    ],
+    "IG86SENTINELDROID": [
+      "Attacker",
+      "Droid"
+    ],
+    "IG88": [
+      "Attacker",
+      "Bounty Hunter",
+      "Droid",
+      "Leader",
+      "Scoundrel"
+    ],
+    "IG90": [
+      "Bounty Hunter",
+      "Droid",
+      "Leader",
+      "Scoundrel",
+      "Support"
+    ],
+    "IMAGUNDI": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "IMPERIALPROBEDROID": [
+      "Droid",
+      "Empire",
+      "ISB",
+      "Support"
+    ],
+    "IMPERIALSUPERCOMMANDO": [
+      "Attacker",
+      "Empire",
+      "Mandalorian"
+    ],
+    "INQUISITORBARRISS": [
+      "Empire",
+      "Healer",
+      "Inquisitorius",
+      "Leader",
+      "Unaligned Force User"
+    ],
+    "ITHANO": [
+      "Attacker",
+      "Leader",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel"
+    ],
+    "JABBATHEHUTT": [
+      "Bounty Hunter",
+      "Galactic Legend",
+      "Hutt Cartel",
+      "Leader",
+      "Smuggler",
+      "Support"
+    ],
+    "JANGOFETT": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mandalorian",
+      "Mercenary",
+      "Scoundrel",
+      "Separatist"
+    ],
+    "JARJARBINKS": [
+      "Gungan",
+      "Support"
+    ],
+    "JAWA": [
+      "Attacker",
+      "Jawa"
+    ],
+    "JAWAENGINEER": [
+      "Healer",
+      "Jawa"
+    ],
+    "JAWASCAVENGER": [
+      "Jawa",
+      "Support"
+    ],
+    "JAXXON": [
+      "Attacker",
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "JEDIKNIGHTCAL": [
+      "Attacker",
+      "Jedi",
+      "Leader",
+      "Mercenary"
+    ],
+    "JEDIKNIGHTCONSULAR": [
+      "Galactic Republic",
+      "Healer",
+      "Jedi",
+      "Jedi Vanguard",
+      "Order 66 Raid"
+    ],
+    "JEDIKNIGHTGUARDIAN": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Order 66 Raid",
+      "Tank"
+    ],
+    "JEDIKNIGHTLUKE": [
+      "Attacker",
+      "Jedi",
+      "Leader"
+    ],
+    "JEDIKNIGHTREVAN": [
+      "Attacker",
+      "Jedi",
+      "Leader",
+      "Old Republic"
+    ],
+    "JEDIMASTERKENOBI": [
+      "Attacker",
+      "Galactic Legend",
+      "Galactic Republic",
+      "Jedi",
+      "Leader"
+    ],
+    "JEDIMASTERMACEWINDU": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid"
+    ],
+    "JOCASTANU": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Order 66 Raid"
+    ],
+    "JOLEEBINDO": [
+      "Healer",
+      "Jedi",
+      "Old Republic"
+    ],
+    "JUHANI": [
+      "Jedi",
+      "Old Republic",
+      "Tank"
+    ],
+    "JYNERSO": [
+      "Attacker",
+      "Leader",
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One"
+    ],
+    "K2SO": [
+      "Droid",
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One",
+      "Tank"
+    ],
+    "KANANJARRUSS3": [
+      "Jedi",
+      "Phoenix",
+      "Rebel",
+      "Tank"
+    ],
+    "KELLERANBEQ": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid"
+    ],
+    "KIADIMUNDI": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi"
+    ],
+    "KITFISTO": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid"
+    ],
+    "KIX": [
+      "Clone Trooper",
+      "Healer",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel"
+    ],
+    "KLEYA": [
+      "Attacker",
+      "Rebel",
+      "Rebel Fighter"
+    ],
+    "KRRSANTAN": [
+      "Bounty Hunter",
+      "Hutt Cartel",
+      "Leader",
+      "Mercenary",
+      "Scoundrel",
+      "Tank",
+      "Wookiee"
+    ],
+    "KUIIL": [
+      "Scoundrel",
+      "Support"
+    ],
+    "KXSECURITYDROID": [
+      "Droid",
+      "Empire",
+      "ISB",
+      "Tank"
+    ],
+    "KYLEKATARN": [
+      "Attacker",
+      "Jedi",
+      "Mercenary",
+      "New Republic",
+      "Rebel",
+      "Rebel Fighter"
+    ],
+    "KYLOREN": [
+      "Attacker",
+      "First Order",
+      "Unaligned Force User"
+    ],
+    "KYLORENUNMASKED": [
+      "First Order",
+      "Leader",
+      "Tank",
+      "Unaligned Force User"
+    ],
+    "L3_37": [
+      "Droid",
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler",
+      "Tank"
+    ],
+    "LEIAJEDITRAINING": [
+      "Attacker",
+      "Jedi"
+    ],
+    "LOBOT": [
+      "Constable",
+      "Leader",
+      "Rebel",
+      "Support"
+    ],
+    "LOGRAY": [
+      "Ewok",
+      "Support"
+    ],
+    "LORDVADER": [
+      "Attacker",
+      "Empire",
+      "Galactic Legend",
+      "Leader",
+      "Sith"
+    ],
+    "LUKESKYWALKER": [
+      "Attacker",
+      "Leader",
+      "Rebel"
+    ],
+    "LUKESTARKILLER": [
+      "Rebel",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "LUMINARAUNDULI": [
+      "Galactic Republic",
+      "Healer",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid"
+    ],
+    "LUTHENRAEL": [
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "MACEWINDU": [
+      "Fleet Commander",
+      "Galactic Republic",
+      "Jedi",
+      "Leader",
+      "Tank"
+    ],
+    "MAGMATROOPER": [
+      "Attacker",
+      "Empire",
+      "Imperial Trooper"
+    ],
+    "MAGNAGUARD": [
+      "Droid",
+      "Separatist",
+      "Tank"
+    ],
+    "MAJORPARTAGAZ": [
+      "Empire",
+      "ISB",
+      "Leader",
+      "Support"
+    ],
+    "MANDALORBOKATAN": [
+      "Attacker",
+      "Leader",
+      "Mandalorian"
+    ],
+    "MARAJADE": [
+      "Attacker",
+      "Empire",
+      "Unaligned Force User"
+    ],
+    "MARAJADESKYWALKER": [
+      "Attacker",
+      "Jedi",
+      "New Republic"
+    ],
+    "MARROK": [
+      "Inquisitorius",
+      "Mercenary",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "MASTERQUIGON": [
+      "Galactic Republic",
+      "Jedi",
+      "Support"
+    ],
+    "MAUL": [
+      "Attacker",
+      "Leader",
+      "Sith"
+    ],
+    "MAULHATEFUELED": [
+      "Attacker",
+      "Unaligned Force User"
+    ],
+    "MAULS7": [
+      "Attacker",
+      "Leader",
+      "Mandalorian",
+      "Unaligned Force User"
+    ],
+    "MAZKANATA": [
+      "Leader",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Smuggler",
+      "Support",
+      "Unaligned Force User"
+    ],
+    "MERRIN": [
+      "Nightsister",
+      "Support"
+    ],
+    "MISSIONVAO": [
+      "Attacker",
+      "Mercenary",
+      "Old Republic",
+      "Scoundrel"
+    ],
+    "MOFFGIDEONS1": [
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper",
+      "Leader",
+      "Support"
+    ],
+    "MOFFGIDEONS3": [
+      "Empire",
+      "Imperial Remnant",
+      "Leader",
+      "Tank"
+    ],
+    "MONMOTHMA": [
+      "Leader",
+      "New Republic",
+      "Rebel",
+      "Support"
+    ],
+    "MORGANELSBETH": [
+      "Nightsister",
+      "Tank"
+    ],
+    "MOTHERTALZIN": [
+      "Leader",
+      "Nightsister",
+      "Support"
+    ],
+    "NIGHTSISTERACOLYTE": [
+      "Attacker",
+      "Nightsister"
+    ],
+    "NIGHTSISTERINITIATE": [
+      "Attacker",
+      "Nightsister"
+    ],
+    "NIGHTSISTERSPIRIT": [
+      "Attacker",
+      "Nightsister"
+    ],
+    "NIGHTSISTERZOMBIE": [
+      "Nightsister",
+      "Tank"
+    ],
+    "NIGHTTROOPER": [
+      "Attacker",
+      "Imperial Remnant",
+      "Nightsister"
+    ],
+    "NINTHSISTER": [
+      "Empire",
+      "Inquisitorius",
+      "Leader",
+      "Tank",
+      "Unaligned Force User"
+    ],
+    "NUTEGUNRAY": [
+      "Leader",
+      "Scoundrel",
+      "Separatist",
+      "Support"
+    ],
+    "OLDBENKENOBI": [
+      "Jedi",
+      "Leader",
+      "Rebel",
+      "Tank"
+    ],
+    "OMEGAS3": [
+      "Bad Batch",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "OPERATIVE": [
+      "Clone Trooper",
+      "Empire",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "PADAWANOBIWAN": [
+      "Attacker",
+      "Galactic Republic",
+      "Jedi"
+    ],
+    "PADAWANSABINE": [
+      "Attacker",
+      "Mandalorian",
+      "Spectre",
+      "Unaligned Force User"
+    ],
+    "PADMEAMIDALA": [
+      "Galactic Republic",
+      "Leader",
+      "Support"
+    ],
+    "PAO": [
+      "Attacker",
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One"
+    ],
+    "PAPLOO": [
+      "Ewok",
+      "Tank"
+    ],
+    "PAZVIZSLA": [
+      "Mandalorian",
+      "Tank"
+    ],
+    "PHASMA": [
+      "First Order",
+      "Leader",
+      "Support"
+    ],
+    "PLOKOON": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid",
+      "Tank"
+    ],
+    "POE": [
+      "Leader",
+      "Resistance",
+      "Tank"
+    ],
+    "POGGLETHELESSER": [
+      "Geonosian",
+      "Leader",
+      "Separatist",
+      "Support"
+    ],
+    "PRINCESSKNEESAA": [
+      "Attacker",
+      "Ewok"
+    ],
+    "PRINCESSLEIA": [
+      "Attacker",
+      "Leader",
+      "Rebel"
+    ],
+    "PVE_AHSOKATANO": [
+      "501st",
+      "Attacker",
+      "Galactic Republic",
+      "Jedi",
+      "Leader"
+    ],
+    "QIRA": [
+      "Leader",
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler",
+      "Support"
+    ],
+    "QUEENAMIDALA": [
+      "Galactic Republic",
+      "Leader",
+      "Support"
+    ],
+    "QUIGGOLD": [
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Tank"
+    ],
+    "QUIGONJINN": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "R2D2_LEGENDARY": [
+      "Droid",
+      "Galactic Republic",
+      "Rebel",
+      "Resistance",
+      "Support"
+    ],
+    "R5D4": [
+      "Droid",
+      "New Republic",
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "RACCOON": [
+      "Attacker",
+      "Hutt Cartel",
+      "Leader"
+    ],
+    "RANGERZEB": [
+      "New Republic",
+      "Tank"
+    ],
+    "RANGETROOPER": [
+      "Empire",
+      "Imperial Trooper",
+      "Support"
+    ],
+    "REMNANTSNOWCOMMANDER": [
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper",
+      "Leader",
+      "Tank"
+    ],
+    "RESISTANCEPILOT": [
+      "Attacker",
+      "Resistance"
+    ],
+    "RESISTANCETROOPER": [
+      "Attacker",
+      "Resistance"
+    ],
+    "REY": [
+      "Attacker",
+      "Resistance",
+      "Unaligned Force User"
+    ],
+    "REYJEDITRAINING": [
+      "Leader",
+      "Resistance",
+      "Tank",
+      "Unaligned Force User"
+    ],
+    "ROSETICO": [
+      "Attacker",
+      "Resistance"
+    ],
+    "ROYALGUARD": [
+      "Empire",
+      "Tank"
+    ],
+    "SABINEWRENS3": [
+      "Attacker",
+      "Mandalorian",
+      "Phoenix",
+      "Rebel"
+    ],
+    "SANASTARROS": [
+      "Attacker",
+      "Leader",
+      "Mercenary",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "SATELESHAN": [
+      "Jedi",
+      "Leader",
+      "Old Republic",
+      "Tank"
+    ],
+    "SAVAGEOPRESS": [
+      "Attacker",
+      "Leader",
+      "Sith"
+    ],
+    "SAWGERRERA": [
+      "Leader",
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "SCARIFREBEL": [
+      "Rebel",
+      "Rebel Fighter",
+      "Rogue One",
+      "Tank"
+    ],
+    "SCORCH": [
+      "Clone Trooper",
+      "Empire",
+      "Order 66 Raid",
+      "Tank"
+    ],
+    "SCOUTTROOPER_V3": [
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper",
+      "Support"
+    ],
+    "SECONDSISTER": [
+      "Attacker",
+      "Empire",
+      "Inquisitorius",
+      "Leader",
+      "Unaligned Force User"
+    ],
+    "SEVENTHSISTER": [
+      "Empire",
+      "Healer",
+      "Inquisitorius",
+      "Leader",
+      "Unaligned Force User"
+    ],
+    "SHAAKTI": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Leader",
+      "Order 66 Raid",
+      "Support"
+    ],
+    "SHINHATI": [
+      "Attacker",
+      "Mercenary",
+      "Unaligned Force User"
+    ],
+    "SHORETROOPER": [
+      "Empire",
+      "Imperial Trooper",
+      "Tank"
+    ],
+    "SITHASSASSIN": [
+      "Attacker",
+      "Sith",
+      "Sith Empire"
+    ],
+    "SITHMARAUDER": [
+      "Attacker",
+      "Sith",
+      "Sith Empire"
+    ],
+    "SITHPALPATINE": [
+      "Attacker",
+      "Galactic Legend",
+      "Leader",
+      "Sith"
+    ],
+    "SITHTROOPER": [
+      "Sith",
+      "Sith Empire",
+      "Tank"
+    ],
+    "SM33": [
+      "Attacker",
+      "Droid",
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel"
+    ],
+    "SMUGGLERCHEWBACCA": [
+      "Attacker",
+      "Resistance",
+      "Scoundrel",
+      "Smuggler",
+      "Wookiee"
+    ],
+    "SMUGGLERHAN": [
+      "Attacker",
+      "Mercenary",
+      "Resistance",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "SNOWTROOPER": [
+      "Attacker",
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper"
+    ],
+    "STAP": [
+      "Attacker",
+      "Droid",
+      "Separatist"
+    ],
+    "STARKILLER": [
+      "Attacker",
+      "Unaligned Force User"
+    ],
+    "STORMTROOPER": [
+      "Empire",
+      "Imperial Remnant",
+      "Imperial Trooper",
+      "Tank"
+    ],
+    "STORMTROOPERCONCEPT": [
+      "Empire",
+      "Imperial Trooper",
+      "Tank"
+    ],
+    "STORMTROOPERHAN": [
+      "Leader",
+      "Rebel",
+      "Scoundrel",
+      "Tank"
+    ],
+    "STORMTROOPERLUKE": [
+      "Leader",
+      "Rebel",
+      "Support"
+    ],
+    "STRANGER": [
+      "Attacker",
+      "Leader",
+      "Sith"
+    ],
+    "SUNFAC": [
+      "Geonosian",
+      "Separatist",
+      "Tank"
+    ],
+    "SUPREMELEADERKYLOREN": [
+      "Attacker",
+      "First Order",
+      "Galactic Legend",
+      "Leader",
+      "Unaligned Force User"
+    ],
+    "T3_M4": [
+      "Droid",
+      "Old Republic",
+      "Support"
+    ],
+    "TALIA": [
+      "Healer",
+      "Leader",
+      "Nightsister"
+    ],
+    "TARFFUL": [
+      "Leader",
+      "Support",
+      "Wookiee"
+    ],
+    "TARONMALICOS": [
+      "Attacker",
+      "Unaligned Force User"
+    ],
+    "TEEBO": [
+      "Ewok",
+      "Leader",
+      "Tank"
+    ],
+    "THEMANDALORIAN": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mandalorian",
+      "Scoundrel"
+    ],
+    "THEMANDALORIANBESKARARMOR": [
+      "Attacker",
+      "Leader",
+      "Mandalorian",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "THERONIN": [
+      "Attacker",
+      "Sith"
+    ],
+    "THIRDSISTER": [
+      "Empire",
+      "Inquisitorius",
+      "Leader",
+      "Tank",
+      "Unaligned Force User"
+    ],
+    "TIEFIGHTERPILOT": [
+      "Attacker",
+      "Empire",
+      "Imperial Remnant"
+    ],
+    "TRENCH": [
+      "Leader",
+      "Separatist",
+      "Support"
+    ],
+    "TRIPLEZERO": [
+      "Droid",
+      "Scoundrel",
+      "Support"
+    ],
+    "TUSKENCHIEFTAIN": [
+      "Leader",
+      "Support",
+      "Tusken"
+    ],
+    "TUSKENHUNTRESS": [
+      "Attacker",
+      "Tusken"
+    ],
+    "TUSKENRAIDER": [
+      "Attacker",
+      "Tusken"
+    ],
+    "TUSKENSHAMAN": [
+      "Healer",
+      "Tusken"
+    ],
+    "UGNAUGHT": [
+      "Support"
+    ],
+    "UNDERCOVERLANDO": [
+      "Attacker",
+      "Hutt Cartel",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "URORRURRR": [
+      "Leader",
+      "Support",
+      "Tusken"
+    ],
+    "VADER": [
+      "Attacker",
+      "Empire",
+      "Leader",
+      "Sith"
+    ],
+    "VADERDUELSEND": [
+      "Attacker",
+      "Empire",
+      "Sith"
+    ],
+    "VANE": [
+      "Order 66 Raid",
+      "Pirate",
+      "Scoundrel",
+      "Tank"
+    ],
+    "VANGUARDTEMPLEGUARD": [
+      "Galactic Republic",
+      "Jedi",
+      "Jedi Vanguard",
+      "Order 66 Raid",
+      "Tank"
+    ],
+    "VEERS": [
+      "Empire",
+      "Imperial Trooper",
+      "Leader",
+      "Support"
+    ],
+    "VEL": [
+      "Rebel",
+      "Rebel Fighter",
+      "Support"
+    ],
+    "VISASMARR": [
+      "Healer",
+      "Unaligned Force User"
+    ],
+    "WAMPA": [
+      "Attacker"
+    ],
+    "WATTAMBOR": [
+      "Separatist",
+      "Support"
+    ],
+    "WEDGEANTILLES": [
+      "Attacker",
+      "Leader",
+      "Rebel",
+      "Rebel Fighter"
+    ],
+    "WICKET": [
+      "Attacker",
+      "Ewok"
+    ],
+    "WRECKERS3": [
+      "Bad Batch",
+      "Mercenary",
+      "Order 66 Raid",
+      "Tank"
+    ],
+    "YODACHEWBACCA": [
+      "Galactic Republic",
+      "Jedi",
+      "Support",
+      "Wookiee"
+    ],
+    "YODADSV": [
+      "Healer",
+      "Sith"
+    ],
+    "YOUNGCHEWBACCA": [
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler",
+      "Tank",
+      "Wookiee"
+    ],
+    "YOUNGHAN": [
+      "Attacker",
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "YOUNGLANDO": [
+      "Attacker",
+      "Mercenary",
+      "Scoundrel",
+      "Smuggler"
+    ],
+    "ZAALBAR": [
+      "Mercenary",
+      "Old Republic",
+      "Scoundrel",
+      "Tank",
+      "Wookiee"
+    ],
+    "ZAMWESELL": [
+      "Attacker",
+      "Bounty Hunter",
+      "Leader",
+      "Mercenary",
+      "Scoundrel"
+    ],
+    "ZEBS3": [
+      "Phoenix",
+      "Rebel",
+      "Tank"
+    ],
+    "ZORIIBLISS_V2": [
+      "Resistance",
+      "Scoundrel",
+      "Smuggler",
+      "Support"
+    ],
+    "ZUCKUSS": [
+      "Bounty Hunter",
+      "Leader",
+      "Scoundrel",
+      "Tank",
+      "Unaligned Force User"
+    ]
+  }
+}

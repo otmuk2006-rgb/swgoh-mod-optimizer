@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Per-visitor session data — created at runtime, never committed
+data/sessions/
+
+# Raw/intermediate scrape artifacts — only feed the offline community-data
+# refresh pipeline (see scraping/GAC_leaderboards.py, top250_player_mods.py),
+# nothing at request time reads these directly. Derived files this project
+# DOES need at runtime (mod_weightings.json, character_priority.json,
+# max_possible_stats.json, base_speed.json, character_names.json,
+# character_tags.json, and the static image assets) are NOT excluded here.
+data/raw/
+data/processed/top250_mods.json
+data/processed/character_portrait_unresolved.json
+data/processed/swgoh_gg_slugs.json
+data/processed/test_selection.json
+data/processed/mod_change_report.json
+data/processed/final_assignment.json
+data/processed/my_mods.json
+data/processed/gear_levels.json
+data/processed/character_progress.json
+data/processed/mod_scores.json
+data/processed/set_bonus_values.json
+
+# Local Comlink binaries/scripts — Windows-only, production uses the
+# official Docker image instead (see render.yaml)
+comlink/*.exe
+comlink/*.zip
+comlink/extracted*/
+comlink/old/
+comlink/source/
+comlink/*.log
+
+# Local-only
+*.log
+.DS_Store
+.claude/

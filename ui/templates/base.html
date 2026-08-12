@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}SWGOH Mod Optimiser{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <span class="app-title">Mod Optimiser</span>
+      <nav class="app-steps">
+        <span class="step {{ 'active' if step == 'setup' }}">1. Setup</span>
+        <span class="step {{ 'active' if step == 'select' }}">2. Select</span>
+        <span class="step {{ 'active' if step == 'config' }}">3. Config</span>
+        <span class="step {{ 'active' if step == 'run' }}">4. Run</span>
+        <span class="step {{ 'active' if step == 'results' }}">5. Results</span>
+      </nav>
+    </div>
+  </header>
+  <main class="app-main">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

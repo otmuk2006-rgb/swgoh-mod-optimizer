@@ -1,0 +1,868 @@
+:root {
+  --bg: #0a1220;
+  --header: #0d1830;
+  --surface: #0f1a30;
+  --surface-2: #132038;
+  --border: #1c2a40;
+  --border-strong: #24365a;
+  --text: #f0f4fb;
+  --text-muted: #7c8db3;
+  --text-muted-2: #9fb0d0;
+  --accent: #5b9fe0;
+  --accent-dim: rgba(91, 159, 224, 0.16);
+  --error: #ff6b6b;
+
+  --tier-grey: #8a97b3;
+  --tier-green: #3ecf6e;
+  --tier-blue: #5b9fe0;
+  --tier-purple: #b478f5;
+  --tier-gold: #ffc94a;
+
+  /* mod tier colours — exact swgoh.gg values (getComputedStyle, see
+     ui/extract_mod_icons.py), kept separate from --tier-* above since
+     those are hand-picked for other UI accents, not mod-authentic */
+  --modtier-grey: rgb(255, 255, 255);
+  --modtier-green: rgb(152, 253, 51);
+  --modtier-blue: rgb(0, 189, 254);
+  --modtier-purple: rgb(146, 65, 255);
+  --modtier-gold: rgb(255, 204, 51);
+
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+a { color: var(--accent); }
+
+code {
+  font-family: var(--mono);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.9em;
+}
+
+/* ---------- header ---------- */
+
+.app-header {
+  background: var(--header);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+.app-steps {
+  display: flex;
+  gap: 18px;
+}
+
+.step {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.step.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- layout ---------- */
+
+.app-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.panel.narrow { max-width: 420px; margin: 0 auto; }
+.panel.wide { width: 100%; }
+.panel.center { text-align: center; }
+
+h1 {
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+
+h2 {
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: var(--text-muted-2);
+}
+
+.muted { color: var(--text-muted); }
+.muted.small { font-size: 13px; }
+
+.error {
+  color: var(--error);
+  font-size: 13px;
+}
+
+.back-link {
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* ---------- forms ---------- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted-2);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 9px 11px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.btn {
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #071018;
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.btn.small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* ---------- character grid ---------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.toolbar-summary {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.sort-label {
+  font-size: 13px;
+  color: var(--text-muted-2);
+}
+
+.sort-select {
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 7px 9px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+/* ---------- tag filter ---------- */
+
+.tag-filter-count {
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #071018;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* the base rule deliberately has no `display` — its own [hidden] attribute
+   (toggled in tag_filter.js) needs to still win when set. A class selector
+   setting `display` unconditionally beats [hidden] in the cascade (author
+   origin beats user-agent origin regardless of specificity), which is
+   exactly the bug that made the count badge stick after "Clear filters" —
+   the JS was toggling `hidden` correctly the whole time, it just had no
+   visual effect. */
+.tag-filter-count:not([hidden]) {
+  display: inline-flex;
+}
+
+.tag-filter-modal {
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  width: 640px;
+  max-width: 90vw;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+}
+
+.tag-filter-modal::backdrop {
+  background: rgba(4, 8, 16, 0.65);
+}
+
+.tag-filter-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tag-filter-modal-header h2 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.tag-filter-modal-body {
+  padding: 14px 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 4px 14px;
+}
+
+.tag-filter-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted-2);
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.tag-filter-option input {
+  accent-color: var(--accent);
+}
+
+.tag-filter-modal-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+  gap: 16px 14px;
+}
+
+.char-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.char-portrait-wrap {
+  width: 88px;
+  height: 88px;
+  position: relative;
+}
+
+.char-portrait {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border-strong);
+  background: var(--surface-2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.char-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.char-portrait-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-muted-2);
+}
+
+/* ---------- selection indicator ---------- */
+/* A rounded-corner bracket frame (4 independent corners, gap at the
+   middle of each side) around the whole portrait, distinct from the
+   gear/relic ring artwork it surrounds — a plain border/glow on the
+   portrait itself got lost against the ring, so this sits further out
+   and above everything (z-index 4) instead. */
+
+.char-select-frame {
+  position: absolute;
+  inset: -9px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.char-tile[data-state="selected"] .char-select-frame,
+.char-tile[data-state="locked"] .char-select-frame {
+  opacity: 1;
+}
+
+.char-select-frame__corner {
+  --frame-color: var(--accent);
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid transparent;
+}
+
+.char-tile[data-state="locked"] .char-select-frame__corner {
+  --frame-color: var(--tier-gold);
+}
+
+.char-select-frame__corner--tl {
+  top: 0; left: 0;
+  border-top-color: var(--frame-color);
+  border-left-color: var(--frame-color);
+  border-top-left-radius: 10px;
+}
+
+.char-select-frame__corner--tr {
+  top: 0; right: 0;
+  border-top-color: var(--frame-color);
+  border-right-color: var(--frame-color);
+  border-top-right-radius: 10px;
+}
+
+.char-select-frame__corner--bl {
+  bottom: 0; left: 0;
+  border-bottom-color: var(--frame-color);
+  border-left-color: var(--frame-color);
+  border-bottom-left-radius: 10px;
+}
+
+.char-select-frame__corner--br {
+  bottom: 0; right: 0;
+  border-bottom-color: var(--frame-color);
+  border-right-color: var(--frame-color);
+  border-bottom-right-radius: 10px;
+}
+
+/* ---------- gear / relic ring, badges, stars ---------- */
+/* Real in-game-derived assets — see ui/extract_assets.py for provenance */
+
+.char-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.char-ring--gear-1  { background-image: url('../img/gear/g1.webp'); }
+.char-ring--gear-2  { background-image: url('../img/gear/g2.webp'); }
+.char-ring--gear-3  { background-image: url('../img/gear/g3.webp'); }
+.char-ring--gear-4  { background-image: url('../img/gear/g4.webp'); }
+.char-ring--gear-5  { background-image: url('../img/gear/g5.webp'); }
+.char-ring--gear-6  { background-image: url('../img/gear/g6.webp'); }
+.char-ring--gear-7  { background-image: url('../img/gear/g7.webp'); }
+.char-ring--gear-8  { background-image: url('../img/gear/g8.webp'); }
+.char-ring--gear-9  { background-image: url('../img/gear/g9.webp'); }
+.char-ring--gear-10 { background-image: url('../img/gear/g10.webp'); }
+.char-ring--gear-11 { background-image: url('../img/gear/g11.webp'); }
+.char-ring--gear-12 { background-image: url('../img/gear/g12.webp'); }
+.char-ring--gear-13 { background-image: url('../img/gear/g13.webp'); }
+
+.char-ring--relic {
+  aspect-ratio: 58 / 112;
+  width: 62%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-98%, -50%);
+  background-size: contain;
+}
+
+.char-ring--relic.char-ring--relic-right {
+  transform: translate(-2%, -50%) rotateY(180deg);
+}
+
+.char-ring--neutral { background-image: url('../img/gear/relic_neutral.webp'); }
+.char-ring--light   { background-image: url('../img/gear/relic_light.webp'); }
+.char-ring--dark    { background-image: url('../img/gear/relic_dark.webp'); }
+
+.char-badge {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1;
+  border-radius: 999px;
+  padding: 2px 5px;
+  min-width: 16px;
+  text-align: center;
+  border: 1px solid var(--border-strong);
+}
+
+.char-badge--level {
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--header);
+  color: #93fffb;
+}
+
+.char-badge--relic {
+  bottom: 2px;
+  right: 2px;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  /* real in-game relic badge shape, tinted by alignment via mask so the
+     shape itself always comes from the actual asset, not a drawn circle */
+  -webkit-mask-image: url('../img/gear/relic_badge_bg.webp');
+  mask-image: url('../img/gear/relic_badge_bg.webp');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.char-badge--relic-light   { background: var(--accent); }
+.char-badge--relic-dark    { background: var(--error); }
+.char-badge--relic-neutral { background: var(--tier-grey); }
+
+.char-badge--zeta,
+.char-badge--omicron {
+  top: -4px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.char-badge--zeta {
+  left: -6px;
+  background-image: url('../img/gear/zeta_badge.png');
+}
+
+.char-badge--omicron {
+  right: -6px;
+  background-image: url('../img/gear/omicron_badge.png');
+}
+
+.char-stars {
+  display: flex;
+  gap: 1px;
+  margin-top: 4px;
+}
+
+.char-star {
+  width: 9px;
+  height: 9px;
+  background-image: url('../img/gear/star.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.char-star--inactive {
+  opacity: 0.25;
+  filter: grayscale(1);
+}
+
+.char-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--header);
+  border: 1px solid var(--border-strong);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 5;
+}
+
+.char-tile:hover .char-tooltip,
+.char-tile:focus .char-tooltip {
+  opacity: 1;
+}
+
+.result-tile .char-portrait {
+  border-color: var(--border-strong);
+}
+
+/* ---------- config page ---------- */
+
+.config-section {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.priority-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.priority-row input[list] { flex: 1; }
+.priority-row input[type="number"] { width: 90px; }
+
+.refresh-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* ---------- running ---------- */
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 3px solid var(--border-strong);
+  border-top-color: var(--accent);
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- stats table ---------- */
+
+.detail-section {
+  margin-top: 24px;
+}
+
+.stats-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted-2);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-table td {
+  padding: 7px 4px;
+  font-size: 13px;
+}
+
+.stat-name {
+  font-family: var(--sans);
+  color: var(--text-muted-2);
+  width: 40%;
+}
+
+.mod-contribution {
+  color: var(--accent);
+}
+
+/* ---------- mod sheet ---------- */
+
+.mod-sheet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 720px;
+}
+
+.mod-card {
+  --mod-tier: var(--modtier-grey);
+  background: var(--surface-2);
+  border: 1px solid var(--mod-tier);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+}
+
+.mod-card.is-empty {
+  border-style: dashed;
+  border-color: var(--border-strong);
+  opacity: 0.6;
+}
+
+.mod-card-shape {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+/* Real assets, three real layers (all captured off swgoh.gg's actual
+   rendered mod cards — see ui/extract_mod_icons.py):
+     1. mod-shape-fill  — the chrome body art itself. Verified by directly
+        comparing computed background-image across many real mod cards:
+        this ONLY varies by dots (5-dot-and-under vs 6-dot "max"), never by
+        tier — every tier at a given dot count showed byte-identical image
+        data. Two baked variants per shape, used as-is, no tinting.
+     2. mod-shape-outline — the thin rim mask, tier-colored. Confirmed
+        identical mask image across every tier/dots combo for a given
+        shape — only its color changes, and that IS tier-driven.
+     3. mod-set-icon — the set glyph, tier-colored, sized to sit inside the
+        shape-fill's own black cutout rather than spilling over it. */
+.mod-shape-fill {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.mod-shape-fill[data-slot="square"][data-variant="standard"] { background-image: url('../img/mods/shapes/square_standard.webp'); }
+.mod-shape-fill[data-slot="square"][data-variant="max"] { background-image: url('../img/mods/shapes/square_max.webp'); }
+.mod-shape-fill[data-slot="arrow"][data-variant="standard"] { background-image: url('../img/mods/shapes/arrow_standard.webp'); }
+.mod-shape-fill[data-slot="arrow"][data-variant="max"] { background-image: url('../img/mods/shapes/arrow_max.webp'); }
+.mod-shape-fill[data-slot="diamond"][data-variant="standard"] { background-image: url('../img/mods/shapes/diamond_standard.webp'); }
+.mod-shape-fill[data-slot="diamond"][data-variant="max"] { background-image: url('../img/mods/shapes/diamond_max.webp'); }
+.mod-shape-fill[data-slot="triangle"][data-variant="standard"] { background-image: url('../img/mods/shapes/triangle_standard.webp'); }
+.mod-shape-fill[data-slot="triangle"][data-variant="max"] { background-image: url('../img/mods/shapes/triangle_max.webp'); }
+.mod-shape-fill[data-slot="circle"][data-variant="standard"] { background-image: url('../img/mods/shapes/circle_standard.webp'); }
+.mod-shape-fill[data-slot="circle"][data-variant="max"] { background-image: url('../img/mods/shapes/circle_max.webp'); }
+.mod-shape-fill[data-slot="cross"][data-variant="standard"] { background-image: url('../img/mods/shapes/cross_standard.webp'); }
+.mod-shape-fill[data-slot="cross"][data-variant="max"] { background-image: url('../img/mods/shapes/cross_max.webp'); }
+
+.mod-shape-outline {
+  position: absolute;
+  inset: 0;
+  background-color: var(--mod-tier);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  opacity: 0.85;
+}
+
+.mod-shape-outline[data-slot="square"] { mask-image: url('../img/mods/shapes/square.webp'); -webkit-mask-image: url('../img/mods/shapes/square.webp'); }
+.mod-shape-outline[data-slot="arrow"] { mask-image: url('../img/mods/shapes/arrow.webp'); -webkit-mask-image: url('../img/mods/shapes/arrow.webp'); }
+.mod-shape-outline[data-slot="diamond"] { mask-image: url('../img/mods/shapes/diamond.webp'); -webkit-mask-image: url('../img/mods/shapes/diamond.webp'); }
+.mod-shape-outline[data-slot="triangle"] { mask-image: url('../img/mods/shapes/triangle.webp'); -webkit-mask-image: url('../img/mods/shapes/triangle.webp'); }
+.mod-shape-outline[data-slot="circle"] { mask-image: url('../img/mods/shapes/circle.webp'); -webkit-mask-image: url('../img/mods/shapes/circle.webp'); }
+.mod-shape-outline[data-slot="cross"] { mask-image: url('../img/mods/shapes/cross.webp'); -webkit-mask-image: url('../img/mods/shapes/cross.webp'); }
+
+/* Position/size per shape, not one-size-fits-all — the shape-fill art's
+   black cutout isn't centered in its own 90x90 canvas for every shape
+   (square and arrow both carry an asymmetric decorative flourish that
+   pulls their actual cutout hole up and to the right). Measured directly
+   off the real asset pixels (flood-filled the black region from the
+   image's own center, see the analysis behind this commit) rather than
+   eyeballing it — diamond/circle/cross were already close to centered,
+   square/arrow needed real correction. */
+.mod-set-icon {
+  position: absolute;
+  z-index: 2;
+  background-color: var(--mod-tier);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  transform: translate(-50%, -50%);
+}
+
+.mod-set-icon[data-slot="square"] { width: 36%; height: 36%; top: 42%; left: 58%; }
+.mod-set-icon[data-slot="arrow"] { width: 34%; height: 34%; top: 37%; left: 61%; }
+.mod-set-icon[data-slot="diamond"] { width: 42%; height: 42%; top: 50%; left: 49%; }
+.mod-set-icon[data-slot="triangle"] { width: 36%; height: 36%; top: 56%; left: 49%; }
+.mod-set-icon[data-slot="circle"] { width: 38%; height: 38%; top: 50%; left: 50%; }
+.mod-set-icon[data-slot="cross"] { width: 40%; height: 40%; top: 49%; left: 49%; }
+
+.mod-set-icon[data-set="health"] { mask-image: url('../img/mods/sets/health.webp'); -webkit-mask-image: url('../img/mods/sets/health.webp'); }
+.mod-set-icon[data-set="offense"] { mask-image: url('../img/mods/sets/offense.webp'); -webkit-mask-image: url('../img/mods/sets/offense.webp'); }
+.mod-set-icon[data-set="defense"] { mask-image: url('../img/mods/sets/defense.webp'); -webkit-mask-image: url('../img/mods/sets/defense.webp'); }
+.mod-set-icon[data-set="speed"] { mask-image: url('../img/mods/sets/speed.webp'); -webkit-mask-image: url('../img/mods/sets/speed.webp'); }
+.mod-set-icon[data-set="critical_damage"] { mask-image: url('../img/mods/sets/critical_damage.webp'); -webkit-mask-image: url('../img/mods/sets/critical_damage.webp'); }
+.mod-set-icon[data-set="critical_chance"] { mask-image: url('../img/mods/sets/critical_chance.webp'); -webkit-mask-image: url('../img/mods/sets/critical_chance.webp'); }
+.mod-set-icon[data-set="potency"] { mask-image: url('../img/mods/sets/potency.webp'); -webkit-mask-image: url('../img/mods/sets/potency.webp'); }
+.mod-set-icon[data-set="tenacity"] { mask-image: url('../img/mods/sets/tenacity.webp'); -webkit-mask-image: url('../img/mods/sets/tenacity.webp'); }
+
+.mod-card-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mod-card-name {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.mod-card-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.mod-set-badge {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.mod-dots {
+  color: var(--mod-tier);
+  letter-spacing: 1px;
+  font-size: 9px;
+}
+
+.mod-card-primary {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted-2);
+}
+
+.mod-card-secondaries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

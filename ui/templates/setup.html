@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Setup — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel narrow">
+  <h1>Pull your roster</h1>
+  <p class="muted">This fetches your equipped mods and gear levels via Comlink.</p>
+
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+  <form method="post" action="{{ url_for('setup') }}" class="stack">
+    <label class="field">
+      <span>Ally code</span>
+      <input type="text" name="ally_code" placeholder="123-456-789" autocomplete="off">
+    </label>
+    <button type="submit" class="btn btn-primary">Pull roster &amp; continue</button>
+  </form>
+
+  {% if has_existing_data %}
+  <form method="post" action="{{ url_for('setup') }}" class="stack" style="margin-top: 18px;">
+    <input type="hidden" name="use_existing" value="1">
+    <button type="submit" class="btn btn-secondary">Use existing pulled data instead</button>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}
