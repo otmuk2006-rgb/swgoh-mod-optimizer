@@ -1,10 +1,45 @@
+import hashlib
+import hmac as hmac_lib
 import os
 import subprocess
 import time
+from json import dumps
 
 from swgoh_comlink import SwgohComlink
+from swgoh_comlink._base import SwgohComlinkBase
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# swgoh_comlink's own _construct_request_headers signs an empty dict payload
+# (e.g. get_game_metadata() with no args, which sends payload={}) as if the
+# body were the JSON string "" — but the actual request body httpx sends for
+# a non-GET call is "{}" (see swgoh_comlink.py's `_request`, which always
+# sets request_kwargs["json"] = payload for non-GET, no truthiness check).
+# That mismatch makes Comlink's own HMAC check reject every request with a
+# legitimately-empty-but-present dict payload, even with fully correct
+# ACCESS_KEY/SECRET_KEY on both ends. Only line changed from upstream:
+# `if payload:` -> `if payload is not None:`, matching what's actually sent.
+def _patched_construct_request_headers(self, method, endpoint, payload=None):
+    req_headers = {}
+    if self.hmac:
+        req_time = str(int(time.time() * 1000))
+        req_headers = {"X-Date": f"{req_time}"}
+        hmac_obj = hmac_lib.new(key=self.secret_key.encode(), digestmod=hashlib.sha256)
+        hmac_obj.update(req_time.encode())
+        hmac_obj.update(method.upper().encode())
+        hmac_obj.update(f"/{endpoint}".encode())
+        if payload is not None:
+            payload_string = dumps(payload, separators=(",", ":"))
+        else:
+            payload_string = dumps("")
+        payload_hash_digest = hashlib.md5(payload_string.encode()).hexdigest()
+        hmac_obj.update(payload_hash_digest.encode())
+        hmac_digest = hmac_obj.hexdigest()
+        req_headers["Authorization"] = f"HMAC-SHA256 Credential={self.access_key},Signature={hmac_digest}"
+    return req_headers
+
+
+SwgohComlinkBase._construct_request_headers = _patched_construct_request_headers
 
 # Global reference/community data (character names & tags, mod weightings,
 # character priority, ...) — the same for every visitor, read-only at
