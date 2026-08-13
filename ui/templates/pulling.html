@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Pulling roster — Mod Optimiser{% endblock %}
+{% block content %}
+<div class="panel narrow center">
+  <div class="spinner" id="spinner" aria-hidden="true"></div>
+  <h1>Pulling your roster…</h1>
+  <p class="muted">Fetching your equipped mods and gear levels via Comlink, then computing gear/relic/stat data for your whole roster. Can take a little while for a large account.</p>
+  <p class="error" id="pull-error" hidden></p>
+</div>
+{% endblock %}
+{% block head %}
+<script>
+  function poll() {
+    fetch("{{ url_for('setup_status') }}")
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'done') {
+          window.location.href = "{{ url_for('select_characters') }}";
+          return;
+        }
+        if (data.status === 'error') {
+          document.getElementById('spinner').style.display = 'none';
+          const err = document.getElementById('pull-error');
+          err.hidden = false;
+          err.textContent = data.error || 'Unknown error.';
+          return;
+        }
+        setTimeout(poll, 1500);
+      });
+  }
+  poll();
+</script>
+{% endblock %}

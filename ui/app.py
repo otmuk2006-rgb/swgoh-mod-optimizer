@@ -105,6 +105,8 @@ def _new_session_state():
         'priority_overrides': {},
         'weight_overrides': {},
         'time_limit': DEFAULT_TIME_LIMIT,
+        'setup_status': 'idle',     # idle | pulling | done | error
+        'setup_error': None,
         'run_status': 'idle',       # idle | scoring | queued | solving | done | error
         'run_error': None,
         'assignments': {},
@@ -393,6 +395,52 @@ def index():
     return render_template('setup.html', has_existing_data=has_existing_data)
 
 
+def _finalize_selection_state(state, session_dir):
+    """Shared by both the fresh-pull and use-existing-data paths — resets
+    everything downstream of "which characters exist" so a re-setup
+    doesn't leave a stale selection/run behind from a previous pull."""
+    my_mods = load_my_mods(session_dir)
+    state['all_character_ids'] = sorted(set(m['character'] for m in my_mods))
+    state['selected_characters'] = set()
+    state['locked_characters'] = set()
+    state['priority_overrides'] = {}
+    state['weight_overrides'] = {}
+    state['run_status'] = 'idle'
+    state['run_error'] = None
+    state['assignments'] = {}
+
+
+def _pull_roster(state, session_dir, ally_code):
+    """Runs in a background thread — same reasoning as _run_solve: `state`
+    and `session_dir` are handed in directly rather than looked up by
+    session_id from inside the thread. This used to run synchronously
+    inside the /setup request itself (fetch mods + fetch gear + compute
+    stats for the whole roster, all before responding) — fine on a fast
+    local machine, but on a slower/free-tier deployment it was taking long
+    enough that the platform's own front-end proxy gave up and returned a
+    502 before the app ever got to respond, independent of anything our
+    own gunicorn timeout setting controls."""
+    try:
+        state['setup_status'] = 'pulling'
+        ensure_comlink_running()
+        fetch_user_mod_data(ally_code, session_dir=session_dir)
+        fetch_gear_levels(ally_code, session_dir=session_dir)
+        try:
+            build_character_progress(session_dir=session_dir, calc=get_stat_calc())
+        except Exception:
+            # Non-essential (drives gear/relic rings + sort stats only) —
+            # character_grid_data() already falls back gracefully via
+            # _DEFAULT_PROGRESS, so don't fail the whole pull over it.
+            print(f"Warning: build_character_progress failed:\n{traceback.format_exc()}")
+
+        state['ally_code'] = ally_code
+        _finalize_selection_state(state, session_dir)
+        state['setup_status'] = 'done'
+    except Exception as exc:
+        state['setup_error'] = f'{exc}\n{traceback.format_exc()}'
+        state['setup_status'] = 'error'
+
+
 @app.route('/setup', methods=['POST'])
 @limiter.limit('10 per minute')
 def setup():
@@ -403,41 +451,31 @@ def setup():
     _, processed_dir = session_paths(g.session_dir)
     mods_path = os.path.join(processed_dir, 'my_mods.json')
 
-    if not use_existing:
-        if not ally_code:
-            return render_template('setup.html', has_existing_data=os.path.exists(mods_path),
-                                    error='Enter an ally code, or choose to use existing data.')
-        if not ALLY_CODE_RE.match(ally_code):
-            return render_template('setup.html', has_existing_data=os.path.exists(mods_path),
-                                    error='Ally code should be 9 digits (e.g. 123456789).')
+    if use_existing:
+        if not os.path.exists(mods_path):
+            return render_template('setup.html', has_existing_data=False,
+                                    error='No mod data found yet — enter an ally code to pull your roster.')
+        _finalize_selection_state(state, g.session_dir)
+        return redirect(url_for('select_characters'))
 
-        ensure_comlink_running()
-        fetch_user_mod_data(ally_code, session_dir=g.session_dir)
-        fetch_gear_levels(ally_code, session_dir=g.session_dir)
-        try:
-            build_character_progress(session_dir=g.session_dir)
-        except Exception:
-            # Non-essential (drives gear/relic rings + sort stats only) —
-            # character_grid_data() already falls back gracefully via
-            # _DEFAULT_PROGRESS, so don't fail the whole setup over it.
-            print(f"Warning: build_character_progress failed:\n{traceback.format_exc()}")
-        state['ally_code'] = ally_code
+    if not ally_code:
+        return render_template('setup.html', has_existing_data=os.path.exists(mods_path),
+                                error='Enter an ally code, or choose to use existing data.')
+    if not ALLY_CODE_RE.match(ally_code):
+        return render_template('setup.html', has_existing_data=os.path.exists(mods_path),
+                                error='Ally code should be 9 digits (e.g. 123456789).')
 
-    if not os.path.exists(mods_path):
-        return render_template('setup.html', has_existing_data=False,
-                                error='No mod data found yet — enter an ally code to pull your roster.')
+    state['setup_status'] = 'pulling'
+    state['setup_error'] = None
+    thread = threading.Thread(target=_pull_roster, args=(state, g.session_dir, ally_code), daemon=True)
+    thread.start()
+    return render_template('pulling.html')
 
-    my_mods = load_my_mods(g.session_dir)
-    state['all_character_ids'] = sorted(set(m['character'] for m in my_mods))
-    state['selected_characters'] = set()
-    state['locked_characters'] = set()
-    state['priority_overrides'] = {}
-    state['weight_overrides'] = {}
-    state['run_status'] = 'idle'
-    state['run_error'] = None
-    state['assignments'] = {}
 
-    return redirect(url_for('select_characters'))
+@app.route('/setup/status')
+def setup_status():
+    state = g.state
+    return jsonify({'status': state['setup_status'], 'error': state['setup_error']})
 
 
 # ---------- 2. character selection ----------

@@ -84,7 +84,13 @@ def count_zetas_omicrons(unit_skills, skill_defs):
     return zeta_count, omicron_count
 
 
-def build_character_progress(session_dir=None):
+def build_character_progress(session_dir=None, calc=None):
+    """calc: an existing StatCalc instance to reuse, if the caller already
+    has one (see ui/app.py's get_stat_calc()) — StatCalc fetches game data
+    over the network on construction, so building a fresh one per visitor
+    per request is wasteful and, under a memory-constrained deployment, a
+    real risk. Falls back to constructing its own when run standalone
+    (the CLI entry point / this file's own __main__ block)."""
     raw_dir, processed_dir = session_paths(session_dir)
     roster_path = os.path.join(raw_dir, 'my_roster.json')
     save_path = os.path.join(processed_dir, 'character_progress.json')
@@ -94,7 +100,7 @@ def build_character_progress(session_dir=None):
     roster = data['rosterUnit'] if 'rosterUnit' in data else data
 
     alignment_map, skill_defs = fetch_reference_data()
-    calc = StatCalc()
+    calc = calc or StatCalc()
 
     progress = {}
     failed = 0
