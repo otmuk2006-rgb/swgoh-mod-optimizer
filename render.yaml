@@ -35,11 +35,18 @@ services:
     startCommand: gunicorn --workers 1 --worker-class gthread --threads 8 --timeout 120 --bind 0.0.0.0:$PORT ui.app:app
     healthCheckPath: /healthz
     envVars:
+      # Comlink's own private-network address (via fromService/hostport)
+      # was unreachable from this service in practice — confirmed Comlink
+      # itself was healthy and responding instantly on its public URL at
+      # the same time private-network calls to it were timing out, with no
+      # way to inspect further without shell access to either container.
+      # Pointing at the public URL directly instead, verified working.
+      # Trade-off: this hardcodes Comlink's current Render-assigned
+      # hostname (the "-a09o" suffix), so it'll need updating here if that
+      # service is ever deleted and recreated (a fresh service gets a new
+      # random suffix) — accepted for now since it's what actually works.
       - key: COMLINK_URL
-        fromService:
-          name: swgoh-comlink
-          type: web
-          property: hostport
+        value: https://swgoh-comlink-a09o.onrender.com
       - key: ACCESS_KEY
         sync: false
       - key: SECRET_KEY
