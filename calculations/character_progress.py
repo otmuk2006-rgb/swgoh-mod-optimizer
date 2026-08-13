@@ -19,9 +19,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import copy
 import json
-import time
 import traceback
-from utils import ensure_comlink_running, get_comlink_client, session_paths
+from utils import ensure_comlink_running, get_comlink_client, session_paths, GLOBAL_DATA_DIR
 from swgoh_comlink import StatCalc
 
 ALIGNMENT_NAMES = {1: 'neutral', 2: 'light', 3: 'dark'}
@@ -40,9 +39,9 @@ def _relic_raw_tier(unit):
     return relic.get('currentTier', 0) if relic else 0
 
 
+REFERENCE_DATA_PATH = os.path.join(GLOBAL_DATA_DIR, 'reference_data.json')
+
 _reference_data_cache = None
-_reference_data_failed_at = None
-_REFERENCE_DATA_RETRY_COOLDOWN = 900  # seconds
 
 
 def fetch_reference_data():
@@ -52,37 +51,33 @@ def fetch_reference_data():
     tell whether a character's *current* tier on a given skill is a zeta or
     omicron tier (see count_zetas_omicrons).
 
-    Cached at process level: this is the single heaviest Comlink call in
-    the whole app (fetches the entire game database), but its result is
-    identical for every visitor. Re-running it on every single /setup pull
-    was hammering the free-tier Comlink instance for no reason and made
-    every pull that much more likely to hit a slow/cold Comlink response.
-
-    Also caches a *failure* for _REFERENCE_DATA_RETRY_COOLDOWN — this call
-    has been observed to reliably 502 on the free-tier Comlink instance
-    (it appears too memory-constrained to build a response this large,
-    even at the smallest size Comlink's own API allows requesting). Without
-    this, every visitor's pull would independently re-attempt and re-fail
-    the same ~40s doomed request. build_character_progress() treats a
-    raised exception here as non-fatal (see its own try/except), so
-    callers always get real level/gear/power/stats data regardless —
-    this only affects the alignment badge and zeta/omicron counts."""
-    global _reference_data_cache, _reference_data_failed_at
+    Loads from the committed data/processed/reference_data.json rather than
+    calling Comlink live — this is community data, identical for every
+    visitor, so it belongs in the same offline-refresh-then-commit pipeline
+    as character_priority.json/mod_weightings.json (see refresh_reference_data
+    below), not fetched per pull. It also has to work this way: Comlink's
+    get_game_data() call needed to build this is the single heaviest call
+    in the whole app (the full game database — 11k+ units, ~2k skills) and
+    has been confirmed to reliably 502 on a memory-constrained free-tier
+    Comlink instance even at the smallest size Comlink's own API allows
+    requesting, while succeeding fine (30s) against a normal machine's
+    local Comlink. Cached at process level since the file never changes
+    within a process's lifetime."""
+    global _reference_data_cache
     if _reference_data_cache is not None:
         return _reference_data_cache
-    if _reference_data_failed_at is not None and time.time() - _reference_data_failed_at < _REFERENCE_DATA_RETRY_COOLDOWN:
-        raise RuntimeError('Skipping fetch_reference_data — recent attempt failed, still in cooldown')
-
-    try:
-        _fetch_reference_data_uncached()
-    except Exception:
-        _reference_data_failed_at = time.time()
-        raise
+    with open(REFERENCE_DATA_PATH) as f:
+        data = json.load(f)
+    _reference_data_cache = (data['alignment_map'], data['skill_defs'])
     return _reference_data_cache
 
 
-def _fetch_reference_data_uncached():
-    global _reference_data_cache
+def refresh_reference_data():
+    """Offline-only: re-fetch alignment/skill data from Comlink and
+    overwrite reference_data.json. Run this periodically on a normal
+    machine (plenty of memory for Comlink to build the full response) and
+    commit + redeploy the result — never call this from the deployed app
+    itself. Same pattern as the offline mod-weightings/priority refresh."""
     ensure_comlink_running()
     comlink = get_comlink_client()
     meta = comlink.get_game_metadata()
@@ -91,7 +86,11 @@ def _fetch_reference_data_uncached():
     )
     alignment_map = {u['baseId']: u.get('forceAlignment', 1) for u in game_data['units'] if u.get('baseId')}
     skill_defs = {s['id']: s for s in game_data.get('skill', []) if s.get('id')}
+    with open(REFERENCE_DATA_PATH, 'w') as f:
+        json.dump({'game_version': meta['latestGamedataVersion'], 'alignment_map': alignment_map, 'skill_defs': skill_defs}, f)
+    global _reference_data_cache
     _reference_data_cache = (alignment_map, skill_defs)
+    print(f'Saved reference data ({len(alignment_map)} units, {len(skill_defs)} skills) to {REFERENCE_DATA_PATH}')
     return _reference_data_cache
 
 
@@ -197,4 +196,7 @@ def build_character_progress(session_dir=None, calc=None):
 
 
 if __name__ == '__main__':
-    build_character_progress()
+    if '--refresh-reference-data' in sys.argv:
+        refresh_reference_data()
+    else:
+        build_character_progress()
