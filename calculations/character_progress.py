@@ -19,6 +19,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import copy
 import json
+import time
+import traceback
 from utils import ensure_comlink_running, get_comlink_client, session_paths
 from swgoh_comlink import StatCalc
 
@@ -38,12 +40,49 @@ def _relic_raw_tier(unit):
     return relic.get('currentTier', 0) if relic else 0
 
 
+_reference_data_cache = None
+_reference_data_failed_at = None
+_REFERENCE_DATA_RETRY_COOLDOWN = 900  # seconds
+
+
 def fetch_reference_data():
     """(alignment_map, skill_defs) — static game data, same for every
     player. alignment_map: char_id -> forceAlignment (1=neutral, 2=light,
     3=dark). skill_defs: skill id -> its full tier definition list, used to
     tell whether a character's *current* tier on a given skill is a zeta or
-    omicron tier (see count_zetas_omicrons)."""
+    omicron tier (see count_zetas_omicrons).
+
+    Cached at process level: this is the single heaviest Comlink call in
+    the whole app (fetches the entire game database), but its result is
+    identical for every visitor. Re-running it on every single /setup pull
+    was hammering the free-tier Comlink instance for no reason and made
+    every pull that much more likely to hit a slow/cold Comlink response.
+
+    Also caches a *failure* for _REFERENCE_DATA_RETRY_COOLDOWN — this call
+    has been observed to reliably 502 on the free-tier Comlink instance
+    (it appears too memory-constrained to build a response this large,
+    even at the smallest size Comlink's own API allows requesting). Without
+    this, every visitor's pull would independently re-attempt and re-fail
+    the same ~40s doomed request. build_character_progress() treats a
+    raised exception here as non-fatal (see its own try/except), so
+    callers always get real level/gear/power/stats data regardless —
+    this only affects the alignment badge and zeta/omicron counts."""
+    global _reference_data_cache, _reference_data_failed_at
+    if _reference_data_cache is not None:
+        return _reference_data_cache
+    if _reference_data_failed_at is not None and time.time() - _reference_data_failed_at < _REFERENCE_DATA_RETRY_COOLDOWN:
+        raise RuntimeError('Skipping fetch_reference_data — recent attempt failed, still in cooldown')
+
+    try:
+        _fetch_reference_data_uncached()
+    except Exception:
+        _reference_data_failed_at = time.time()
+        raise
+    return _reference_data_cache
+
+
+def _fetch_reference_data_uncached():
+    global _reference_data_cache
     ensure_comlink_running()
     comlink = get_comlink_client()
     meta = comlink.get_game_metadata()
@@ -52,7 +91,8 @@ def fetch_reference_data():
     )
     alignment_map = {u['baseId']: u.get('forceAlignment', 1) for u in game_data['units'] if u.get('baseId')}
     skill_defs = {s['id']: s for s in game_data.get('skill', []) if s.get('id')}
-    return alignment_map, skill_defs
+    _reference_data_cache = (alignment_map, skill_defs)
+    return _reference_data_cache
 
 
 def count_zetas_omicrons(unit_skills, skill_defs):
@@ -99,7 +139,21 @@ def build_character_progress(session_dir=None, calc=None):
         data = json.load(f)
     roster = data['rosterUnit'] if 'rosterUnit' in data else data
 
-    alignment_map, skill_defs = fetch_reference_data()
+    # alignment_map/skill_defs only drive the alignment badge and
+    # zeta/omicron counts below — everything else in this function (level,
+    # gear, rarity, relic, power, stats) comes from the roster data and
+    # StatCalc, both already fetched successfully by this point. Comlink's
+    # /data endpoint is by far the heaviest call this app makes and the
+    # free-tier Comlink container has been observed to 502/crash on it
+    # even at its smallest allowed size — letting that failure propagate
+    # used to abort this whole function before a single character got
+    # processed, which is why every character fell back to the "unknown"
+    # defaults (level 1, etc.) instead of just missing alignment/zeta data.
+    try:
+        alignment_map, skill_defs = fetch_reference_data()
+    except Exception:
+        print(f"Warning: fetch_reference_data failed, alignment/zeta data will be unavailable this pull:\n{traceback.format_exc()}")
+        alignment_map, skill_defs = {}, {}
     calc = calc or StatCalc()
 
     progress = {}

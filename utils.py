@@ -111,7 +111,7 @@ def _comlink_is_up():
         return False
 
 
-def ensure_comlink_running(timeout=20):
+def ensure_comlink_running(timeout=60):
     """Make sure Comlink is reachable at COMLINK_URL.
 
     Locally on Windows, if it's not up yet, auto-start the bundled .exe via
@@ -119,7 +119,15 @@ def ensure_comlink_running(timeout=20):
     machine. Anywhere else (production, Linux, containers), Comlink is a
     separately-managed always-on sibling service; there's nothing local to
     start, so just wait and fail with a clear message if it never comes up
-    rather than trying to spawn a Windows batch file that can't exist there."""
+    rather than trying to spawn a Windows batch file that can't exist there.
+
+    timeout defaults to 60s, not a few seconds — Render's free tier spins
+    a service down after ~15 minutes idle, and waking it back up has been
+    observed taking 40-60s+ with several 502s along the way before it
+    starts responding normally. This only costs real wall-clock time on
+    the already-backgrounded /setup pull (polled from the browser), not a
+    synchronous request, so there's no proxy-timeout tradeoff to worry
+    about here."""
     if _comlink_is_up():
         return
 
