@@ -50,6 +50,9 @@ def get_comlink_client():
     return SwgohComlink(url=COMLINK_URL)
 
 
+_last_comlink_error = None
+
+
 def _comlink_is_up():
     """Must go through get_comlink_client(), not a raw httpx call — once
     ACCESS_KEY/SECRET_KEY are set (see render.yaml), Comlink requires every
@@ -57,11 +60,19 @@ def _comlink_is_up():
     ping gets rejected same as any other unsigned request, which made this
     always report "down" in production even with Comlink perfectly
     healthy — ensure_comlink_running() would then wait out its full
-    timeout and raise, turning into a 500 on every /setup."""
+    timeout and raise, turning into a 500 on every /setup.
+
+    Stashes the actual exception in _last_comlink_error — swallowing it
+    entirely (just returning False) made every failure mode look
+    identical from the outside ("not reachable"), whether the real cause
+    was DNS, a timeout, an HTTP error status, or a signature rejection.
+    ensure_comlink_running() surfaces this in its own error message."""
+    global _last_comlink_error
     try:
         get_comlink_client().get_game_metadata()
         return True
-    except Exception:
+    except Exception as exc:
+        _last_comlink_error = f'{type(exc).__name__}: {exc}'
         return False
 
 
@@ -91,6 +102,7 @@ def ensure_comlink_running(timeout=20):
         time.sleep(0.5)
 
     raise RuntimeError(
-        f"Comlink not reachable at {COMLINK_URL} after {timeout}s. "
+        f"Comlink not reachable at {COMLINK_URL} after {timeout}s "
+        f"(last error: {_last_comlink_error}). "
         "If this is a production deploy, check the Comlink service is running and COMLINK_URL is set correctly."
     )
