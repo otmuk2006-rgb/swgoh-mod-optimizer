@@ -1,12 +1,17 @@
 services:
-  # Game-data microservice (github.com/swgoh-utils/swgoh-comlink). Private —
-  # not exposed to the public internet, only reachable by the web service
-  # below over Render's private network. See utils.py / ui/extract_mod_icons.py
-  # provenance notes for why this exists separately from the app.
+  # Game-data microservice (github.com/swgoh-utils/swgoh-comlink). Render
+  # has no free tier for private services (type: pserv) — only the "web"
+  # type does — so this is a public web service instead. Still locked down:
+  # ACCESS_KEY/SECRET_KEY below turn on Comlink's own HMAC request signing
+  # (confirmed in its docs — request signing is enforced once these are
+  # set, not just advisory), so a request without a valid signature gets
+  # rejected regardless of who sends it. Our own app's calls to it are
+  # signed automatically by the swgoh_comlink pip client whenever these
+  # same two env vars are present (see utils.get_comlink_client()).
   - name: swgoh-comlink
-    type: pserv
+    type: web
     runtime: image
-    plan: starter
+    plan: free
     image:
       url: ghcr.io/swgoh-utils/swgoh-comlink:latest
     envVars:
@@ -31,7 +36,7 @@ services:
       - key: COMLINK_URL
         fromService:
           name: swgoh-comlink
-          type: pserv
+          type: web
           property: hostport
       - key: ACCESS_KEY
         sync: false
