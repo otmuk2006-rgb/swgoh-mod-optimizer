@@ -17,6 +17,8 @@ services:
     envVars:
       - key: PORT
         value: "3000"
+      - key: APP_NAME
+        value: swgoh-mod-optimizer
       - key: ACCESS_KEY
         sync: false
       - key: SECRET_KEY
