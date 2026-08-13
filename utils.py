@@ -2,7 +2,6 @@ import os
 import subprocess
 import time
 
-import httpx
 from swgoh_comlink import SwgohComlink
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -52,10 +51,17 @@ def get_comlink_client():
 
 
 def _comlink_is_up():
+    """Must go through get_comlink_client(), not a raw httpx call — once
+    ACCESS_KEY/SECRET_KEY are set (see render.yaml), Comlink requires every
+    request to be HMAC-signed, including this health check. An unsigned
+    ping gets rejected same as any other unsigned request, which made this
+    always report "down" in production even with Comlink perfectly
+    healthy — ensure_comlink_running() would then wait out its full
+    timeout and raise, turning into a 500 on every /setup."""
     try:
-        resp = httpx.post(f"{COMLINK_URL}/metadata", json={}, timeout=2)
-        return resp.status_code == 200
-    except httpx.HTTPError:
+        get_comlink_client().get_game_metadata()
+        return True
+    except Exception:
         return False
 
 
