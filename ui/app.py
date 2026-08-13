@@ -130,7 +130,7 @@ def _evict_stale_sessions():
 
 @app.before_request
 def _load_session():
-    if request.path == '/healthz':
+    if request.path in ('/healthz', '/robots.txt'):
         return
     sid = request.cookies.get(SESSION_COOKIE_NAME)
     is_new = not sid
@@ -166,6 +166,16 @@ def healthz():
     rendering can all be broken without this failing, so the host's health
     check isn't coupled to any of that."""
     return 'ok', 200
+
+
+@app.route('/robots.txt')
+def robots_txt():
+    """Not meant to show up in search results — shareable-by-link only.
+    Belt-and-suspenders alongside the <meta name="robots"> tag in
+    base.html: some crawlers check robots.txt before ever requesting a
+    page, so this stops the very first request rather than relying on
+    them reading the page first."""
+    return 'User-agent: *\nDisallow: /\n', 200, {'Content-Type': 'text/plain'}
 
 
 _stat_calc = None
