@@ -86,6 +86,11 @@ code {
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--text-muted);
+  text-decoration: none;
+}
+
+a.step:hover {
+  color: var(--text-muted-2);
 }
 
 .step.active {

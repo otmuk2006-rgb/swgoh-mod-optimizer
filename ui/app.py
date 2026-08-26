@@ -396,13 +396,38 @@ def build_stat_rows(stats):
     return rows
 
 
+# ---------- nav ----------
+# The step indicator in base.html doubles as breadcrumb navigation — but
+# only back to steps this session has actually already reached, never
+# ahead of where the visitor currently is (e.g. no jumping straight from
+# Select to Run and silently skipping Config's settings).
+
+@app.context_processor
+def inject_nav_steps():
+    state = getattr(g, 'state', None)
+    if state is None:
+        return {}
+
+    steps = [
+        ('setup', '1. Setup', 'index', True),
+        ('select', '2. Select', 'select_characters', bool(state.get('all_character_ids'))),
+        ('config', '3. Config', 'config', bool(state.get('selected_characters'))),
+        ('run', '4. Run', 'run', state.get('run_status', 'idle') != 'idle'),
+        ('results', '5. Results', 'results', state.get('run_status') == 'done'),
+    ]
+    return {'nav_steps': [
+        {'key': key, 'label': label, 'url': url_for(endpoint), 'enabled': enabled}
+        for key, label, endpoint, enabled in steps
+    ]}
+
+
 # ---------- 1. setup ----------
 
 @app.route('/')
 def index():
     _, processed_dir = session_paths(g.session_dir)
     has_existing_data = os.path.exists(os.path.join(processed_dir, 'my_mods.json'))
-    return render_template('setup.html', has_existing_data=has_existing_data)
+    return render_template('setup.html', has_existing_data=has_existing_data, step='setup')
 
 
 def _finalize_selection_state(state, session_dir):
@@ -463,23 +488,23 @@ def setup():
 
     if use_existing:
         if not os.path.exists(mods_path):
-            return render_template('setup.html', has_existing_data=False,
+            return render_template('setup.html', has_existing_data=False, step='setup',
                                     error='No mod data found yet — enter an ally code to pull your roster.')
         _finalize_selection_state(state, g.session_dir)
         return redirect(url_for('select_characters'))
 
     if not ally_code:
-        return render_template('setup.html', has_existing_data=os.path.exists(mods_path),
+        return render_template('setup.html', has_existing_data=os.path.exists(mods_path), step='setup',
                                 error='Enter an ally code, or choose to use existing data.')
     if not ALLY_CODE_RE.match(ally_code):
-        return render_template('setup.html', has_existing_data=os.path.exists(mods_path),
+        return render_template('setup.html', has_existing_data=os.path.exists(mods_path), step='setup',
                                 error='Ally code should be 9 digits (e.g. 123456789).')
 
     state['setup_status'] = 'pulling'
     state['setup_error'] = None
     thread = threading.Thread(target=_pull_roster, args=(state, g.session_dir, ally_code), daemon=True)
     thread.start()
-    return render_template('pulling.html')
+    return render_template('pulling.html', step='setup')
 
 
 @app.route('/setup/status')
@@ -511,7 +536,8 @@ def select_characters():
             chars = character_grid_data(state['all_character_ids'], g.session_dir, names)
             _, all_tags = load_character_tags()
             return render_template('select_characters.html', characters=chars, error='Select at least one character.',
-                                    selected=selected, locked=locked, sort_options=SORT_OPTIONS, all_tags=all_tags)
+                                    selected=selected, locked=locked, sort_options=SORT_OPTIONS, all_tags=all_tags,
+                                    step='select')
 
         state['selected_characters'] = selected
         state['locked_characters'] = locked
@@ -522,7 +548,7 @@ def select_characters():
     _, all_tags = load_character_tags()
     return render_template('select_characters.html', characters=chars, error=None,
                             selected=state['selected_characters'], locked=state['locked_characters'],
-                            sort_options=SORT_OPTIONS, all_tags=all_tags)
+                            sort_options=SORT_OPTIONS, all_tags=all_tags, step='select')
 
 
 # ---------- 3. weighting / priority config ----------
@@ -555,7 +581,7 @@ def config():
             except (json.JSONDecodeError, UnicodeDecodeError):
                 return render_template('config.html', characters=selected_chars,
                                         error='Weight override file is not valid JSON.',
-                                        admin_refresh_enabled=ADMIN_REFRESH_ENABLED)
+                                        admin_refresh_enabled=ADMIN_REFRESH_ENABLED, step='config')
 
         try:
             time_limit = int(request.form.get('time_limit') or DEFAULT_TIME_LIMIT)
@@ -574,7 +600,7 @@ def config():
         return redirect(url_for('run'))
 
     return render_template('config.html', characters=selected_chars, error=None,
-                            admin_refresh_enabled=ADMIN_REFRESH_ENABLED)
+                            admin_refresh_enabled=ADMIN_REFRESH_ENABLED, step='config')
 
 
 # ---------- 3b. refresh data-driven sources ----------
@@ -702,7 +728,7 @@ def run():
         thread = threading.Thread(target=_run_solve, args=(state, g.session_dir), daemon=True)
         thread.start()
 
-    return render_template('running.html')
+    return render_template('running.html', step='run')
 
 
 @app.route('/run/status')
@@ -737,7 +763,7 @@ def results():
         print(f"Warning: compute_average_mod_fit failed:\n{traceback.format_exc()}")
         mod_fit = None
 
-    return render_template('results.html', characters=chars, mod_fit=mod_fit)
+    return render_template('results.html', characters=chars, mod_fit=mod_fit, step='results')
 
 
 @app.route('/results/<char_id>')
@@ -756,7 +782,7 @@ def character_detail(char_id):
 
     if unit is None:
         return render_template('character_detail.html', name=display_name(char_id, names),
-                                char_id=char_id, stat_rows=None, mods=[],
+                                char_id=char_id, stat_rows=None, mods=[], step='results',
                                 error='No roster data found for this character (stale roster pull?).')
 
     calc = get_stat_calc()
@@ -775,7 +801,7 @@ def character_detail(char_id):
                  for slot in SLOT_ORDER]
 
     return render_template('character_detail.html', name=display_name(char_id, names),
-                            char_id=char_id, stat_rows=stat_rows, mods=mod_cards, error=None)
+                            char_id=char_id, stat_rows=stat_rows, mods=mod_cards, error=None, step='results')
 
 
 if __name__ == '__main__':
