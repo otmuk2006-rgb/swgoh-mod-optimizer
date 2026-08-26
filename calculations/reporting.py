@@ -6,8 +6,15 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import json
 import copy
+import math
 from swgoh_comlink import StatCalc
-from utils import session_paths
+from utils import session_paths, GLOBAL_DATA_DIR
+from calculations.mod_weightings import sum_account_character_mods
+
+# global/community reference data — same for every visitor
+WEIGHTINGS_PATH = os.path.join(GLOBAL_DATA_DIR, 'mod_weightings.json')
+MAX_OBSERVED_PATH = os.path.join(GLOBAL_DATA_DIR, 'max_observed_stats.json')
+BASE_SPEED_PATH = os.path.join(GLOBAL_DATA_DIR, 'base_speed.json')
 
 
 # ---------- roster / mod lookups ----------
@@ -95,6 +102,100 @@ def build_mod_transfer_report(session_dir=None):
             transfers[new_char]['gained'].append({**mod_summary, 'from': old_char})
 
     return transfers
+
+
+# ---------- mod fit (cosine similarity) ----------
+#
+# How well a character's mod set (their own summed stats, including any
+# completed set bonus) fits that character's weightings W_j — a measure of
+# "right shape", independent of magnitude. Not used to drive the ILP (see
+# optimiser/solver.py's own docs for why a whole-set cosine objective isn't
+# linear), only to evaluate an already-decided assignment before vs after.
+
+def cosine_similarity(vec_a, vec_b):
+    keys = set(vec_a) | set(vec_b)
+    dot = sum(vec_a.get(k, 0) * vec_b.get(k, 0) for k in keys)
+    norm_a = math.sqrt(sum(v * v for v in vec_a.values()))
+    norm_b = math.sqrt(sum(v * v for v in vec_b.values()))
+    if norm_a == 0 or norm_b == 0:
+        return 0.0
+    return dot / (norm_a * norm_b)
+
+
+def compute_character_fit(mod_ids, mods_by_id, base_speed, W_j, max_observed):
+    """Cosine similarity between one character's total mod-contributed
+    stat vector (their given mod_ids, summed, plus any completed set
+    bonus — same mechanic as mod_weightings.sum_account_character_mods)
+    and their own weight vector W_j. Both must be normalised onto the
+    same basis for the comparison to mean anything — max_observed is the
+    exact same per-stat denominator mod_weightings.py used to build W_j
+    in the first place, so this stays consistent with however W_j was
+    last built."""
+    mods = [mods_by_id[mid] for mid in mod_ids if mid in mods_by_id]
+    totals = sum_account_character_mods(mods, base_speed)
+
+    stat_vector = {}
+    for stat, val in totals.items():
+        denom = max_observed.get(stat)
+        if denom:
+            stat_vector[stat] = val / denom
+
+    return cosine_similarity(stat_vector, W_j)
+
+
+def compute_average_mod_fit(session_dir=None):
+    """{'per_character': {char_id: {'before': x, 'after': y}, ...},
+    'average_before': x, 'average_after': y} across every character in
+    the run — characters with no weightings entry (unmodded/unranked
+    characters) are skipped entirely rather than counted as a 0."""
+    _, processed_dir = session_paths(session_dir)
+
+    with open(os.path.join(processed_dir, 'my_mods.json')) as f:
+        old_mods = json.load(f)
+    mods_by_id = {m['mod_id']: m for m in old_mods}
+
+    old_mod_ids_by_char = {}
+    for m in old_mods:
+        old_mod_ids_by_char.setdefault(m['character'], []).append(m['mod_id'])
+
+    new_assignment, selected_characters = load_assignment(session_dir)
+
+    with open(WEIGHTINGS_PATH) as f:
+        weightings = json.load(f)
+    with open(MAX_OBSERVED_PATH) as f:
+        max_observed = json.load(f)
+    with open(BASE_SPEED_PATH) as f:
+        base_speeds = json.load(f)
+
+    per_character = {}
+    for char_id in selected_characters:
+        char_weights_entry = weightings.get(char_id)
+        if not char_weights_entry:
+            continue
+        W_j = char_weights_entry.get('raw_weights', {})
+        if not W_j:
+            continue
+
+        base_speed = base_speeds.get(char_id)
+        before = compute_character_fit(
+            old_mod_ids_by_char.get(char_id, []), mods_by_id, base_speed, W_j, max_observed
+        )
+        after = compute_character_fit(
+            new_assignment.get(char_id, []), mods_by_id, base_speed, W_j, max_observed
+        )
+        per_character[char_id] = {'before': before, 'after': after}
+
+    if not per_character:
+        return {'per_character': {}, 'average_before': None, 'average_after': None}
+
+    average_before = sum(v['before'] for v in per_character.values()) / len(per_character)
+    average_after = sum(v['after'] for v in per_character.values()) / len(per_character)
+
+    return {
+        'per_character': per_character,
+        'average_before': average_before,
+        'average_after': average_after,
+    }
 
 
 # ---------- stat calculation ----------

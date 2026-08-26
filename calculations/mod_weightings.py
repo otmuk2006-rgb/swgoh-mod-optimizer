@@ -6,9 +6,9 @@ import json
 from collections import defaultdict
 
 MODS_PATH = 'data/processed/top250_mods.json'
-MAX_STATS_PATH = 'data/processed/max_possible_stats.json'
 BASE_SPEED_PATH = 'data/processed/base_speed.json'
 SAVE_PATH = 'data/processed/mod_weightings.json'
+MAX_OBSERVED_SAVE_PATH = 'data/processed/max_observed_stats.json'
 
 # set bonus values in percentage-point form (matches decode_stat's units)
 SET_BONUS_FULL = {
@@ -75,17 +75,22 @@ def sum_account_character_mods(mods, base_speed):
 
 
 def build_mod_weightings():
+    """Character stat weightings W_j, normalised against the highest
+    average actually observed across all characters in the top-250 sample
+    for that stat — not a theoretical per-mod ceiling. This means the
+    character with the single highest average for a given stat always
+    weights exactly 1.0 on it, and every other character's weight for that
+    stat is relative to that real, achieved benchmark rather than an
+    abstract "if every mod rolled max" number that's rarely representative
+    of what a real loadout looks like. Also saves that per-stat max as
+    max_observed_stats.json, since anything comparing a mod set's own
+    stats against W_j (e.g. the before/after fit report) needs to
+    normalise onto this same basis to stay in the same units."""
     with open(MODS_PATH) as f:
         all_mods = json.load(f)
 
-    with open(MAX_STATS_PATH) as f:
-        max_stats = json.load(f)
-
     with open(BASE_SPEED_PATH) as f:
         base_speeds = json.load(f)
-
-    non_speed_max = max_stats['non_speed_max']
-    speed_max_per_char = max_stats['speed_max_per_character']
 
     grouped = defaultdict(list)
     for mod in all_mods:
@@ -101,23 +106,28 @@ def build_mod_weightings():
     for (player_id, character), totals in account_totals.items():
         char_accumulator[character].append(totals)
 
-    W = {}
+    avg_totals_by_char = {}
     for character, totals_list in char_accumulator.items():
         n = len(totals_list)
         avg_totals = defaultdict(float)
         for totals in totals_list:
             for stat, val in totals.items():
                 avg_totals[stat] += val / n
+        avg_totals_by_char[character] = (dict(avg_totals), n)
 
+    max_observed = defaultdict(float)
+    for character, (avg_totals, _n) in avg_totals_by_char.items():
+        for stat, val in avg_totals.items():
+            if val > max_observed[stat]:
+                max_observed[stat] = val
+
+    W = {}
+    for character, (avg_totals, n) in avg_totals_by_char.items():
         weights = {}
         for stat, avg_val in avg_totals.items():
-            if stat == 'speed':
-                max_val = speed_max_per_char.get(character)
-            else:
-                max_val = non_speed_max.get(stat)
-
-            if max_val:
-                weights[stat] = avg_val / max_val
+            denom = max_observed.get(stat)
+            if denom:
+                weights[stat] = avg_val / denom
 
         W[character] = {
             'raw_weights': weights,
@@ -126,8 +136,12 @@ def build_mod_weightings():
 
     with open(SAVE_PATH, 'w') as f:
         json.dump(W, f, indent=2)
-
     print(f"Built weightings for {len(W)} characters")
+
+    with open(MAX_OBSERVED_SAVE_PATH, 'w') as f:
+        json.dump(dict(max_observed), f, indent=2)
+    print(f"Saved max observed stats to {MAX_OBSERVED_SAVE_PATH}")
+
     return W
 
 

@@ -24,7 +24,7 @@ from calculations.mod_score import build_mod_scores
 from optimiser.solver import solve
 from calculations.reporting import (
     load_raw_roster, build_unit_lookup, build_raw_mod_lookup,
-    build_character_stat_report, load_assignment,
+    build_character_stat_report, load_assignment, compute_average_mod_fit,
 )
 from swgoh_comlink import StatCalc
 
@@ -731,7 +731,13 @@ def results():
     for c in chars:
         c['mod_count'] = mod_counts[c['id']]
 
-    return render_template('results.html', characters=chars)
+    try:
+        mod_fit = compute_average_mod_fit(g.session_dir)
+    except Exception:
+        print(f"Warning: compute_average_mod_fit failed:\n{traceback.format_exc()}")
+        mod_fit = None
+
+    return render_template('results.html', characters=chars, mod_fit=mod_fit)
 
 
 @app.route('/results/<char_id>')

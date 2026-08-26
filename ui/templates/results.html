@@ -6,6 +6,13 @@
   <h1>Results</h1>
   <p class="muted">{{ characters | length }} characters received an assignment. Click one for the full breakdown.</p>
 
+  {% if mod_fit and mod_fit.average_before is not none %}
+  <p class="muted">
+    Average mod fit (how closely each character's mods match their ideal stat weighting):
+    {{ (mod_fit.average_before * 100) | round(1) }}% &rarr; {{ (mod_fit.average_after * 100) | round(1) }}%
+  </p>
+  {% endif %}
+
   <div class="toolbar">
     <a href="{{ url_for('select_characters') }}" class="btn btn-secondary">Remod / change selection</a>
   </div>
