@@ -167,8 +167,19 @@ def compute_average_mod_fit(session_dir=None):
     with open(BASE_SPEED_PATH) as f:
         base_speeds = json.load(f)
 
+    # Whole roster, not just this run's selection: every character with
+    # mods currently equipped, plus anyone selected this run (covers a
+    # freshly-selected character that started with zero mods). Characters
+    # this run never touched get after == before — nothing happened to
+    # them, so the average shouldn't pretend otherwise. Deliberately keyed
+    # off selected_characters (not new_assignment's keys) to decide who
+    # was "part of this run" — a free (non-locked) character the solver
+    # left with zero mods is still a real, intentional outcome of the
+    # run, not the same as never having been selected at all.
+    all_characters = set(old_mod_ids_by_char) | selected_characters
+
     per_character = {}
-    for char_id in selected_characters:
+    for char_id in all_characters:
         char_weights_entry = weightings.get(char_id)
         if not char_weights_entry:
             continue
@@ -177,12 +188,11 @@ def compute_average_mod_fit(session_dir=None):
             continue
 
         base_speed = base_speeds.get(char_id)
-        before = compute_character_fit(
-            old_mod_ids_by_char.get(char_id, []), mods_by_id, base_speed, W_j, max_observed
-        )
-        after = compute_character_fit(
-            new_assignment.get(char_id, []), mods_by_id, base_speed, W_j, max_observed
-        )
+        before_ids = old_mod_ids_by_char.get(char_id, [])
+        after_ids = new_assignment.get(char_id, []) if char_id in selected_characters else before_ids
+
+        before = compute_character_fit(before_ids, mods_by_id, base_speed, W_j, max_observed)
+        after = compute_character_fit(after_ids, mods_by_id, base_speed, W_j, max_observed)
         per_character[char_id] = {'before': before, 'after': after}
 
     if not per_character:
