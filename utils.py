@@ -111,7 +111,7 @@ def _comlink_is_up():
         return False
 
 
-def ensure_comlink_running(timeout=60):
+def ensure_comlink_running(timeout=150):
     """Make sure Comlink is reachable at COMLINK_URL.
 
     Locally on Windows, if it's not up yet, auto-start the bundled .exe via
@@ -121,13 +121,19 @@ def ensure_comlink_running(timeout=60):
     start, so just wait and fail with a clear message if it never comes up
     rather than trying to spawn a Windows batch file that can't exist there.
 
-    timeout defaults to 60s, not a few seconds — Render's free tier spins
+    timeout defaults to 150s, not a few seconds — Render's free tier spins
     a service down after ~15 minutes idle, and waking it back up has been
     observed taking 40-60s+ with several 502s along the way before it
-    starts responding normally. This only costs real wall-clock time on
-    the already-backgrounded /setup pull (polled from the browser), not a
-    synchronous request, so there's no proxy-timeout tradeoff to worry
-    about here."""
+    starts responding normally, occasionally longer. A visitor's own
+    request is usually what triggers the wake-up in the first place, so
+    it's specifically their /setup call that eats the full cold start —
+    this only costs real wall-clock time on the already-backgrounded
+    /setup pull (polled from the browser, no max-attempts cutoff on the
+    polling side either), not a synchronous request, so there's no
+    proxy-timeout tradeoff to worry about extending this further. Doesn't
+    eliminate cold starts, just gives them more room to actually finish —
+    an external keep-alive ping against Comlink's URL every ~10 minutes
+    is the real fix if they need to stop happening altogether."""
     if _comlink_is_up():
         return
 
