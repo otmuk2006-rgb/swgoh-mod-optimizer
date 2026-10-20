@@ -14,7 +14,7 @@ This project assigns mods to characters in *Star Wars: Galaxy of Heroes* (SWGOH)
 
 Each character in SWGOH equips six mods, one per slot. A mod has a primary stat, up to four secondary stats, and a set type. Equipping two or four mods of the same set gives a set bonus. A developed account has several hundred characters and several thousand mods.
 
-Existing tools optimise characters one at a time. The first character receives the best available mods, then the second character chooses from the remainder, and so on. The result depends on the order of characters and is generally not optimal. This project solves a single assignment problem over all selected characters instead.
+Currently, mod assignment happens either through and in game algorithm that assigns mods individually (producing sub-optimal outcomes), or through assigning mods by hand (which is effective, but takes a very long time). 
 
 ## Method
 
