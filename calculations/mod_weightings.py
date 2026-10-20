@@ -37,10 +37,14 @@ SET_STAT_KEY = {
 
 def sum_account_character_mods(mods, base_speed):
     """Given a list of mods for one account+character, sum all stats
-    and add any completed set bonus. Set bonus strength depends on mod
+    and add every completed set bonus. Set bonus strength depends on mod
     LEVEL (15 = max bonus, anything less = min bonus), not dots/rarity.
     base_speed is needed to convert the speed set bonus from a
-    percentage into a flat number."""
+    percentage into a flat number.
+
+    Two-mod sets stack (6 health mods = 3 health bonuses), same rule as
+    the game: n mods of a set complete n // required bonuses, of which
+    (number at level 15) // required are full and the rest are min."""
     totals = defaultdict(float)
 
     for mod in mods:
@@ -55,21 +59,26 @@ def sum_account_character_mods(mods, base_speed):
 
     for set_name, level_15_list in set_counts.items():
         required = SET_REQUIREMENT.get(set_name)
-        if required is None or len(level_15_list) < required:
+        if required is None:
             continue
 
-        all_level_15 = all(level_15_list[:required])
+        completed = len(level_15_list) // required
+        full_count = sum(level_15_list) // required
+        min_count = completed - full_count
+        if completed == 0:
+            continue
+
         stat_key = SET_STAT_KEY[set_name]
 
         if set_name == 'speed':
             # speed set bonus is a % of base speed, converted to flat
             if base_speed is None:
                 continue  # can't convert without base speed, skip
-            fraction = SPEED_SET_BONUS_FULL_FRACTION if all_level_15 else SPEED_SET_BONUS_MIN_FRACTION
-            totals[stat_key] += fraction * base_speed
+            totals[stat_key] += (full_count * SPEED_SET_BONUS_FULL_FRACTION
+                                 + min_count * SPEED_SET_BONUS_MIN_FRACTION) * base_speed
         else:
-            bonus = SET_BONUS_FULL[set_name] if all_level_15 else SET_BONUS_MIN[set_name]
-            totals[stat_key] += bonus
+            totals[stat_key] += (full_count * SET_BONUS_FULL[set_name]
+                                 + min_count * SET_BONUS_MIN[set_name])
 
     return dict(totals)
 

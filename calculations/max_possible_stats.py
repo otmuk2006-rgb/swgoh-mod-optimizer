@@ -42,6 +42,17 @@ SET_BONUS_MAX = {
     'tenacity':         20.0,
 }
 
+# how many times each set bonus fits in 6 mods — two-mod sets stack 3x
+SET_BONUS_STACKS = {
+    'critical_chance': 3,
+    'critical_damage': 1,
+    'defense_pct':      3,
+    'health_pct':       3,
+    'offense_pct':      1,
+    'potency':          3,
+    'tenacity':         3,
+}
+
 # speed's set bonus is a fraction (0.10 = 10%), since it multiplies against
 # a flat base speed number rather than joining other percentage-point values
 SPEED_SET_BONUS_FRACTION = 0.10
@@ -68,7 +79,7 @@ def calc_max_non_speed_stat(stat):
 
     primary_value = MAX_PRIMARY.get(stat, 0) * num_primary_slots
     secondary_value = MAX_SECONDARY.get(stat, 0) * num_secondary_slots
-    set_bonus = SET_BONUS_MAX.get(stat, 0)
+    set_bonus = SET_BONUS_MAX.get(stat, 0) * SET_BONUS_STACKS.get(stat, 1)
 
     return primary_value + secondary_value + set_bonus
 

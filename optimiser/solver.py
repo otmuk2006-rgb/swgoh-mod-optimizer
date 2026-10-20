@@ -123,11 +123,17 @@ def solve(selected_characters, locked_characters=None, priority_overrides=None, 
 
             x[(mod_id, char_id)] = LpVariable(f"x_{mod_id}_{char_id}", cat='Binary')
 
+    # z = how many bonuses of each set a character completes, at full and at
+    # min strength — integer, not binary, since two-mod sets stack (6 health
+    # mods = 3 health bonuses). Four-mod sets can only complete once.
     z = {}
     for char_id in free_characters:
-        for set_name in SET_REQUIREMENT:
-            z[(char_id, set_name, 'full')] = LpVariable(f"z_{char_id}_{set_name}_full", cat='Binary')
-            z[(char_id, set_name, 'min')] = LpVariable(f"z_{char_id}_{set_name}_min", cat='Binary')
+        for set_name, required in SET_REQUIREMENT.items():
+            max_sets = 6 // required
+            z[(char_id, set_name, 'full')] = LpVariable(
+                f"z_{char_id}_{set_name}_full", lowBound=0, upBound=max_sets, cat='Integer')
+            z[(char_id, set_name, 'min')] = LpVariable(
+                f"z_{char_id}_{set_name}_min", lowBound=0, upBound=max_sets, cat='Integer')
 
     prob = LpProblem("mod_assignment", LpMaximize)
 
@@ -185,12 +191,13 @@ def solve(selected_characters, locked_characters=None, priority_overrides=None, 
             else:
                 prob += z[(char_id, set_name, 'full')] == 0
 
+            # every completed set, full or min, needs its own `required` mods
+            # — so full + min together can't exceed (mods of this set) // required
             if any_level_mods:
-                prob += lpSum(x[(mod_id, char_id)] for mod_id in any_level_mods) >= required * z[(char_id, set_name, 'min')]
+                prob += (lpSum(x[(mod_id, char_id)] for mod_id in any_level_mods)
+                         >= required * (z[(char_id, set_name, 'full')] + z[(char_id, set_name, 'min')]))
             else:
                 prob += z[(char_id, set_name, 'min')] == 0
-
-            prob += z[(char_id, set_name, 'full')] + z[(char_id, set_name, 'min')] <= 1
 
     # ---------- solve ----------
     cbc_path = _find_cbc_path()
