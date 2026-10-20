@@ -91,7 +91,7 @@ $$
 
 Here $r_k$ is the number of mods the set requires (2 or 4). If $z_{jk} = 1$, the character must have $r_k$ mods of the set. If $z_{jk} = 0$, the constraint has no effect. Only level 15 mods count towards the full bonus, and a character cannot receive both the full and the reduced bonus for the same set. This expresses the threshold rule for set bonuses using only linear constraints.
 
-The user can lock characters so that their mods do not change. Locked characters and their mods are removed before the model is built. In a test with 60 characters, 20 of them locked, this reduced the number of variables by about 39% and the solve time by a factor of about 2.2.
+The user can lock characters so that their mods do not change. Locked characters and their mods are removed before the model is built. This gives the same result as adding variables for them and fixing their values, but the model is smaller and faster to solve.
 
 CBC solves the model by branch and bound. It solves a relaxed version in which the variables can take fractional values, which gives an upper bound on the objective. It then branches on fractional variables and discards branches that cannot improve on the best solution found. The solve has a time limit of 60 seconds by default, capped at 90 seconds on the server. If the limit is reached, CBC returns the best solution found so far.
 
@@ -181,7 +181,7 @@ render.yaml     Deployment configuration
 
 **Behavioural data as the standard.** The weightings describe what top players do, not what is optimal. This is a reasonable target for most accounts. It is less suitable for very late-game accounts whose mods are better than those in the sample. These players can afford stat profiles the sample rarely reaches, so imitating the sample average may not give their best assignment.
 
-**Computation time.** The model has one binary variable for each mod and character pair, so its size grows with the number of mods multiplied by the number of characters. In a test with 25 characters and about 1,500 mods, the model had about 37,000 binary variables. CBC did not prove optimality within 30 seconds, and the solution found was within about 2.5% of the upper bound. Integer programs are NP-hard in general, and the solve time grows quickly with the number of characters. Large selections cannot be solved to proven optimality within the time limit. The result is still a valid assignment, but it may not be the best one.
+**Computation time.** The model has one binary variable for each mod and character pair, so its size grows with the number of mods multiplied by the number of characters. An account with a few thousand mods produces tens of thousands of variables even for a moderate selection of characters. Integer programs are NP-hard in general, and the solve time grows quickly with the number of characters. Large selections cannot be solved to proven optimality within the time limit. The result is still a valid assignment, but it may not be the best one.
 
 **Set stacking.** The model counts at most one bonus per set type per character. In the game, two-mod sets stack: six health mods give three health bonuses. The model therefore undervalues stacked two-mod sets.
 
