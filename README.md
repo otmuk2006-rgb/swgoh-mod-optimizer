@@ -68,7 +68,7 @@ with half this value for the reduced bonus. Because mod stats and set bonuses us
 
 The model is built with [PuLP](https://coin-or.github.io/pulp/) and solved with the CBC solver ([optimiser/solver.py](optimiser/solver.py)).
 
-The decision variable $x_{ij}$ equals 1 if mod $i$ is assigned to character $j$, and 0 otherwise. The variable $z_{jk}$ equals 1 if character $j$ completes set $k$. There are separate variables for the full and the reduced bonus.
+The decision variable $x_{ij}$ equals 1 if mod $i$ is assigned to character $j$, and 0 otherwise. The integer variable $z_{jk}$ is the number of times character $j$ completes set $k$. Two-mod sets stack, so $z_{jk}$ can be up to 3 for these sets: six health mods give three health bonuses. Four-mod sets can be completed only once. There are separate variables for the full and the reduced bonus.
 
 The objective maximises the total value of the assigned mods and completed sets, each weighted by the character's priority:
 
@@ -89,7 +89,7 @@ $$
 \sum_{i \in \text{set } k} x_{ij} \ \ge\ r_k \, z_{jk}
 $$
 
-Here $r_k$ is the number of mods the set requires (2 or 4). If $z_{jk} = 1$, the character must have $r_k$ mods of the set. If $z_{jk} = 0$, the constraint has no effect. Only level 15 mods count towards the full bonus, and a character cannot receive both the full and the reduced bonus for the same set. This expresses the threshold rule for set bonuses using only linear constraints.
+Here $r_k$ is the number of mods the set requires (2 or 4). Each completed set needs its own $r_k$ mods, so claiming $z_{jk}$ bonuses requires at least $r_k z_{jk}$ mods of that set. Full bonuses are limited in the same way by the number of level 15 mods, and full and reduced bonuses together cannot exceed the number of complete sets. Because the objective is maximised, the solver claims as many full bonuses as the level 15 mods allow, and reduced bonuses for the remaining complete sets. This is the same rule the game uses, expressed with linear constraints only.
 
 The user can lock characters so that their mods do not change. Locked characters and their mods are removed before the model is built. This gives the same result as adding variables for them and fixing their values, but the model is smaller and faster to solve.
 
@@ -182,7 +182,5 @@ render.yaml     Deployment configuration
 **Behavioural data as the standard.** The weightings describe what top players do, not what is optimal. This is a reasonable target for most accounts. It is less suitable for very late-game accounts whose mods are better than those in the sample. These players can afford stat profiles the sample rarely reaches, so imitating the sample average may not give their best assignment.
 
 **Computation time.** The model has one binary variable for each mod and character pair, so its size grows with the number of mods multiplied by the number of characters. An account with a few thousand mods produces tens of thousands of variables even for a moderate selection of characters. Integer programs are NP-hard in general, and the solve time grows quickly with the number of characters. Large selections cannot be solved to proven optimality within the time limit. The result is still a valid assignment, but it may not be the best one.
-
-**Set stacking.** The model counts at most one bonus per set type per character. In the game, two-mod sets stack: six health mods give three health bonuses. The model therefore undervalues stacked two-mod sets.
 
 **Team priority.** Priority is defined per character, not per team. A team-level model based on GAC squad usage was designed but not implemented, because no usable data source exists. The swgoh.gg squad pages are image-based and protected by Cloudflare, and Comlink does not provide battle history.
