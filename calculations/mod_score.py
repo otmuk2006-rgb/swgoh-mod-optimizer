@@ -57,8 +57,12 @@ def compute_mod_score(mod, W_j, max_stats_non_speed, max_speed_for_char):
     return score
 
 
-def compute_set_bonus_table(character_id, W_j, base_speed):
-    """B_{k,j} for every set k, both tiers (full/min), for one character."""
+def compute_set_bonus_table(character_id, W_j, base_speed, max_stats_non_speed, max_speed_for_char):
+    """B_{k,j} for every set k, both tiers (full/min), for one character.
+    Normalised by the same max-possible stat as compute_mod_score — without
+    that, a set bonus (raw stat units) and a mod's own stats (fraction of
+    max) aren't comparable in the ILP objective, and the solver would
+    complete sets even when off-set mods give clearly better stats."""
     bonuses = {}
 
     for set_name, stat_key in SET_STAT_KEY.items():
@@ -67,13 +71,19 @@ def compute_set_bonus_table(character_id, W_j, base_speed):
         if set_name == 'speed':
             full_value = SPEED_SET_BONUS_FULL_FRACTION * base_speed if base_speed else 0
             min_value = SPEED_SET_BONUS_MIN_FRACTION * base_speed if base_speed else 0
+            max_val = max_speed_for_char
         else:
             full_value = SET_BONUS_FULL[set_name]
             min_value = SET_BONUS_MIN[set_name]
+            max_val = max_stats_non_speed.get(stat_key)
+
+        if not max_val:
+            bonuses[set_name] = {'full': 0.0, 'min': 0.0}
+            continue
 
         bonuses[set_name] = {
-            'full': full_value * weight,
-            'min': min_value * weight,
+            'full': full_value / max_val * weight,
+            'min': min_value / max_val * weight,
         }
 
     return bonuses
@@ -123,7 +133,8 @@ def build_mod_scores(selected_characters, weight_overrides=None, session_dir=Non
         base_speed = base_speeds.get(character_id)
         max_speed_for_char = max_speed_per_char.get(character_id)
 
-        set_bonuses[character_id] = compute_set_bonus_table(character_id, W_j, base_speed)
+        set_bonuses[character_id] = compute_set_bonus_table(
+            character_id, W_j, base_speed, max_stats_non_speed, max_speed_for_char)
 
         for mod in my_mods:
             mod_id = mod['mod_id']

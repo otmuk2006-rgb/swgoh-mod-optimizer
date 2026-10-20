@@ -1,7 +1,3 @@
-import json
-
-CHARACTER_PRIORITY_PATH = 'data/processed/character_priority.json'
-
 
 def get_optimisation_settings(all_character_ids):
     """Interactive setup for a single optimiser run. Returns a dict with
@@ -37,9 +33,7 @@ def get_optimisation_settings(all_character_ids):
 
     priorities = {}
     if priority_mode == 'd':
-        with open(CHARACTER_PRIORITY_PATH) as f:
-            raw_priorities = json.load(f)
-        priorities = {char_id: info['priority_score'] for char_id, info in raw_priorities.items()}
+        pass  # no overrides — solver.py loads character_priority.json and applies the gear floor
     else:
         for char_id in selected:
             val = input(f"Priority for {char_id} (0.0 - 1.0): ").strip()

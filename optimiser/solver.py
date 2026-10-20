@@ -33,12 +33,25 @@ SET_REQUIREMENT = {
 }
 
 
-def load_priorities():
-    """Load character priorities directly — character_priority.json is
-    now correctly keyed by enum ID."""
+GEAR_FLOOR_LEVEL = 13
+GEAR_FLOOR_PRIORITY = 0.1
+
+
+def load_priorities(gear_levels):
+    """Tier-based priorities from character_priority.json, capped at
+    GEAR_FLOOR_PRIORITY for characters below gear 13 in this roster.
+    The cap is applied here, per solve, not baked into the JSON — that file
+    is shared by every visitor, so it can't know anyone's gear levels."""
     with open(PRIORITY_PATH) as f:
         priority_data = json.load(f)
-    return {char_id: info['priority_score'] for char_id, info in priority_data.items()}
+
+    priorities = {}
+    for char_id, info in priority_data.items():
+        p_j = info['priority_score']
+        if gear_levels.get(char_id, 0) < GEAR_FLOOR_LEVEL:
+            p_j = min(p_j, GEAR_FLOOR_PRIORITY)
+        priorities[char_id] = p_j
+    return priorities
 
 
 def solve(selected_characters, locked_characters=None, priority_overrides=None, time_limit=None, session_dir=None):
@@ -83,7 +96,8 @@ def solve(selected_characters, locked_characters=None, priority_overrides=None, 
     with open(os.path.join(processed_dir, 'gear_levels.json')) as f:
         gear_levels = json.load(f)
 
-    default_priorities = load_priorities()
+    # user overrides win over the gear floor
+    default_priorities = load_priorities(gear_levels)
     priorities = {**default_priorities, **priority_overrides}
 
     # locked characters' current mods are fixed outcomes, not decisions —

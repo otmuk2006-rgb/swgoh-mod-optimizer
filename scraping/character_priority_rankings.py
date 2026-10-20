@@ -11,7 +11,6 @@ from bs4 import BeautifulSoup
 
 SUCCESS_PATH = 'data/processed/character_meta_rankings.json'
 PRIORITY_SAVE_PATH = 'data/processed/character_priority.json'
-GEAR_LEVELS_PATH = 'data/processed/gear_levels.json'
 
 TIER_VALUES = {'S': 1.0, 'A': 0.8, 'B': 0.6, 'C': 0.4, 'D': 0.2}
 MINIMUM_FLOOR = 0.1
@@ -88,30 +87,6 @@ def apply_manual_overrides(priorities):
     return priorities
 
 
-def apply_gear_floor(priorities):
-    if not os.path.exists(GEAR_LEVELS_PATH):
-        print("Warning: gear_levels.json not found, skipping gear floor")
-        return priorities
-    with open(GEAR_LEVELS_PATH) as f:
-        gear_levels = json.load(f)
-
-    floored_count = 0
-    excluded_count = 0
-    for char_id, info in priorities.items():
-        if char_id not in gear_levels:
-            info['priority_score'] = 0.0
-            info['not_owned'] = True
-            excluded_count += 1
-        elif gear_levels[char_id] < 13 and info['priority_score'] > MINIMUM_FLOOR:
-            info['priority_score'] = MINIMUM_FLOOR
-            info['gear_floored'] = True
-            floored_count += 1
-
-    print(f"Excluded {excluded_count} unowned characters (priority = 0)")
-    print(f"Floored {floored_count} owned characters below gear 13 (priority = {MINIMUM_FLOOR})")
-    return priorities
-
-
 def run_priority_scrape():
     with open(SUCCESS_PATH) as f:
         succeeded = json.load(f)   # enum_id -> {name, slug, title}
@@ -138,8 +113,9 @@ def run_priority_scrape():
 
     driver.quit()
 
+    # no gear floor here — this file is shared by every roster, so the
+    # floor is applied per solve instead (see optimiser/solver.py)
     priorities = apply_manual_overrides(priorities)
-    priorities = apply_gear_floor(priorities)
 
     with open(PRIORITY_SAVE_PATH, 'w') as f:
         json.dump(priorities, f, indent=2)
