@@ -20,68 +20,210 @@ Existing tools optimise characters one at a time. The first character receives t
 
 The pipeline has five stages.
 
-1. Estimate stat weightings `W_j` for each character from top players' mods.
-2. Estimate a priority `p_j` for each character from tier ratings.
-3. Score every mod for every character.
+1. Estimate stat weightings $W_{j,s}$ for each character from top players' mods.
+2. Estimate a priority $p_j$ for each character from tier ratings.
+3. Score every mod for every character, and value every set bonus on the same scale.
 4. Solve the ILP.
-5. Report the change in stats and mod fit.
+5. Evaluate the change in mod fit.
+
+### Notation
+
+| Symbol | Meaning |
+|---|---|
+| $I$ | the player's mods |
+| $J$ | the characters selected for optimisation |
+| $S$ | stat types (speed, offense %, crit chance, ...) |
+| $K$ | set types (speed, offense, health, ...) |
+| $v_{i,s}$ | value of stat $s$ on mod $i$, as a primary or secondary stat (0 if absent) |
+| $\ell_i$ | level of mod $i$ (maximum 15) |
+| $k(i)$ | set type of mod $i$ |
+| $\sigma(k)$ | stat increased by set $k$ |
+| $r_k$ | number of mods needed to complete set $k$ |
+| $b_k$ | full bonus of set $k$ |
+| $v^{base}_j$ | base speed of character $j$ |
+
+The set constants are:
+
+| Set $k$ | $r_k$ | $b_k$ |
+|---|---|---|
+| Speed | 4 | $0.10 \cdot v^{base}_j$ |
+| Offense | 4 | 15% |
+| Critical damage | 4 | 30% |
+| Health | 2 | 10% |
+| Defense | 2 | 25% |
+| Critical chance | 2 | 8% |
+| Potency | 2 | 15% |
+| Tenacity | 2 | 20% |
+
+**Set bonus rule.** Let $M$ be the six mods on one character and $n_k(M)$ the number of them in set $k$. The bonus is
+
+$$
+\beta_k(M) =
+\begin{cases}
+b_k & \text{if } n_k(M) \ge r_k \text{ and the mods forming the set are level 15} \\
+\tfrac{1}{2} b_k & \text{if } n_k(M) \ge r_k \text{ otherwise} \\
+0 & \text{if } n_k(M) < r_k
+\end{cases}
+$$
+
+**Stat total.** The total of stat $s$ from mods $M$, including set bonuses, is
+
+$$
+T_s(M) = \sum_{i \in M} v_{i,s} + \sum_{k \,:\, \sigma(k) = s} \beta_k(M)
+$$
 
 ### 1. Stat weightings
 
 The weightings are estimated from data, not set by hand ([calculations/mod_weightings.py](calculations/mod_weightings.py)).
 
-1. The top 50 players in each of the five Kyber divisions are taken from the GAC leaderboards (about 250 accounts). The data is accessed through [Comlink](https://github.com/swgoh-utils/swgoh-comlink), an API for SWGOH game data ([scraping/GAC_leaderboards.py](scraping/GAC_leaderboards.py)).
-2. All mods equipped by these players are downloaded and decoded ([scraping/top250_player_mods.py](scraping/top250_player_mods.py)).
-3. For each account and character, the stats of all six mods are summed. Completed set bonuses are included. A set gives its full bonus if its mods are level 15 and half the bonus otherwise. The speed set bonus is a percentage of base speed, so it is converted to a flat value for each character.
-4. The totals are averaged across accounts for each character.
-5. Each stat is divided by the highest average for that stat across all characters. The character with the highest average speed therefore has a speed weight of 1.0.
+The top 50 players in each of the five Kyber divisions are taken from the GAC leaderboards, giving about 250 accounts. Data is accessed through [Comlink](https://github.com/swgoh-utils/swgoh-comlink), an API for SWGOH game data ([scraping/GAC_leaderboards.py](scraping/GAC_leaderboards.py)). All mods equipped by these players are downloaded and decoded ([scraping/top250_player_mods.py](scraping/top250_player_mods.py)).
+
+Let $A_j$ be the sampled accounts that have character $j$, and $M_{a,j}$ the mods account $a$ has on $j$. The average total of stat $s$ on character $j$ is
+
+$$
+\bar{x}_{j,s} = \frac{1}{|A_j|} \sum_{a \in A_j} T_s(M_{a,j})
+$$
+
+Each stat is then divided by its largest average across all characters:
+
+$$
+m_s = \max_{j'} \bar{x}_{j',s}, \qquad W_{j,s} = \frac{\bar{x}_{j,s}}{m_s} \in [0, 1]
+$$
+
+The character with the highest average speed therefore has $W_{j,\text{speed}} = 1$. The other characters' speed weights are relative to that observed value. The values $m_s$ are saved, because stage 5 uses the same scale.
 
 ### 2. Character priority
 
-When two characters compete for the same mod, the solver uses priority to decide between them. Priorities are taken from the swgoh.gg meta page of each character ([scraping/character_priority_rankings.py](scraping/character_priority_rankings.py)). Each page gives a tier for the character as a leader and as a squad member. The higher of the two is converted to a score:
+When two characters compete for the same mod, priority decides between them. Each character's swgoh.gg meta page gives a tier as a leader, $t^{lead}_j$, and as a squad member, $t^{mem}_j$ ([scraping/character_priority_rankings.py](scraping/character_priority_rankings.py)). The tiers are mapped to numbers:
 
-| Tier | S | A | B | C | D |
-|---|---|---|---|---|---|
-| `p_j` | 1.0 | 0.8 | 0.6 | 0.4 | 0.2 |
+$$
+\tau(\text{S}) = 1.0, \quad \tau(\text{A}) = 0.8, \quad \tau(\text{B}) = 0.6, \quad \tau(\text{C}) = 0.4, \quad \tau(\text{D}) = 0.2
+$$
 
-Characters below gear 13 receive a priority of 0.1. Characters the player does not own receive 0. The user can override any priority.
+The tier score is the better of the two roles. A character with no tier receives 0.1. A short manual list replaces the tier for characters whose page was missing or misleading.
 
-### 3. Mod scores
+$$
+p^{tier}_j = \max\left(\tau(t^{lead}_j),\ \tau(t^{mem}_j)\right)
+$$
 
-The score of mod `i` for character `j` is ([calculations/mod_score.py](calculations/mod_score.py)):
+At solve time, characters below gear 13 in the user's roster are capped, since they are not used in competitive play:
 
-$$\text{score}(i,j) = \sum_{s \in \text{stats}(i)} \frac{\text{value}_{i,s}}{\text{max}_s} \cdot W_{j,s}$$
+$$
+p_j =
+\begin{cases}
+\min(p^{tier}_j,\ 0.1) & \text{if } \text{gear}_j < 13 \\
+p^{tier}_j & \text{otherwise}
+\end{cases}
+$$
 
-Here `max_s` is the highest value stat `s` can have on a mod. For speed, the maximum depends on the character's base speed. The value of set bonuses is computed separately. `B_kj` is the value to character `j` of completing set `k`, at full or half strength.
+The user can replace $p_j$ with any value in $[0, 1]$.
+
+### 3. Mod scores and set bonus values
+
+Each stat is normalised by $\mu_{j,s}$, the largest value of that stat a full six-mod loadout can give ([calculations/max_possible_stats.py](calculations/max_possible_stats.py)). Let $n^{P}_s$ be the number of slots where $s$ can be the primary stat, $P_s$ the maximum primary value and $Q_s$ the maximum secondary value. Then
+
+$$
+\mu_{j,s} = n^{P}_s P_s + (6 - n^{P}_s)\, Q_s + b_{k(s)}
+$$
+
+where $b_{k(s)}$ is the full bonus of the set for $s$, if one exists. Speed is a primary only on the arrow, so $\mu_{j,\text{speed}} = 32 + 5 \cdot 31 + 0.10 \cdot v^{base}_j$. This is the only stat that depends on the character.
+
+The score of mod $i$ for character $j$ is ([calculations/mod_score.py](calculations/mod_score.py))
+
+$$
+\text{score}(i,j) = \sum_{s \in S} \frac{v_{i,s}}{\mu_{j,s}} \, W_{j,s}
+$$
+
+The value of completing set $k$ on character $j$ is computed on the same scale:
+
+$$
+B^{full}_{k,j} = \frac{b_k}{\mu_{j,\sigma(k)}} \, W_{j,\sigma(k)}, \qquad B^{min}_{k,j} = \tfrac{1}{2} B^{full}_{k,j}
+$$
+
+Because mod stats and set bonuses use the same units, the solver can compare them directly. A mod outside a set is chosen when its additional stats are worth more than the set bonus it would cost.
 
 ### 4. Integer linear program
 
 The model is built with [PuLP](https://coin-or.github.io/pulp/) and solved with the CBC solver ([optimiser/solver.py](optimiser/solver.py)).
 
-Decision variables:
+**Decision variables.**
 
-- `x_ij ∈ {0,1}`: mod `i` is assigned to character `j`.
-- `z_jk^full, z_jk^min ∈ {0,1}`: character `j` completes set `k` at full or half strength.
+- $x_{ij} \in \{0,1\}$: mod $i$ is assigned to character $j$.
+- $z^{full}_{jk}, z^{min}_{jk} \in \{0,1\}$: character $j$ receives the full or half bonus of set $k$.
 
-Objective:
+**Objective.** Mod stats and set bonuses are maximised together, each weighted by priority:
 
-$$\max \sum_{i,j} p_j \cdot \text{score}(i,j) \cdot x_{ij} \;+\; \sum_{j,k} p_j \left( B^{full}_{k,j}\, z^{full}_{jk} + B^{min}_{k,j}\, z^{min}_{jk} \right)$$
+$$
+\max \ \sum_{i \in I} \sum_{j \in J} p_j \, \text{score}(i,j) \, x_{ij}
+\;+\; \sum_{j \in J} \sum_{k \in K} p_j \left( B^{full}_{k,j} \, z^{full}_{jk} + B^{min}_{k,j} \, z^{min}_{jk} \right)
+$$
 
-Constraints:
+**Constraints.**
 
-- Each mod is assigned to at most one character: `Σ_j x_ij ≤ 1`.
-- Each character has at most one mod per slot: `Σ_{i ∈ slot} x_ij ≤ 1`.
-- A set bonus requires enough mods of that set (two or four): `Σ_{i ∈ set k} x_ij ≥ required_k · z_jk`. Only level 15 mods count towards the full bonus.
-- A character cannot claim both bonuses for the same set: `z^full + z^min ≤ 1`.
-- Six-dot mods require gear 12. Variables for invalid pairs are not created.
+Each mod is assigned to at most one character:
 
-The user can lock characters so that their mods do not change. Locked characters and their mods are removed before the model is built. This gives the same optimum as constraining the variables. In a test with 60 characters, 20 of them locked, it reduced the number of variables by about 39% and the solve time by a factor of about 2.2.
+$$
+\sum_{j \in J} x_{ij} \le 1 \qquad \forall i \in I
+$$
 
-The solve has a time limit of 60 seconds by default, capped at 90 seconds on the server. If the limit is reached, CBC returns the best solution found so far.
+Each character has at most one mod in each slot $q$:
+
+$$
+\sum_{i \in I_q} x_{ij} \le 1 \qquad \forall j \in J,\ \forall q
+$$
+
+The full bonus requires $r_k$ level 15 mods of set $k$. The half bonus requires $r_k$ mods of set $k$ at any level:
+
+$$
+\sum_{\substack{i \,:\, k(i) = k \\ \ell_i = 15}} x_{ij} \ \ge\ r_k \, z^{full}_{jk},
+\qquad
+\sum_{i \,:\, k(i) = k} x_{ij} \ \ge\ r_k \, z^{min}_{jk}
+\qquad \forall j, k
+$$
+
+A character receives at most one of the two bonuses for each set:
+
+$$
+z^{full}_{jk} + z^{min}_{jk} \le 1 \qquad \forall j, k
+$$
+
+Six-dot mods require gear 12. No variable $x_{ij}$ is created for such pairs.
+
+**How the set constraints work.** If $z_{jk} = 1$, the right-hand side becomes $r_k$, so the character must have $r_k$ matching mods. If $z_{jk} = 0$, the constraint is always satisfied. Because the objective is maximised and $B^{full} > B^{min}$, the solver sets $z^{full}_{jk} = 1$ whenever the full bonus is achievable, and otherwise $z^{min}_{jk} = 1$ if the half bonus is achievable. This expresses the threshold rule $\beta_k$ using only linear constraints.
+
+**Locked characters.** The user can lock characters so their mods do not change. Locked characters and their mods are removed before the model is built:
+
+$$
+J' = J \setminus J_{locked}, \qquad I' = I \setminus \{ i : i \text{ is equipped on a locked character} \}
+$$
+
+This gives the same optimum as fixing the variables. In a test with 60 characters, 20 of them locked, it reduced the number of variables by about 39% and the solve time by a factor of about 2.2.
+
+**Solution method.** CBC uses branch and bound. It solves the linear relaxation ($0 \le x_{ij} \le 1$) to obtain an upper bound, branches on fractional variables, and discards branches whose bound is below the best integer solution found. The solve has a time limit of 60 seconds by default, capped at 90 seconds on the server. If the limit is reached, CBC returns the best solution found and the gap to the upper bound.
 
 ### 5. Evaluation
 
-The results page lists the mods that moved and each character's stats before and after. Stats are computed with Comlink's `StatCalc`. The page also reports the average mod fit of the roster ([calculations/reporting.py](calculations/reporting.py)). Mod fit is the cosine similarity between a character's total mod stats and their weighting vector `W_j`. It measures whether the mix of stats is correct, independent of their size. Cosine similarity is not linear, so it is used only for evaluation and not in the objective.
+The results page lists the mods that moved and each character's stats before and after, computed with Comlink's `StatCalc`. It also reports the mod fit of each character ([calculations/reporting.py](calculations/reporting.py)).
+
+Let $M_j$ be the mods on character $j$. Their stat totals are normalised with the same $m_s$ as in stage 1:
+
+$$
+\hat{t}_{j,s} = \frac{T_s(M_j)}{m_s}
+$$
+
+Mod fit is the cosine similarity between this vector and the weighting vector:
+
+$$
+\text{fit}_j = \frac{\hat{t}_j \cdot W_j}{\lVert \hat{t}_j \rVert \, \lVert W_j \rVert}
+$$
+
+It equals 1 when the proportions of stats match the weightings exactly, regardless of their size. The page reports the average over all characters with weightings, before and after optimisation:
+
+$$
+\overline{\text{fit}} = \frac{1}{|J_W|} \sum_{j \in J_W} \text{fit}_j
+$$
+
+Mod fit depends on the whole set of mods together, so it is not linear in $x_{ij}$. It is therefore used only for evaluation, not in the objective.
 
 ## Web application
 
@@ -151,6 +293,14 @@ render.yaml     Deployment configuration
 
 ## Limitations
 
-- The weightings are based on about 250 accounts. The GAC leaderboard endpoint does not expose more players.
-- Priority is defined per character, not per team. I designed a team-level model based on GAC squad usage with Bayesian shrinkage. It was not implemented because no usable data source exists. The swgoh.gg squad pages are image-based and protected by Cloudflare, and Comlink does not provide battle history.
-- Session state is stored in memory on a single worker. A Redis store would be needed to run more than one instance.
+**Sample size.** The weightings are based on the top 50 players from each of the five Kyber divisions, about 250 accounts. This is the maximum the GAC leaderboard endpoint exposes. A better sample would be the top 1,000 players of Kyber 1. The current sample includes weaker accounts and gives few observations for less popular characters, so their weightings are less reliable.
+
+**Seasonal changes.** The best way to mod a character changes over time. New characters, balance changes and temporary GAC and event modifiers change which characters are used and which stats they need. The weightings and priorities describe the meta at the time the data was collected. They become outdated unless the data is refreshed regularly.
+
+**Behavioural data as the standard.** The weightings describe what top players do, not what is optimal. This is a reasonable target for most accounts. It is less suitable for very late-game accounts whose mods are better than those in the sample. These players can afford stat profiles the sample rarely reaches, so imitating the sample average may not give their best assignment.
+
+**Computation time.** The model has one binary variable for each eligible mod and character pair, so its size is about $|I| \cdot |J|$. In a test with 25 characters and about 1,500 mods, the model had about 37,000 binary variables. CBC did not prove optimality within 30 seconds, and the solution found was within about 2.5% of the upper bound. Integer programs are NP-hard in general, and the solve time grows quickly with the number of characters. Large selections cannot be solved to proven optimality within the time limit. The result is still a valid assignment, but it may not be the best one.
+
+**Set stacking.** The model counts at most one bonus per set type per character. In the game, two-mod sets stack: six health mods give three health bonuses. The model therefore undervalues stacked two-mod sets. Allowing $z_{jk} \in \{0, 1, 2, 3\}$ for these sets would fix this.
+
+**Team priority.** Priority is defined per character, not per team. A team-level model based on GAC squad usage was designed but not implemented, because no usable data source exists. The swgoh.gg squad pages are image-based and protected by Cloudflare, and Comlink does not provide battle history.
